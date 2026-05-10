@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VotaData 2026 — Portal Eleitoral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #0e9f6e;
+  --green-light: #d1fae5;
+  --green-dark: #065f46;
+  --green-mid: #34d399;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --amber: #d97706;
+  --amber-light: #fef3c7;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --ink: #0f172a;
+  --ink-2: #1e293b;
+  --ink-3: #334155;
+  --muted: #64748b;
+  --muted-2: #94a3b8;
+  --border: #e2e8f0;
+  --border-2: #cbd5e1;
+  --surface: #f8fafc;
+  --white: #ffffff;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--ink);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-mark svg { width: 18px; height: 18px; fill: var(--green-mid); }
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.logo-text span { color: var(--green); }
+
+.search-wrap {
+  flex: 1;
+  max-width: 480px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 7px 12px;
+  transition: border-color 0.2s;
+}
+.search-box:focus-within { border-color: var(--green); }
+.search-box input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink);
+  width: 100%;
+}
+.search-box input::placeholder { color: var(--muted-2); }
+.search-icon { color: var(--muted-2); flex-shrink: 0; }
+
+.topbar-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-sm {
+  font-family: var(--font-body);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+.btn-sm:hover { background: var(--surface); border-color: var(--border); }
+.btn-primary {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+.btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+/* ── NAV ── */
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.navbar::-webkit-scrollbar { display: none; }
+.nav-item {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 12px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-item:hover { color: var(--ink); }
+.nav-item.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-badge {
+  font-size: 10px;
+  background: var(--green);
+  color: white;
+  padding: 1px 6px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 1280px; margin: 0 auto; padding: 20px 24px 40px; }
+
+/* ── HERO STRIP ── */
+.hero-strip {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(52,211,153,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-left { position: relative; }
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-mid);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+.hero-right { display: flex; gap: 28px; position: relative; }
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.03em;
+}
+.hero-stat-num.accent { color: var(--green-mid); }
+.hero-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 1px;
+}
+.hero-divider { width: 1px; background: rgba(255,255,255,0.1); }
+
+/* ── GRID ── */
+.grid-main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+.left-col { display: flex; flex-direction: column; gap: 16px; }
+.right-col { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.card-title-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.icon-green { background: var(--green-light); color: var(--green-dark); }
+.icon-blue { background: var(--blue-light); color: var(--blue); }
+.icon-amber { background: var(--amber-light); color: var(--amber); }
+.icon-purple { background: var(--purple-light); color: var(--purple); }
+.card-link { font-size: 12px; color: var(--green); text-decoration: none; font-weight: 500; }
+.card-link:hover { color: var(--green-dark); }
+
+/* ── METRICS ROW ── */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.metric-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.metric-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+.metric-sub {
+  font-size: 11px;
+  color: var(--muted-2);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.metric-sub.up { color: var(--green); }
+.metric-sub.up::before { content: '↑'; }
+
+/* ── UF GRID (mapa simplificado) ── */
+.uf-section { margin-bottom: 10px; }
+.filter-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.chip {
+  font-size: 12px;
+  padding: 5px 13px;
+  border-radius: 99px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.chip:hover { background: var(--surface); }
+.chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+
+.uf-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+}
+.uf-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0;
+  font-family: var(--font-display);
+}
+.uf-cell:hover { transform: scale(1.08); box-shadow: var(--shadow-md); }
+.uf-h { background: var(--green-dark); color: white; }
+.uf-m { background: var(--green); color: white; }
+.uf-l { background: var(--green-light); color: var(--green-dark); }
+.uf-n { background: var(--surface); color: var(--muted-2); border: 1px solid var(--border); }
+
+.map-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+/* ── POLLS LIST ── */
+.poll-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+  cursor: pointer;
+}
+.poll-row:last-child { border-bottom: none; padding-bottom: 0; }
+.poll-row:hover { background: var(--surface); margin: 0 -4px; padding-left: 4px; padding-right: 4px; border-radius: 8px; }
+.uf-pill {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  padding: 4px 9px;
+  border-radius: 6px;
+  min-width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.pill-sp { background: #dbeafe; color: #1e40af; }
+.pill-rj { background: #fce7f3; color: #9d174d; }
+.pill-mg { background: #ede9fe; color: #5b21b6; }
+.pill-rs { background: #fef3c7; color: #92400e; }
+.pill-ba { background: #d1fae5; color: #065f46; }
+.pill-pr { background: #fee2e2; color: #991b1b; }
+.poll-info { flex: 1; min-width: 0; }
+.poll-title { font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.poll-meta { font-size: 11px; color: var(--muted-2); margin-top: 1px; }
+.poll-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.poll-date { font-size: 11px; color: var(--muted-2); }
+.icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--muted);
+  transition: all 0.15s;
+}
+.icon-btn:hover { background: var(--green-light); color: var(--green-dark); border-color: var(--green-light); }
+
+/* ── CANDID CHART WIDGET ── */
+.poll-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.poll-chart-row:last-child { margin-bottom: 0; }
+.cand-name { font-size: 12px; font-weight: 500; width: 90px; flex-shrink: 0; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.bar-a { background: var(--green); }
+.bar-b { background: var(--blue); }
+.bar-c { background: var(--amber); }
+.bar-d { background: var(--muted-2); }
+.bar-pct { font-size: 12px; font-weight: 600; font-family: var(--font-display); color: var(--ink); min-width: 34px; text-align: right; }
+
+/* ── TREND CHART (mini) ── */
+canvas { display: block; }
+
+/* ── CALENDAR SIDE ── */
+.countdown-block {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.countdown-unit {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+}
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: -0.03em;
+}
+.countdown-label { font-size: 10px; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px; }
+
+.cal-mini { margin-bottom: 14px; }
+.cal-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cal-month-label { font-size: 12px; font-weight: 600; color: var(--ink); }
+.cal-nav { font-size: 18px; color: var(--muted-2); cursor: pointer; padding: 0 4px; background: none; border: none; line-height: 1; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.cal-head { font-size: 9px; font-weight: 600; text-align: center; color: var(--muted-2); text-transform: uppercase; padding: 3px 0; }
+.cal-day {
+  font-size: 11px;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cal-day:hover { background: var(--surface); color: var(--ink); }
+.cal-day.today { background: var(--ink); color: white; font-weight: 700; }
+.cal-day.event-day { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+.cal-day.other-month { color: var(--border-2); }
+
+.events-list { display: flex; flex-direction: column; gap: 8px; }
+.event-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.event-item:hover { border-color: var(--border-2); }
+.event-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.dot-blue { background: var(--blue); }
+.dot-red { background: var(--red); }
+.dot-green { background: var(--green); }
+.dot-amber { background: var(--amber); }
+.event-text { font-size: 12px; color: var(--ink-3); font-weight: 500; line-height: 1.35; }
+.event-date { font-size: 10px; color: var(--muted-2); margin-top: 2px; }
+.event-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-left: auto;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.tag-prazo { background: var(--red-light); color: var(--red); }
+.tag-voto { background: var(--green-light); color: var(--green-dark); }
+.tag-reg { background: var(--blue-light); color: var(--blue); }
+.tag-prop { background: var(--amber-light); color: var(--amber); }
+
+/* ── NEWS ── */
+.news-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.news-item:last-child { border-bottom: none; padding-bottom: 0; }
+.news-tag-wrap { margin-bottom: 4px; }
+.news-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ntag-p { background: var(--blue-light); color: var(--blue); }
+.ntag-a { background: var(--purple-light); color: var(--purple); }
+.ntag-r { background: var(--green-light); color: var(--green-dark); }
+.ntag-l { background: var(--amber-light); color: var(--amber); }
+.news-headline {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 3px;
+}
+.news-byline { font-size: 10px; color: var(--muted-2); display: flex; gap: 6px; }
+.news-byline-sep { color: var(--border-2); }
+
+/* ── ALERTS PANEL ── */
+.alert-state-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.alert-state-row:last-child { border-bottom: none; }
+.alert-uf { font-size: 13px; font-weight: 700; font-family: var(--font-display); color: var(--ink); }
+.alert-sub { font-size: 11px; color: var(--muted-2); margin-top: 1px; }
+.toggle {
+  width: 36px;
+  height: 20px;
+  background: var(--border-2);
+  border-radius: 99px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+  border: none;
+  flex-shrink: 0;
+}
+.toggle.on { background: var(--green); }
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s;
+}
+.toggle.on::after { left: 19px; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.footer-links { display: flex; gap: 16px; }
+.footer-link { font-size: 11px; color: var(--muted); text-decoration: none; }
+.footer-link:hover { color: var(--ink); }
+.footer-copy { font-size: 11px; color: var(--muted-2); }
+
+/* ── SECTION DIVIDER ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+  margin-bottom: 10px;
+}
+
+/* ── ALERT BANNER ── */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green-light);
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: var(--green-dark);
+}
+.alert-banner strong { font-weight: 600; }
+.alert-banner-icon { font-size: 16px; }
+.alert-dismiss { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--green-dark); font-size: 16px; opacity: 0.6; }
+.alert-dismiss:hover { opacity: 1; }
+
+@media (max-width: 900px) {
+  .grid-main { grid-template-columns: 1fr; }
+  .hero-right { gap: 16px; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .topbar { padding: 0 14px; gap: 10px; }
+  .page { padding: 14px 14px 32px; }
+  .hero-strip { flex-direction: column; align-items: flex-start; }
+  .uf-grid { grid-template-columns: repeat(7, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h4v2H3zM3 18h4v2H3zM9 14h2v7H9z"/></svg>
+    </div>
+    <span class="logo-text">Vota<span>Data</span></span>
+  </a>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Buscar candidato, cargo, UF, instituto…">
+    </div>
+  </div>
+
+  <div class="topbar-actions">
+    <button class="btn-sm">PT / EN</button>
+    <button class="btn-sm btn-primary">Alertas</button>
+    <div class="avatar" title="Perfil">JD</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a class="nav-item active" href="#">Início</a>
+  <a class="nav-item" href="#">Eleições ▾</a>
+  <a class="nav-item" href="#">Pesquisas <span class="nav-badge">1.284</span></a>
+  <a class="nav-item" href="#">Alertas por UF</a>
+  <a class="nav-item" href="#">Notícias</a>
+  <a class="nav-item" href="#">Calendário 2026</a>
+  <a class="nav-item" href="#">API / Dados abertos</a>
+  <a class="nav-item" href="#">Sobre</a>
+</nav>
+
+<main class="page">
+
+  <!-- ALERT BANNER -->
+  <div class="alert-banner" id="alertBanner">
+    <span class="alert-banner-icon">🔔</span>
+    <span><strong>Nova pesquisa registrada em SP</strong> — Datafolha / TSE 00238/2026 publicada há 12 minutos.</span>
+    <button class="alert-dismiss" onclick="document.getElementById('alertBanner').style.display='none'">✕</button>
+  </div>
+
+  <!-- HERO STRIP -->
+  <div class="hero-strip">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Eleições Gerais 2026</div>
+      <div class="hero-title">Portal Eleitoral Brasileiro</div>
+      <div class="hero-sub">Pesquisas registradas, histórico e calendário em tempo real</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hero-stat-num accent" id="cntPoll">1.284</div>
+        <div class="hero-stat-label">Pesquisas registradas</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="cntCand">28.941</div>
+        <div class="hero-stat-label">Candidatos 2026</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num accent" id="cntDias">149</div>
+        <div class="hero-stat-label">Dias para o 1° turno</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METRICS ROW -->
+  <div class="metrics-row">
+    <div class="metric-card">
+      <div class="metric-label">Pesquisas (7 dias)</div>
+      <div class="metric-value">47</div>
+      <div class="metric-sub up">9 novas hoje</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">UFs com cobertura</div>
+      <div class="metric-value">24</div>
+      <div class="metric-sub">de 27 estados + DF</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Cargos monitorados</div>
+      <div class="metric-value">6</div>
+      <div class="metric-sub">Pres · Gov · Sen · Dep</div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="grid-main">
+    <div class="left-col">
+
+      <!-- UF MAP CARD -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon icon-green">🗺</div>
+            Pesquisas por UF
+          </div>
+          <a href="#" class="card-link">Ver mapa completo →</a>
+        </div>
+        <div class="filter-chips">
+          <button class="chip active" onclick="setChip(this)">Governador</button>
+          <button class="chip" onclick="setChip(this)">Presidente</button>
+          <button class="chip" onclick="setChip(this)">Senador</button>
+          <button class="chip" onclick="setChip(this)">Dep. Federal</button>
+        </div>
+        <div class="uf-grid">
+          <div class="uf-cell uf-h" title="São Paulo — 38 pesquisas">SP</div>
+          <div class="uf-cell uf-h" title="Rio de Janeiro — 31 pesquisas">RJ</div>
+          <div class="uf-cell uf-m" title="Minas Gerais — 22 pesquisas">MG</div>
+          <div class="uf-cell uf-m" title="Rio Grande do Sul — 18 pesquisas">RS</div>
+          <div class="uf-cell uf-m" title="Bahia — 16 pesquisas">BA</div>
+          <div class="uf-cell uf-l" title="Paraná — 9 pesquisas">PR</div>
+          <div class="uf-cell uf-l" title="Ceará — 8 pesquisas">CE</div>
+          <div class="uf-cell uf-l" title="Pernambuco — 7 pesquisas">PE</div>
+          <div class="uf-cell uf-l" title="Goiás — 6 pesquisas">GO</div>
+          <div class="uf-cell uf-m" title="Amazonas — 11 pesquisas">AM</div>
+          <div class="uf-cell uf-l" title="Mato Grosso — 5 pesquisas">MT</div>
+          <div class="uf-cell uf-l" title="Mato Grosso do Sul — 4 pesquisas">MS</div>
+          <div class="uf-cell uf-l" title="Pará — 7 pesquisas">PA</div>
+          <div class="uf-cell uf-l" title="Maranhão — 5 pesquisas">MA</div>
+          <div class="uf-cell uf-l" title="Piauí — 3 pesquisas">PI</div>
+          <div class="uf-cell uf-l" title="Rio Grande do Norte — 3 pesquisas">RN</div>
+          <div class="uf-cell uf-l" title="Paraíba — 3 pesquisas">PB</div>
+          <div class="uf-cell uf-l" title="Alagoas — 2 pesquisas">AL</div>
+          <div class="uf-cell uf-l" title="Sergipe — 2 pesquisas">SE</div>
+          <div class="uf-cell uf-l" title="Espírito Santo — 4 pesquisas">ES</div>
+          <div class="uf-cell uf-l" title="Rondônia — 2 pesquisas">RO</div>
+          <div class="uf-cell uf-l" title="Acre — 1 pesquisa">AC</div>
+          <div class="uf-cell uf-n" title="Roraima — sem pesquisas">RR</div>
+          <div class="uf-cell uf-l" title="Amapá — 1 pesquisa">AP</div>
+          <div class="uf-cell uf-l" title="Tocantins — 2 pesquisas">TO</div>
+          <div class="uf-cell uf-m" title="Distrito Federal — 12 pesquisas">DF</div>
+          <div class="uf-cell uf-l" title="Santa Catarina — 8 pesquisas">SC</div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green-dark)"></div> +20 pesquisas</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> 10–19</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green-light); border:1px solid #a7f3d0"></div> 1–9</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--surface); border:1px solid var(--border)"></div> Sem dados</div>
+        </div>
+      </div>
+
+      <!-- LATEST POLLS -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon icon-blue">📊</div>
+            Últimas pesquisas registradas
+          </div>
+          <a href="#" class="card-link">Ver todas →</a>
+        </div>
+        <div>
+          <div class="poll-row">
+            <div class="uf-pill pill-sp">SP</div>
+            <div class="poll-info">
+              <div class="poll-title">Governador São Paulo — Datafolha</div>
+              <div class="poll-meta">TSE 00238/2026 · Amostra 1.200 · Margem ±2,8% · Presencial</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">09/05</span>
+              <button class="icon-btn" title="Receber alerta desta UF">🔔</button>
+              <button class="icon-btn" title="Baixar CSV">⬇</button>
+            </div>
+          </div>
+          <div class="poll-row">
+            <div class="uf-pill pill-rj">RJ</div>
+            <div class="poll-info">
+              <div class="poll-title">Governador Rio de Janeiro — Quaest</div>
+              <div class="poll-meta">TSE 00191/2026 · Amostra 800 · Margem ±3,4% · Telefone</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">08/05</span>
+              <button class="icon-btn" title="Alerta">🔔</button>
+              <button class="icon-btn" title="CSV">⬇</button>
+            </div>
+          </div>
+          <div class="poll-row">
+            <div class="uf-pill pill-mg">MG</div>
+            <div class="poll-info">
+              <div class="poll-title">Governador Minas Gerais — Ipec</div>
+              <div class="poll-meta">TSE 00174/2026 · Amostra 1.000 · Margem ±3,1% · Presencial</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">07/05</span>
+              <button class="icon-btn" title="Alerta">🔔</button>
+              <button class="icon-btn" title="CSV">⬇</button>
+            </div>
+          </div>
+          <div class="poll-row">
+            <div class="uf-pill pill-rs">RS</div>
+            <div class="poll-info">
+              <div class="poll-title">Senado Rio Grande do Sul — AtlasIntel</div>
+              <div class="poll-meta">TSE 00162/2026 · Amostra 960 · Margem ±3,2% · Online</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">06/05</span>
+              <button class="icon-btn" title="Alerta">🔔</button>
+              <button class="icon-btn" title="CSV">⬇</button>
+            </div>
+          </div>
+          <div class="poll-row">
+            <div class="uf-pill pill-ba">BA</div>
+            <div class="poll-info">
+              <div class="poll-title">Governador Bahia — Paraná Pesquisas</div>
+              <div class="poll-meta">TSE 00155/2026 · Amostra 750 · Margem ±3,6% · Presencial</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">05/05</span>
+              <button class="icon-btn" title="Alerta">🔔</button>
+              <button class="icon-btn" title="CSV">⬇</button>
+            </div>
+          </div>
+          <div class="poll-row">
+            <div class="uf-pill pill-pr">PR</div>
+            <div class="poll-info">
+              <div class="poll-title">Governador Paraná — MDA Pesquisa</div>
+              <div class="poll-meta">TSE 00149/2026 · Amostra 820 · Margem ±3,4% · Presencial</div>
+            </div>
+            <div class="poll-right">
+              <span class="poll-date">04/05</span>
+              <button class="icon-btn" title="Alerta">🔔</button>
+              <button class="icon-btn" title="CSV">⬇</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLL DETAIL SNAPSHOT -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon icon-green">📈</div>
+            Intenção de voto — Gov. SP (Datafolha, 09/05/2026)
+          </div>
+          <a href="#" class="card-link">Ver tendência →</a>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div class="poll-chart-row">
+            <div class="cand-name">Cand. A (PT)</div>
+            <div class="bar-wrap"><div class="bar-fill bar-a" style="width:38%"></div></div>
+            <div class="bar-pct">38%</div>
+          </div>
+          <div class="poll-chart-row">
+            <div class="cand-name">Cand. B (PL)</div>
+            <div class="bar-wrap"><div class="bar-fill bar-b" style="width:32%"></div></div>
+            <div class="bar-pct">32%</div>
+          </div>
+          <div class="poll-chart-row">
+            <div class="cand-name">Cand. C (PSDB)</div>
+            <div class="bar-wrap"><div class="bar-fill bar-c" style="width:14%"></div></div>
+            <div class="bar-pct">14%</div>
+          </div>
+          <div class="poll-chart-row">
+            <div class="cand-name">Outros / Brancos</div>
+            <div class="bar-wrap"><div class="bar-fill bar-d" style="width:16%"></div></div>
+            <div class="bar-pct">16%</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; font-size:11px; color:var(--muted-2); flex-wrap:wrap; border-top:1px solid var(--border); padding-top:10px;">
+          <span>📅 Campo: 06–08/05/2026</span>
+          <span>👥 Amostra: 1.200</span>
+          <span>±2,8% margem</span>
+          <span>Nível conf. 95%</span>
+          <span>Método: presencial</span>
+          <a href="#" style="color:var(--green); text-decoration:none; margin-left:auto;">Ver registro TSE →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+
+      <!-- CALENDAR CARD -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px;">
+          <div class="card-title-icon icon-amber">📅</div>
+          Calendário Eleitoral 2026
+        </div>
+
+        <div class="countdown-block">
+          <div class="countdown-unit">
+            <div class="countdown-num">149</div>
+            <div class="countdown-label">Dias</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num">21</div>
+            <div class="countdown-label">Semanas</div>
+          </div>
+          <div class="countdown-unit" style="background:var(--green-light); border-color:#a7f3d0;">
+            <div class="countdown-num" style="color:var(--green-dark);">4 out</div>
+            <div class="countdown-label">1° turno</div>
+          </div>
+        </div>
+
+        <div class="cal-mini">
+          <div class="cal-month-header">
+            <button class="cal-nav">‹</button>
+            <span class="cal-month-label">Maio 2026</span>
+            <button class="cal-nav">›</button>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-head">D</div><div class="cal-head">S</div><div class="cal-head">T</div>
+            <div class="cal-head">Q</div><div class="cal-head">Q</div><div class="cal-head">S</div>
+            <div class="cal-head">S</div>
+            <!-- Week 1 -->
+            <div class="cal-day other-month">27</div><div class="cal-day other-month">28</div>
+            <div class="cal-day other-month">29</div><div class="cal-day other-month">30</div>
+            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+            <!-- Week 2 -->
+            <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
+            <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+            <div class="cal-day today">10</div>
+            <!-- Week 3 -->
+            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div>
+            <div class="cal-day event-day" title="Prazo registro candidaturas">14</div>
+            <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
+            <!-- Week 4 -->
+            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
+            <div class="cal-day">21</div><div class="cal-day">22</div>
+            <div class="cal-day event-day" title="Início propaganda">23</div>
+            <div class="cal-day">24</div>
+            <!-- Week 5 -->
+            <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div>
+            <div class="cal-day">28</div><div class="cal-day">29</div>
+            <div class="cal-day event-day" title="Prazo pesquisas — divulgação">30</div>
+            <div class="cal-day">31</div>
+          </div>
+        </div>
+
+        <div class="section-label">Próximos eventos</div>
+        <div class="events-list">
+          <div class="event-item">
+            <div class="event-dot dot-blue"></div>
+            <div style="flex:1">
+              <div class="event-text">Prazo de registro de candidaturas</div>
+              <div class="event-date">14 de maio de 2026</div>
+            </div>
+            <span class="event-tag tag-reg">Registro</span>
+          </div>
+          <div class="event-item">
+            <div class="event-dot dot-amber"></div>
+            <div style="flex:1">
+              <div class="event-text">Início da propaganda eleitoral</div>
+              <div class="event-date">23 de maio de 2026</div>
+            </div>
+            <span class="event-tag tag-prop">Propaganda</span>
+          </div>
+          <div class="event-item">
+            <div class="event-dot dot-red"></div>
+            <div style="flex:1">
+              <div class="event-text">Prazo para divulgação de pesquisas</div>
+              <div class="event-date">30 de maio de 2026</div>
+            </div>
+            <span class="event-tag tag-prazo">Prazo</span>
+          </div>
+          <div class="event-item">
+            <div class="event-dot dot-green"></div>
+            <div style="flex:1">
+              <div class="event-text">1° Turno — Eleições Gerais</div>
+              <div class="event-date">4 de outubro de 2026</div>
+            </div>
+            <span class="event-tag tag-voto">Votação</span>
+          </div>
+          <div class="event-item">
+            <div class="event-dot dot-green"></div>
+            <div style="flex:1">
+              <div class="event-text">2° Turno — Eleições Gerais</div>
+              <div class="event-date">25 de outubro de 2026</div>
+            </div>
+            <span class="event-tag tag-voto">Votação</span>
+          </div>
+        </div>
+        <div style="margin-top:12px; display:flex; gap:6px;">
+          <button class="btn-sm" style="flex:1; justify-content:center; display:flex; align-items:center; gap:5px;">📆 Google Calendar</button>
+          <button class="btn-sm" style="flex:1; justify-content:center; display:flex; align-items:center; gap:5px;">📥 Exportar iCal</button>
+        </div>
+      </div>
+
+      <!-- ALERTS CARD -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px;">
+          <div class="card-title-icon icon-purple">🔔</div>
+          Alertas por UF
+        </div>
+        <div class="section-label">Meus alertas ativos</div>
+        <div>
+          <div class="alert-state-row">
+            <div>
+              <div class="alert-uf">SP — São Paulo</div>
+              <div class="alert-sub">Governador · Email + Push</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="alert-state-row">
+            <div>
+              <div class="alert-uf">RJ — Rio de Janeiro</div>
+              <div class="alert-sub">Todos os cargos · Email</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="alert-state-row">
+            <div>
+              <div class="alert-uf">MG — Minas Gerais</div>
+              <div class="alert-sub">Senador · Push web</div>
+            </div>
+            <button class="toggle" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="alert-state-row">
+            <div>
+              <div class="alert-uf">RS — Rio Grande do Sul</div>
+              <div class="alert-sub">Governador · Email</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+        <button class="btn-sm btn-primary" style="width:100%; margin-top:12px; justify-content:center; display:flex; align-items:center; gap:6px;">
+          + Adicionar alerta por UF
+        </button>
+      </div>
+
+      <!-- NEWS CARD -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-title-icon icon-amber">📰</div>
+            Notícias
+          </div>
+          <a href="#" class="card-link">Ver todas →</a>
+        </div>
+        <div>
+          <div class="news-item">
+            <div class="news-tag-wrap"><span class="news-tag ntag-p">Pesquisa</span></div>
+            <div class="news-headline">Nova pesquisa aponta empate técnico no governo de SP entre candidatos A e B</div>
+            <div class="news-byline"><span>Datafolha</span><span class="news-byline-sep">·</span><span>há 2h</span></div>
+          </div>
+          <div class="news-item">
+            <div class="news-tag-wrap"><span class="news-tag ntag-a">Análise</span></div>
+            <div class="news-headline">Como o eleitorado nordestino tende a votar em 2026? Veja os dados históricos</div>
+            <div class="news-byline"><span>Redação VotaData</span><span class="news-byline-sep">·</span><span>há 5h</span></div>
+          </div>
+          <div class="news-item">
+            <div class="news-tag-wrap"><span class="news-tag ntag-l">Legislação</span></div>
+            <div class="news-headline">TSE publica novas regras para registro e divulgação de pesquisas eleitorais</div>
+            <div class="news-byline"><span>TSE</span><span class="news-byline-sep">·</span><span>ontem</span></div>
+          </div>
+          <div class="news-item">
+            <div class="news-tag-wrap"><span class="news-tag ntag-r">Resultado</span></div>
+            <div class="news-headline">Reeleição de governadores em 2022: quais estados podem repetir o padrão em 2026</div>
+            <div class="news-byline"><span>Redação VotaData</span><span class="news-byline-sep">·</span><span>2 dias atrás</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-copy">© 2026 VotaData · Fontes: TSE, TREs, Institutos oficiais · Conforme LGPD</div>
+  <div class="footer-links">
+    <a href="#" class="footer-link">Termos de uso</a>
+    <a href="#" class="footer-link">Política de dados</a>
+    <a href="#" class="footer-link">API pública</a>
+    <a href="#" class="footer-link">RSS</a>
+    <a href="#" class="footer-link">Contato</a>
+  </div>
+</footer>
+
+<script>
+function setChip(el) {
+  el.closest('.filter-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Animate bars on load
+document.addEventListener('DOMContentLoaded', () => {
+  const fills = document.querySelectorAll('.bar-fill');
+  fills.forEach(f => {
+    const target = f.style.width;
+    f.style.width = '0%';
+    setTimeout(() => { f.style.width = target; }, 200);
+  });
+
+  // UF cell click tooltip
+  document.querySelectorAll('.uf-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const uf = cell.textContent.trim();
+      const title = cell.getAttribute('title') || uf;
+      // In production this would navigate to /uf/uf-code
+      alert(`${title}\n\nClique para ver pesquisas detalhadas por cargo neste estado.`);
+    });
+  });
+});
+</script>
+</body>
+</html>
