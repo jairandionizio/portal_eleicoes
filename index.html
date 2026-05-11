@@ -1,546 +1,2420 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VotaData 2026 — Portal Eleitoral</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --g:#0b8a5c;--g2:#06b37a;--gd:#054d35;--gl:#e6f7f1;--gll:#f0fbf7;
-  --b:#1a56db;--bl:#e8f0fe;--r:#c0392b;--rl:#fdecea;
-  --am:#b45309;--aml:#fef3c7;--pu:#6d28d9;--pul:#ede9fe;
-  --ink:#0a0f1e;--ink2:#1c2333;--ink3:#2d3748;--mu:#56657f;--mu2:#8896aa;
-  --border:#dde3ec;--border2:#c8d2df;--surf:#f5f7fa;--surf2:#eef1f6;--white:#fff;
-  --fd:'Playfair Display',Georgia,serif;
-  --fs:'Inter',-apple-system,sans-serif;
-  --fm:'JetBrains Mono',monospace;
-  --rad:8px;--radlg:14px;--radxl:20px;
-  --sh:0 1px 4px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-  --shmd:0 4px 16px rgba(0,0,0,.09),0 2px 6px rgba(0,0,0,.05);
-  --shlg:0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--fs);background:var(--surf);color:var(--ink);font-size:14px;line-height:1.6;min-height:100vh}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VotaData 2026 — Portal Eleitoral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --g: #0b8a5c;
+      --g2: #06b37a;
+      --gd: #054d35;
+      --gl: #e6f7f1;
+      --gll: #f0fbf7;
+      --b: #1a56db;
+      --bl: #e8f0fe;
+      --r: #c0392b;
+      --rl: #fdecea;
+      --am: #b45309;
+      --aml: #fef3c7;
+      --pu: #6d28d9;
+      --pul: #ede9fe;
+      --ink: #0a0f1e;
+      --ink2: #1c2333;
+      --ink3: #2d3748;
+      --mu: #56657f;
+      --mu2: #8896aa;
+      --border: #dde3ec;
+      --border2: #c8d2df;
+      --surf: #f5f7fa;
+      --surf2: #eef1f6;
+      --white: #fff;
+      --fd: 'Playfair Display', Georgia, serif;
+      --fs: 'Inter', -apple-system, sans-serif;
+      --fm: 'JetBrains Mono', monospace;
+      --rad: 8px;
+      --radlg: 14px;
+      --radxl: 20px;
+      --sh: 0 1px 4px rgba(0, 0, 0, .06), 0 1px 2px rgba(0, 0, 0, .04);
+      --shmd: 0 4px 16px rgba(0, 0, 0, .09), 0 2px 6px rgba(0, 0, 0, .05);
+      --shlg: 0 12px 40px rgba(0, 0, 0, .12), 0 4px 12px rgba(0, 0, 0, .06);
+    }
 
-/* ── TOP TICKER ── */
-.ticker-bar{background:var(--ink);padding:7px 24px;display:flex;align-items:center;gap:12px;overflow:hidden}
-.ticker-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);flex-shrink:0;border:1px solid var(--g);border-radius:3px;padding:2px 8px}
-.ticker-track{overflow:hidden;flex:1}
-.ticker-inner{display:flex;gap:40px;animation:ticker 28s linear infinite;white-space:nowrap}
-.ticker-inner:hover{animation-play-state:paused}
-.ticker-item{font-size:12px;color:rgba(255,255,255,.75);flex-shrink:0;cursor:pointer}
-.ticker-item span{color:var(--g2);font-weight:600;margin-right:6px}
-.ticker-item:hover{color:white}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── TOPBAR ── */
-.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:18px;height:60px;position:sticky;top:0;z-index:300;box-shadow:var(--sh)}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0}
-.logo-mark{width:36px;height:36px;background:var(--ink);border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative}
-.logo-mark::after{content:'';position:absolute;inset:0;border-radius:9px;background:linear-gradient(135deg,rgba(6,179,122,.3),transparent);pointer-events:none}
-.logo-mark svg{width:20px;height:20px;fill:var(--g2)}
-.logo-wordmark{display:flex;flex-direction:column;line-height:1}
-.logo-name{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
-.logo-name span{color:var(--g)}
-.logo-tagline{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2)}
-.search-wrap{flex:1;max-width:440px}
-.search-box{display:flex;align-items:center;gap:8px;background:var(--surf);border:1.5px solid var(--border2);border-radius:var(--rad);padding:8px 14px;transition:all .2s}
-.search-box:focus-within{border-color:var(--g);background:white;box-shadow:0 0 0 3px rgba(11,138,92,.1)}
-.search-box input{border:none;background:none;outline:none;font-family:var(--fs);font-size:13px;color:var(--ink);width:100%}
-.search-box input::placeholder{color:var(--mu2)}
-.search-icon{color:var(--mu2);flex-shrink:0;width:16px;height:16px}
-.topbar-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-.btn{font-family:var(--fs);font-size:12.5px;padding:7px 16px;border-radius:var(--rad);border:1.5px solid var(--border2);background:transparent;color:var(--mu);cursor:pointer;transition:all .15s;font-weight:500;display:inline-flex;align-items:center;gap:6px}
-.btn:hover{background:var(--surf);border-color:var(--border)}
-.btn-primary{background:var(--g);color:white;border-color:var(--g);box-shadow:0 1px 4px rgba(11,138,92,.3)}
-.btn-primary:hover{background:var(--gd);border-color:var(--gd);box-shadow:0 2px 8px rgba(11,138,92,.35)}
-.btn-ghost{border-color:transparent;color:var(--mu)}
-.btn-ghost:hover{background:var(--surf);border-color:var(--border)}
-.btn-download{background:var(--ink);color:white;border-color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.btn-download:hover{background:var(--ink2)}
-.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:white;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15)}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#ef4444;animation:pulse 1.5s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* ── NAVBAR ── */
-.navbar{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:60px;z-index:299}
-.navbar::-webkit-scrollbar{display:none}
-.nav-item{font-size:13px;color:var(--mu);padding:13px 15px;cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;transition:all .15s;font-weight:500;display:flex;align-items:center;gap:6px;position:relative}
-.nav-item:hover{color:var(--ink)}
-.nav-item.active{color:var(--g);border-bottom-color:var(--g);font-weight:600}
-.nav-badge{font-size:10px;background:var(--g);color:white;padding:1px 7px;border-radius:99px;font-weight:700}
-.nav-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
-.nav-new{font-size:9px;font-weight:700;color:white;background:var(--r);border-radius:3px;padding:1px 5px;letter-spacing:.05em;position:absolute;top:8px;right:4px}
+    body {
+      font-family: var(--fs);
+      background: var(--surf);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh
+    }
 
-/* ── LAYOUT ── */
-.page{max-width:1340px;margin:0 auto;padding:24px 28px 80px}
-.page-anim{animation:fadeUp .22s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    /* ── TOP TICKER ── */
+    .ticker-bar {
+      background: var(--ink);
+      padding: 7px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden
+    }
 
-/* ── BREADCRUMB ── */
-.breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mu2);margin-bottom:18px}
-.bc-link{color:var(--g);cursor:pointer;font-weight:500}
-.bc-link:hover{color:var(--gd)}
-.bc-sep{color:var(--border2)}
+    .ticker-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g2);
+      flex-shrink: 0;
+      border: 1px solid var(--g);
+      border-radius: 3px;
+      padding: 2px 8px
+    }
 
-/* ── ALERT BANNER ── */
-.alert-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,#f0fbf7,#e6f7f1);border:1px solid #a7e8d0;border-radius:var(--rad);padding:11px 16px;margin-bottom:20px;font-size:12.5px;color:var(--gd)}
-.alert-banner strong{font-weight:600}
-.alert-dismiss{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--g);font-size:18px;opacity:.6;line-height:1}
-.alert-dismiss:hover{opacity:1}
+    .ticker-track {
+      overflow: hidden;
+      flex: 1
+    }
 
-/* ── HERO ── */
-.hero-strip{background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 100%);border-radius:var(--radxl);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px;position:relative;overflow:hidden}
-.hero-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(6,179,122,.15) 0%,transparent 55%);pointer-events:none}
-.hero-strip::after{content:'';position:absolute;bottom:-40px;right:-40px;width:200px;height:200px;border-radius:50%;border:40px solid rgba(6,179,122,.05);pointer-events:none}
-.hero-left{position:relative;z-index:1}
-.hero-eye{font-size:10.5px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.hero-eye::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--g2)}
-.hero-title{font-family:var(--fd);font-size:26px;font-weight:700;color:white;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;max-width:360px}
-.hero-right{display:flex;gap:0;position:relative;z-index:1}
-.hero-stat{text-align:center;padding:0 28px;border-right:1px solid rgba(255,255,255,.08)}
-.hero-stat:last-child{border-right:none}
-.hstat-num{font-family:var(--fd);font-size:32px;font-weight:700;color:white;letter-spacing:-.04em;line-height:1}
-.hstat-num.g{color:var(--g2)}
-.hstat-label{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.03em}
+    .ticker-inner {
+      display: flex;
+      gap: 40px;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap
+    }
 
-/* ── METRICS ── */
-.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-.mcard{background:var(--white);border:1px solid var(--border);border-radius:var(--radlg);padding:16px 18px;box-shadow:var(--sh);position:relative;overflow:hidden}
-.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radlg) var(--radlg) 0 0}
-.mcard.mg::before{background:linear-gradient(90deg,var(--g),var(--g2))}
-.mcard.mb::before{background:linear-gradient(90deg,var(--b),#60a5fa)}
-.mcard.mr::before{background:linear-gradient(90deg,var(--r),#f87171)}
-.mcard.ma::before{background:linear-gradient(90deg,var(--am),#fbbf24)}
-.mlabel{font-size:10.5px;color:var(--mu2);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
-.mvalue{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1}
-.msub{font-size:11px;color:var(--mu2);margin-top:4px;display:flex;align-items:center;gap:4px}
-.msub.up{color:var(--g);font-weight:500}
-.msub.up::before{content:'▲ ';font-size:9px}
+    .ticker-inner:hover {
+      animation-play-state: paused
+    }
 
-/* ── GRID ── */
-.grid-main{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
-.left-col{display:flex;flex-direction:column;gap:18px}
-.right-col{display:flex;flex-direction:column;gap:18px}
+    .ticker-item {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .75);
+      flex-shrink: 0;
+      cursor: pointer
+    }
 
-/* ── CARD ── */
-.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radlg);padding:20px 22px;box-shadow:var(--sh)}
-.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.card-ttl{font-size:14px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
-.cicon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.cig{background:var(--gl);color:var(--gd)}.cib{background:var(--bl);color:var(--b)}.cia{background:var(--aml);color:var(--am)}.cip{background:var(--pul);color:var(--pu)}
-.c-link{font-size:12px;color:var(--g);font-weight:500;cursor:pointer;display:flex;align-items:center;gap:4px}
-.c-link:hover{color:var(--gd)}
+    .ticker-item span {
+      color: var(--g2);
+      font-weight: 600;
+      margin-right: 6px
+    }
 
-/* ── UF MAP ── */
-.chip-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.chip{font-size:12px;padding:5px 14px;border-radius:99px;border:1.5px solid var(--border2);background:transparent;color:var(--mu);cursor:pointer;font-family:var(--fs);font-weight:500;transition:all .15s}
-.chip:hover{background:var(--surf)}
-.chip.active{background:var(--ink);color:white;border-color:var(--ink)}
-.uf-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
-.uf-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;border-radius:7px;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'Inter',sans-serif;letter-spacing:.02em}
-.uf-cell:hover{transform:scale(1.12);box-shadow:var(--shmd);z-index:2;position:relative}
-.uf-h{background:var(--gd);color:white}
-.uf-m{background:var(--g);color:white}
-.uf-l{background:var(--gl);color:var(--gd)}
-.uf-n{background:var(--surf2);color:var(--mu2);border:1px solid var(--border)}
-.map-legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu)}
-.leg-dot{width:10px;height:10px;border-radius:3px}
+    .ticker-item:hover {
+      color: white
+    }
 
-/* ── POLL ROWS ── */
-.poll-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all .12s}
-.poll-row:last-child{border-bottom:none;padding-bottom:0}
-.poll-row:hover{background:var(--surf);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:9px}
-.uf-pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;min-width:36px;text-align:center;flex-shrink:0;cursor:pointer;letter-spacing:.03em}
-.uf-pill:hover{opacity:.8}
-.p-sp{background:#dbeafe;color:#1e40af}.p-rj{background:#fce7f3;color:#9d174d}
-.p-mg{background:#ede9fe;color:#5b21b6}.p-rs{background:#fef3c7;color:#92400e}
-.p-ba{background:#d1fae5;color:#065f46}.p-pr{background:#fee2e2;color:#991b1b}
-.poll-info{flex:1;min-width:0}
-.poll-ttl{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.poll-meta{font-size:11px;color:var(--mu2);margin-top:1px}
-.poll-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
-.poll-date{font-size:11px;color:var(--mu2)}
-.ico-btn{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--mu);transition:all .15s;flex-shrink:0}
-.ico-btn:hover{background:var(--gl);color:var(--gd);border-color:#a7e8d0}
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
 
-/* ── BAR CHART ── */
-.bchart-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
-.bchart-row:last-child{margin-bottom:0}
-.bc-name{font-size:12px;font-weight:500;width:95px;flex-shrink:0;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bc-bar{flex:1;height:9px;background:var(--surf2);border-radius:99px;overflow:hidden}
-.bc-fill{height:100%;border-radius:99px;transition:width .9s cubic-bezier(.25,1,.5,1)}
-.bca{background:linear-gradient(90deg,var(--g),var(--g2))}
-.bcb{background:linear-gradient(90deg,var(--b),#60a5fa)}
-.bcc{background:linear-gradient(90deg,var(--am),#fbbf24)}
-.bcd{background:var(--mu2)}
-.bc-pct{font-size:12px;font-weight:700;color:var(--ink);min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+      100% {
+        transform: translateX(-50%)
+      }
+    }
 
-/* ── CALENDAR SIDE ── */
-.cd-block{display:flex;gap:8px;margin-bottom:14px}
-.cd-unit{flex:1;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 6px;text-align:center}
-.cd-num{font-family:var(--fd);font-size:26px;font-weight:700;color:var(--g);line-height:1}
-.cd-lbl{font-size:10px;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:12px}
-.cal-hd{font-size:9px;font-weight:700;text-align:center;color:var(--mu2);text-transform:uppercase;padding:3px 0}
-.cal-d{font-size:11px;text-align:center;padding:5px 0;border-radius:6px;color:var(--mu);cursor:pointer;transition:all .12s}
-.cal-d:hover{background:var(--surf);color:var(--ink)}
-.cal-d.today{background:var(--ink);color:white;font-weight:700}
-.cal-d.ev{background:var(--gl);color:var(--gd);font-weight:600}
-.cal-d.om{color:var(--border2)}
-.cal-mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.cal-ml{font-size:12.5px;font-weight:600;color:var(--ink)}
-.cal-nav{font-size:18px;color:var(--mu2);cursor:pointer;background:none;border:none;padding:0 4px;line-height:1}
-.ev-list{display:flex;flex-direction:column;gap:7px}
-.ev-item{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border-radius:9px;background:var(--surf);border:1px solid var(--border);cursor:pointer;transition:border-color .15s}
-.ev-item:hover{border-color:var(--border2);background:var(--surf2)}
-.ev-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
-.db{background:var(--b)}.dr{background:var(--r)}.dg{background:var(--g)}.da{background:var(--am)}
-.ev-body{flex:1}
-.ev-txt{font-size:12px;color:var(--ink3);font-weight:500;line-height:1.35}
-.ev-date{font-size:10px;color:var(--mu2);margin-top:2px}
-.ev-tag{font-size:10px;padding:2px 8px;border-radius:5px;font-weight:700;flex-shrink:0;align-self:flex-start;letter-spacing:.03em}
-.tpz{background:var(--rl);color:var(--r)}.tvt{background:var(--gl);color:var(--gd)}.trg{background:var(--bl);color:var(--b)}.tpr{background:var(--aml);color:var(--am)}
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      box-shadow: var(--sh)
+    }
 
-/* ── ALERT TOGGLES ── */
-.alt-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)}
-.alt-row:last-child{border-bottom:none}
-.alt-uf{font-size:13px;font-weight:600;color:var(--ink);cursor:pointer}
-.alt-uf:hover{color:var(--g)}
-.alt-sub{font-size:11px;color:var(--mu2);margin-top:1px}
-.toggle{width:38px;height:21px;background:var(--border2);border-radius:99px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0}
-.toggle.on{background:var(--g)}
-.toggle::after{content:'';position:absolute;width:15px;height:15px;border-radius:50%;background:white;top:3px;left:3px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.toggle.on::after{left:20px}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      flex-shrink: 0
+    }
 
-/* ── SECTION LABEL ── */
-.sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mu2);margin-bottom:10px}
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--ink);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
 
-/* ── TABS ── */
-.tabs{display:flex;gap:0;border-bottom:1.5px solid var(--border);margin-bottom:16px}
-.tab{font-size:13px;color:var(--mu);padding:10px 17px;cursor:pointer;border-bottom:2.5px solid transparent;font-weight:500;transition:all .15s;white-space:nowrap;margin-bottom:-1.5px}
-.tab:hover{color:var(--ink)}
-.tab.active{color:var(--g);border-bottom-color:var(--g);font-weight:600}
+    .logo-mark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(6, 179, 122, .3), transparent);
+      pointer-events: none
+    }
 
-/* ── POLLS TABLE ── */
-.tbl{width:100%;border-collapse:collapse;font-size:13px}
-.tbl th{text-align:left;padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);background:var(--surf)}
-.tbl td{padding:10px 11px;border-bottom:1px solid var(--border);color:var(--ink3);vertical-align:middle}
-.tbl tr:last-child td{border-bottom:none}
-.tbl tr.click:hover td{background:var(--surf);cursor:pointer}
+    .logo-mark svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--g2)
+    }
 
-/* ── UF HERO PAGE ── */
-.uf-hero{background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 100%);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
-.uf-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 50%,rgba(6,179,122,.18) 0%,transparent 55%);pointer-events:none}
-.uf-hero-in{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
-.uf-badge-xl{font-family:var(--fd);font-size:56px;font-weight:700;color:white;letter-spacing:-.04em;line-height:1}
-.uf-name-lg{font-size:15px;color:rgba(255,255,255,.55);margin-top:4px}
-.uf-region{font-size:10px;color:var(--g2);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-top:3px}
-.uf-stats{display:flex;gap:0}
-.uf-stat-blk{text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,.08)}
-.uf-stat-blk:last-child{border-right:none}
-.us-num{font-family:var(--fd);font-size:28px;font-weight:700;color:white;letter-spacing:-.03em}
-.us-num.g{color:var(--g2)}
-.us-lbl{font-size:10.5px;color:rgba(255,255,255,.45);margin-top:3px}
+    .logo-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1
+    }
 
-/* ── HISTORY TABLE ── */
-.htbl{width:100%;border-collapse:collapse;font-size:13px}
-.htbl th{text-align:left;padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);background:var(--surf)}
-.htbl td{padding:10px 11px;border-bottom:1px solid var(--border);color:var(--ink3);vertical-align:middle}
-.htbl tr:last-child td{border-bottom:none}
-.htbl tr:hover td{background:var(--surf);cursor:pointer}
-.winner-name{font-size:13px;font-weight:600;color:var(--ink)}
-.pty{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block;margin-left:5px}
-.pt{background:#fee2e2;color:#991b1b}.pl{background:#dbeafe;color:#1e40af}.psdb{background:#ede9fe;color:#5b21b6}
-.mdb{background:#fef3c7;color:#92400e}.psd{background:#fce7f3;color:#9d174d}.novo{background:#d1fae5;color:#065f46}
-.rep{background:#f0fdf4;color:#166534}.uni{background:#e0f2fe;color:#0369a1}
-.pct-wrap{display:flex;align-items:center;gap:8px}
-.pct-bar{width:64px;height:6px;background:var(--surf2);border-radius:99px;overflow:hidden;flex-shrink:0}
-.pct-fill{height:100%;background:linear-gradient(90deg,var(--g),var(--g2));border-radius:99px}
-.pct-val{font-size:12px;font-weight:700;color:var(--gd);font-variant-numeric:tabular-nums}
-.turn{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px}
-.turn.t1{background:var(--bl);color:var(--b)}.turn.t2{background:var(--aml);color:var(--am)}
+    .logo-name {
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.02em
+    }
 
-/* ── NEWS PAGE (Noticiário) ── */
-.news-header{border-bottom:3px double var(--ink);padding-bottom:12px;margin-bottom:20px;text-align:center}
-.news-date-line{font-size:11px;color:var(--mu2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-.news-masthead{font-family:var(--fd);font-size:38px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1}
-.news-masthead span{color:var(--g)}
-.news-sub-rule{font-size:12px;color:var(--mu);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6px 0;margin-top:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .logo-name span {
+      color: var(--g)
+    }
 
-/* Lead article */
-.news-grid{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-bottom:28px}
-.lead-art{border-right:1px solid var(--border);padding-right:28px}
-.lead-category{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
-.lead-headline{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;letter-spacing:-.02em;cursor:pointer}
-.lead-headline:hover{color:var(--g)}
-.lead-deck{font-size:14px;color:var(--ink3);line-height:1.65;margin-bottom:12px}
-.lead-byline{font-size:11px;color:var(--mu2);display:flex;align-items:center;gap:8px}
-.lead-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--gd),var(--g));border-radius:var(--rad);margin-bottom:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.lead-img-placeholder{font-size:48px;opacity:.3}
-.lead-img-label{position:absolute;bottom:8px;left:10px;right:10px;font-size:10px;color:rgba(255,255,255,.7);font-style:italic}
+    .logo-tagline {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mu2)
+    }
 
-/* Side column articles */
-.side-arts{display:flex;flex-direction:column;gap:16px}
-.side-art{padding-bottom:16px;border-bottom:1px solid var(--border);cursor:pointer}
-.side-art:last-child{border-bottom:none;padding-bottom:0}
-.side-art:hover .side-headline{color:var(--g)}
-.side-cat{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
-.side-headline{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:5px;transition:color .15s}
-.side-deck{font-size:12px;color:var(--mu);line-height:1.5}
-.side-meta{font-size:10.5px;color:var(--mu2);margin-top:5px}
+    .search-wrap {
+      flex: 1;
+      max-width: 440px
+    }
 
-/* News body columns */
-.news-cols-rule{border-top:1px solid var(--border);padding-top:20px;margin-bottom:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.ncol{border-right:1px solid var(--border);padding-right:24px}
-.ncol:last-child{border-right:none;padding-right:0}
-.ncol-cat{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--r);margin-bottom:8px;border-bottom:2px solid var(--r);padding-bottom:5px;display:inline-block}
-.ncol-hl{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:6px;cursor:pointer}
-.ncol-hl:hover{color:var(--g)}
-.ncol-body{font-size:12.5px;color:var(--ink3);line-height:1.65}
-.ncol-meta{font-size:10.5px;color:var(--mu2);margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
-.ncol-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
-.ntg-p{background:var(--bl);color:var(--b)}.ntg-a{background:var(--pul);color:var(--pu)}.ntg-r{background:var(--gl);color:var(--gd)}.ntg-l{background:var(--aml);color:var(--am)}
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surf);
+      border: 1.5px solid var(--border2);
+      border-radius: var(--rad);
+      padding: 8px 14px;
+      transition: all .2s
+    }
 
-/* ── DOWNLOAD PANEL ── */
-.dl-panel{background:var(--ink);border-radius:var(--radxl);padding:28px 32px;color:white;position:relative;overflow:hidden}
-.dl-panel::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(6,179,122,.08);pointer-events:none}
-.dl-ttl{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:6px}
-.dl-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
-.dl-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
-.dl-file{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .15s}
-.dl-file:hover{background:rgba(255,255,255,.1);border-color:rgba(6,179,122,.4)}
-.dl-icon{font-size:22px;flex-shrink:0}
-.dl-fname{font-size:12.5px;font-weight:500;color:white;line-height:1.3}
-.dl-fsize{font-size:10.5px;color:rgba(255,255,255,.4);margin-top:2px}
-.dl-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .search-box:focus-within {
+      border-color: var(--g);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(11, 138, 92, .1)
+    }
 
-/* ── FOOTER ── */
-.footer{background:var(--white);border-top:1.5px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-link{font-size:11.5px;color:var(--mu);cursor:pointer;transition:color .15s}
-.footer-link:hover{color:var(--g)}
-.footer-copy{font-size:11px;color:var(--mu2)}
+    .search-box input {
+      border: none;
+      background: none;
+      outline: none;
+      font-family: var(--fs);
+      font-size: 13px;
+      color: var(--ink);
+      width: 100%
+    }
 
-/* ── MISC ── */
-.winner-party,.party-class{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block}
-.pagination{display:flex;align-items:center;gap:4px}
-.pgbtn{font-family:var(--fs);font-size:12px;width:30px;height:30px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--mu);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.pgbtn:hover{background:var(--surf)}
-.pgbtn.active{background:var(--g);color:white;border-color:var(--g)}
-.pill-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tag-pill{font-size:11px;padding:4px 11px;border-radius:99px;background:var(--surf2);color:var(--mu);border:1px solid var(--border);cursor:pointer;transition:all .15s}
-.tag-pill:hover{background:var(--gl);color:var(--gd);border-color:#a7e8d0}
-input[type=email],input[type=text],select{font-family:var(--fs);font-size:13px;padding:8px 12px;border:1.5px solid var(--border2);border-radius:var(--rad);background:var(--white);color:var(--ink);outline:none;transition:border-color .2s}
-input[type=email]:focus,input[type=text]:focus,select:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(11,138,92,.1)}
+    .search-box input::placeholder {
+      color: var(--mu2)
+    }
 
-/* ── TREND CANVAS ── */
-.trend-wrap{position:relative;height:190px;margin:6px 0 10px}
-canvas{display:block}
+    .search-icon {
+      color: var(--mu2);
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px
+    }
 
-/* ── OUTROS ESTADOS ── */
-.uf-pills-grid{display:flex;flex-wrap:wrap;gap:7px}
-.uf-nav-pill{font-size:11px;font-weight:700;padding:6px 12px;background:var(--surf2);border:1px solid var(--border);border-radius:7px;cursor:pointer;font-family:var(--fs);transition:all .15s;letter-spacing:.03em;color:var(--ink3)}
-.uf-nav-pill:hover{background:var(--gl);border-color:#a7e8d0;color:var(--gd)}
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto
+    }
 
-/* ── RESPONSIVE ── */
-@media(max-width:1000px){.grid-main{grid-template-columns:1fr}.metrics-row{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr}.news-cols-rule{grid-template-columns:1fr 1fr}.lead-art{border-right:none;padding-right:0}}
-@media(max-width:640px){.topbar{padding:0 14px;gap:10px}.page{padding:14px 14px 48px}.hero-strip{flex-direction:column;align-items:flex-start;padding:20px}.uf-hero-in{flex-direction:column}.news-cols-rule{grid-template-columns:1fr}.dl-files{grid-template-columns:1fr 1fr}.hero-right{flex-wrap:wrap}.metrics-row{grid-template-columns:repeat(2,1fr)}.uf-grid{grid-template-columns:repeat(7,1fr)}}
-</style>
+    .btn {
+      font-family: var(--fs);
+      font-size: 12.5px;
+      padding: 7px 16px;
+      border-radius: var(--rad);
+      border: 1.5px solid var(--border2);
+      background: transparent;
+      color: var(--mu);
+      cursor: pointer;
+      transition: all .15s;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .btn:hover {
+      background: var(--surf);
+      border-color: var(--border)
+    }
+
+    .btn-primary {
+      background: var(--g);
+      color: white;
+      border-color: var(--g);
+      box-shadow: 0 1px 4px rgba(11, 138, 92, .3)
+    }
+
+    .btn-primary:hover {
+      background: var(--gd);
+      border-color: var(--gd);
+      box-shadow: 0 2px 8px rgba(11, 138, 92, .35)
+    }
+
+    .btn-ghost {
+      border-color: transparent;
+      color: var(--mu)
+    }
+
+    .btn-ghost:hover {
+      background: var(--surf);
+      border-color: var(--border)
+    }
+
+    .btn-download {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .2)
+    }
+
+    .btn-download:hover {
+      background: var(--ink2)
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--g), var(--b));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .15)
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulse 1.5s infinite;
+      flex-shrink: 0
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.8)
+      }
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: sticky;
+      top: 60px;
+      z-index: 299
+    }
+
+    .navbar::-webkit-scrollbar {
+      display: none
+    }
+
+    .nav-item {
+      font-size: 13px;
+      color: var(--mu);
+      padding: 13px 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2.5px solid transparent;
+      transition: all .15s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative
+    }
+
+    .nav-item:hover {
+      color: var(--ink)
+    }
+
+    .nav-item.active {
+      color: var(--g);
+      border-bottom-color: var(--g);
+      font-weight: 600
+    }
+
+    .nav-badge {
+      font-size: 10px;
+      background: var(--g);
+      color: white;
+      padding: 1px 7px;
+      border-radius: 99px;
+      font-weight: 700
+    }
+
+    .nav-sep {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      margin: 0 4px;
+      flex-shrink: 0
+    }
+
+    .nav-new {
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+      background: var(--r);
+      border-radius: 3px;
+      padding: 1px 5px;
+      letter-spacing: .05em;
+      position: absolute;
+      top: 8px;
+      right: 4px
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 24px 28px 80px
+    }
+
+    .page-anim {
+      animation: fadeUp .22s ease
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--mu2);
+      margin-bottom: 18px
+    }
+
+    .bc-link {
+      color: var(--g);
+      cursor: pointer;
+      font-weight: 500
+    }
+
+    .bc-link:hover {
+      color: var(--gd)
+    }
+
+    .bc-sep {
+      color: var(--border2)
+    }
+
+    /* ── ALERT BANNER ── */
+    .alert-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #f0fbf7, #e6f7f1);
+      border: 1px solid #a7e8d0;
+      border-radius: var(--rad);
+      padding: 11px 16px;
+      margin-bottom: 20px;
+      font-size: 12.5px;
+      color: var(--gd)
+    }
+
+    .alert-banner strong {
+      font-weight: 600
+    }
+
+    .alert-dismiss {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--g);
+      font-size: 18px;
+      opacity: .6;
+      line-height: 1
+    }
+
+    .alert-dismiss:hover {
+      opacity: 1
+    }
+
+    /* ── HERO ── */
+    .hero-strip {
+      background: linear-gradient(135deg, var(--ink) 0%, #0d1b2e 100%);
+      border-radius: var(--radxl);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 40%, rgba(6, 179, 122, .15) 0%, transparent 55%);
+      pointer-events: none
+    }
+
+    .hero-strip::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 40px solid rgba(6, 179, 122, .05);
+      pointer-events: none
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-eye {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--g2);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .hero-eye::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--g2)
+    }
+
+    .hero-title {
+      font-family: var(--fd);
+      font-size: 26px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+      line-height: 1.2
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.5;
+      max-width: 360px
+    }
+
+    .hero-right {
+      display: flex;
+      gap: 0;
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-stat {
+      text-align: center;
+      padding: 0 28px;
+      border-right: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .hero-stat:last-child {
+      border-right: none
+    }
+
+    .hstat-num {
+      font-family: var(--fd);
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -.04em;
+      line-height: 1
+    }
+
+    .hstat-num.g {
+      color: var(--g2)
+    }
+
+    .hstat-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .45);
+      margin-top: 4px;
+      letter-spacing: .03em
+    }
+
+    /* ── METRICS ── */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .mcard {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radlg);
+      padding: 16px 18px;
+      box-shadow: var(--sh);
+      position: relative;
+      overflow: hidden
+    }
+
+    .mcard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: var(--radlg) var(--radlg) 0 0
+    }
+
+    .mcard.mg::before {
+      background: linear-gradient(90deg, var(--g), var(--g2))
+    }
+
+    .mcard.mb::before {
+      background: linear-gradient(90deg, var(--b), #60a5fa)
+    }
+
+    .mcard.mr::before {
+      background: linear-gradient(90deg, var(--r), #f87171)
+    }
+
+    .mcard.ma::before {
+      background: linear-gradient(90deg, var(--am), #fbbf24)
+    }
+
+    .mlabel {
+      font-size: 10.5px;
+      color: var(--mu2);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 8px
+    }
+
+    .mvalue {
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.03em;
+      line-height: 1
+    }
+
+    .msub {
+      font-size: 11px;
+      color: var(--mu2);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .msub.up {
+      color: var(--g);
+      font-weight: 500
+    }
+
+    .msub.up::before {
+      content: '▲ ';
+      font-size: 9px
+    }
+
+    /* ── GRID ── */
+    .grid-main {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 18px;
+      align-items: start
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radlg);
+      padding: 20px 22px;
+      box-shadow: var(--sh)
+    }
+
+    .card-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px
+    }
+
+    .card-ttl {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .cicon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0
+    }
+
+    .cig {
+      background: var(--gl);
+      color: var(--gd)
+    }
+
+    .cib {
+      background: var(--bl);
+      color: var(--b)
+    }
+
+    .cia {
+      background: var(--aml);
+      color: var(--am)
+    }
+
+    .cip {
+      background: var(--pul);
+      color: var(--pu)
+    }
+
+    .c-link {
+      font-size: 12px;
+      color: var(--g);
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .c-link:hover {
+      color: var(--gd)
+    }
+
+    /* ── UF MAP ── */
+    .chip-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      border: 1.5px solid var(--border2);
+      background: transparent;
+      color: var(--mu);
+      cursor: pointer;
+      font-family: var(--fs);
+      font-weight: 500;
+      transition: all .15s
+    }
+
+    .chip:hover {
+      background: var(--surf)
+    }
+
+    .chip.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink)
+    }
+
+    .uf-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 5px
+    }
+
+    .uf-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .02em
+    }
+
+    .uf-cell:hover {
+      transform: scale(1.12);
+      box-shadow: var(--shmd);
+      z-index: 2;
+      position: relative
+    }
+
+    .uf-h {
+      background: var(--gd);
+      color: white
+    }
+
+    .uf-m {
+      background: var(--g);
+      color: white
+    }
+
+    .uf-l {
+      background: var(--gl);
+      color: var(--gd)
+    }
+
+    .uf-n {
+      background: var(--surf2);
+      color: var(--mu2);
+      border: 1px solid var(--border)
+    }
+
+    .map-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+      flex-wrap: wrap
+    }
+
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--mu)
+    }
+
+    .leg-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px
+    }
+
+    /* ── POLL ROWS ── */
+    .poll-row {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .12s
+    }
+
+    .poll-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0
+    }
+
+    .poll-row:hover {
+      background: var(--surf);
+      margin: 0 -10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 9px
+    }
+
+    .uf-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      min-width: 36px;
+      text-align: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      letter-spacing: .03em
+    }
+
+    .uf-pill:hover {
+      opacity: .8
+    }
+
+    .p-sp {
+      background: #dbeafe;
+      color: #1e40af
+    }
+
+    .p-rj {
+      background: #fce7f3;
+      color: #9d174d
+    }
+
+    .p-mg {
+      background: #ede9fe;
+      color: #5b21b6
+    }
+
+    .p-rs {
+      background: #fef3c7;
+      color: #92400e
+    }
+
+    .p-ba {
+      background: #d1fae5;
+      color: #065f46
+    }
+
+    .p-pr {
+      background: #fee2e2;
+      color: #991b1b
+    }
+
+    .poll-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .poll-ttl {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .poll-meta {
+      font-size: 11px;
+      color: var(--mu2);
+      margin-top: 1px
+    }
+
+    .poll-right {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0
+    }
+
+    .poll-date {
+      font-size: 11px;
+      color: var(--mu2)
+    }
+
+    .ico-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--mu);
+      transition: all .15s;
+      flex-shrink: 0
+    }
+
+    .ico-btn:hover {
+      background: var(--gl);
+      color: var(--gd);
+      border-color: #a7e8d0
+    }
+
+    /* ── BAR CHART ── */
+    .bchart-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 9px
+    }
+
+    .bchart-row:last-child {
+      margin-bottom: 0
+    }
+
+    .bc-name {
+      font-size: 12px;
+      font-weight: 500;
+      width: 95px;
+      flex-shrink: 0;
+      color: var(--ink3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .bc-bar {
+      flex: 1;
+      height: 9px;
+      background: var(--surf2);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .bc-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width .9s cubic-bezier(.25, 1, .5, 1)
+    }
+
+    .bca {
+      background: linear-gradient(90deg, var(--g), var(--g2))
+    }
+
+    .bcb {
+      background: linear-gradient(90deg, var(--b), #60a5fa)
+    }
+
+    .bcc {
+      background: linear-gradient(90deg, var(--am), #fbbf24)
+    }
+
+    .bcd {
+      background: var(--mu2)
+    }
+
+    .bc-pct {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      min-width: 34px;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    /* ── CALENDAR SIDE ── */
+    .cd-block {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px
+    }
+
+    .cd-unit {
+      flex: 1;
+      background: var(--surf);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 6px;
+      text-align: center
+    }
+
+    .cd-num {
+      font-family: var(--fd);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--g);
+      line-height: 1
+    }
+
+    .cd-lbl {
+      font-size: 10px;
+      color: var(--mu2);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 2px
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px;
+      margin-bottom: 12px
+    }
+
+    .cal-hd {
+      font-size: 9px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--mu2);
+      text-transform: uppercase;
+      padding: 3px 0
+    }
+
+    .cal-d {
+      font-size: 11px;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      color: var(--mu);
+      cursor: pointer;
+      transition: all .12s
+    }
+
+    .cal-d:hover {
+      background: var(--surf);
+      color: var(--ink)
+    }
+
+    .cal-d.today {
+      background: var(--ink);
+      color: white;
+      font-weight: 700
+    }
+
+    .cal-d.ev {
+      background: var(--gl);
+      color: var(--gd);
+      font-weight: 600
+    }
+
+    .cal-d.om {
+      color: var(--border2)
+    }
+
+    .cal-mh {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px
+    }
+
+    .cal-ml {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink)
+    }
+
+    .cal-nav {
+      font-size: 18px;
+      color: var(--mu2);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0 4px;
+      line-height: 1
+    }
+
+    .ev-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px
+    }
+
+    .ev-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 11px;
+      border-radius: 9px;
+      background: var(--surf);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color .15s
+    }
+
+    .ev-item:hover {
+      border-color: var(--border2);
+      background: var(--surf2)
+    }
+
+    .ev-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0
+    }
+
+    .db {
+      background: var(--b)
+    }
+
+    .dr {
+      background: var(--r)
+    }
+
+    .dg {
+      background: var(--g)
+    }
+
+    .da {
+      background: var(--am)
+    }
+
+    .ev-body {
+      flex: 1
+    }
+
+    .ev-txt {
+      font-size: 12px;
+      color: var(--ink3);
+      font-weight: 500;
+      line-height: 1.35
+    }
+
+    .ev-date {
+      font-size: 10px;
+      color: var(--mu2);
+      margin-top: 2px
+    }
+
+    .ev-tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-weight: 700;
+      flex-shrink: 0;
+      align-self: flex-start;
+      letter-spacing: .03em
+    }
+
+    .tpz {
+      background: var(--rl);
+      color: var(--r)
+    }
+
+    .tvt {
+      background: var(--gl);
+      color: var(--gd)
+    }
+
+    .trg {
+      background: var(--bl);
+      color: var(--b)
+    }
+
+    .tpr {
+      background: var(--aml);
+      color: var(--am)
+    }
+
+    /* ── ALERT TOGGLES ── */
+    .alt-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .alt-row:last-child {
+      border-bottom: none
+    }
+
+    .alt-uf {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer
+    }
+
+    .alt-uf:hover {
+      color: var(--g)
+    }
+
+    .alt-sub {
+      font-size: 11px;
+      color: var(--mu2);
+      margin-top: 1px
+    }
+
+    .toggle {
+      width: 38px;
+      height: 21px;
+      background: var(--border2);
+      border-radius: 99px;
+      cursor: pointer;
+      position: relative;
+      transition: background .2s;
+      border: none;
+      flex-shrink: 0
+    }
+
+    .toggle.on {
+      background: var(--g)
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: white;
+      top: 3px;
+      left: 3px;
+      transition: left .2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
+    }
+
+    .toggle.on::after {
+      left: 20px
+    }
+
+    /* ── SECTION LABEL ── */
+    .sec-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--mu2);
+      margin-bottom: 10px
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 16px
+    }
+
+    .tab {
+      font-size: 13px;
+      color: var(--mu);
+      padding: 10px 17px;
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      font-weight: 500;
+      transition: all .15s;
+      white-space: nowrap;
+      margin-bottom: -1.5px
+    }
+
+    .tab:hover {
+      color: var(--ink)
+    }
+
+    .tab.active {
+      color: var(--g);
+      border-bottom-color: var(--g);
+      font-weight: 600
+    }
+
+    /* ── POLLS TABLE ── */
+    .tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px
+    }
+
+    .tbl th {
+      text-align: left;
+      padding: 9px 11px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--mu2);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 1.5px solid var(--border);
+      background: var(--surf)
+    }
+
+    .tbl td {
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink3);
+      vertical-align: middle
+    }
+
+    .tbl tr:last-child td {
+      border-bottom: none
+    }
+
+    .tbl tr.click:hover td {
+      background: var(--surf);
+      cursor: pointer
+    }
+
+    /* ── UF HERO PAGE ── */
+    .uf-hero {
+      background: linear-gradient(135deg, var(--ink) 0%, #0d1b2e 100%);
+      border-radius: var(--radxl);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .uf-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 85% 50%, rgba(6, 179, 122, .18) 0%, transparent 55%);
+      pointer-events: none
+    }
+
+    .uf-hero-in {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px
+    }
+
+    .uf-badge-xl {
+      font-family: var(--fd);
+      font-size: 56px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -.04em;
+      line-height: 1
+    }
+
+    .uf-name-lg {
+      font-size: 15px;
+      color: rgba(255, 255, 255, .55);
+      margin-top: 4px
+    }
+
+    .uf-region {
+      font-size: 10px;
+      color: var(--g2);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 3px
+    }
+
+    .uf-stats {
+      display: flex;
+      gap: 0
+    }
+
+    .uf-stat-blk {
+      text-align: center;
+      padding: 0 24px;
+      border-right: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .uf-stat-blk:last-child {
+      border-right: none
+    }
+
+    .us-num {
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -.03em
+    }
+
+    .us-num.g {
+      color: var(--g2)
+    }
+
+    .us-lbl {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, .45);
+      margin-top: 3px
+    }
+
+    /* ── HISTORY TABLE ── */
+    .htbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px
+    }
+
+    .htbl th {
+      text-align: left;
+      padding: 9px 11px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--mu2);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 1.5px solid var(--border);
+      background: var(--surf)
+    }
+
+    .htbl td {
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink3);
+      vertical-align: middle
+    }
+
+    .htbl tr:last-child td {
+      border-bottom: none
+    }
+
+    .htbl tr:hover td {
+      background: var(--surf);
+      cursor: pointer
+    }
+
+    .winner-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink)
+    }
+
+    .pty {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-left: 5px
+    }
+
+    .pt {
+      background: #fee2e2;
+      color: #991b1b
+    }
+
+    .pl {
+      background: #dbeafe;
+      color: #1e40af
+    }
+
+    .psdb {
+      background: #ede9fe;
+      color: #5b21b6
+    }
+
+    .mdb {
+      background: #fef3c7;
+      color: #92400e
+    }
+
+    .psd {
+      background: #fce7f3;
+      color: #9d174d
+    }
+
+    .novo {
+      background: #d1fae5;
+      color: #065f46
+    }
+
+    .rep {
+      background: #f0fdf4;
+      color: #166534
+    }
+
+    .uni {
+      background: #e0f2fe;
+      color: #0369a1
+    }
+
+    .pct-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .pct-bar {
+      width: 64px;
+      height: 6px;
+      background: var(--surf2);
+      border-radius: 99px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .pct-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--g), var(--g2));
+      border-radius: 99px
+    }
+
+    .pct-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gd);
+      font-variant-numeric: tabular-nums
+    }
+
+    .turn {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px
+    }
+
+    .turn.t1 {
+      background: var(--bl);
+      color: var(--b)
+    }
+
+    .turn.t2 {
+      background: var(--aml);
+      color: var(--am)
+    }
+
+    /* ── NEWS PAGE (Noticiário) ── */
+    .news-header {
+      border-bottom: 3px double var(--ink);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      text-align: center
+    }
+
+    .news-date-line {
+      font-size: 11px;
+      color: var(--mu2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px
+    }
+
+    .news-masthead {
+      font-family: var(--fd);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.03em;
+      line-height: 1
+    }
+
+    .news-masthead span {
+      color: var(--g)
+    }
+
+    .news-sub-rule {
+      font-size: 12px;
+      color: var(--mu);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 6px 0;
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    /* Lead article */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 28px;
+      margin-bottom: 28px
+    }
+
+    .lead-art {
+      border-right: 1px solid var(--border);
+      padding-right: 28px
+    }
+
+    .lead-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: 8px
+    }
+
+    .lead-headline {
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -.02em;
+      cursor: pointer
+    }
+
+    .lead-headline:hover {
+      color: var(--g)
+    }
+
+    .lead-deck {
+      font-size: 14px;
+      color: var(--ink3);
+      line-height: 1.65;
+      margin-bottom: 12px
+    }
+
+    .lead-byline {
+      font-size: 11px;
+      color: var(--mu2);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .lead-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--gd), var(--g));
+      border-radius: var(--rad);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative
+    }
+
+    .lead-img-placeholder {
+      font-size: 48px;
+      opacity: .3
+    }
+
+    .lead-img-label {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      right: 10px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, .7);
+      font-style: italic
+    }
+
+    /* Side column articles */
+    .side-arts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px
+    }
+
+    .side-art {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer
+    }
+
+    .side-art:last-child {
+      border-bottom: none;
+      padding-bottom: 0
+    }
+
+    .side-art:hover .side-headline {
+      color: var(--g)
+    }
+
+    .side-cat {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 5px
+    }
+
+    .side-headline {
+      font-family: var(--fd);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 5px;
+      transition: color .15s
+    }
+
+    .side-deck {
+      font-size: 12px;
+      color: var(--mu);
+      line-height: 1.5
+    }
+
+    .side-meta {
+      font-size: 10.5px;
+      color: var(--mu2);
+      margin-top: 5px
+    }
+
+    /* News body columns */
+    .news-cols-rule {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px
+    }
+
+    .ncol {
+      border-right: 1px solid var(--border);
+      padding-right: 24px
+    }
+
+    .ncol:last-child {
+      border-right: none;
+      padding-right: 0
+    }
+
+    .ncol-cat {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--r);
+      margin-bottom: 8px;
+      border-bottom: 2px solid var(--r);
+      padding-bottom: 5px;
+      display: inline-block
+    }
+
+    .ncol-hl {
+      font-family: var(--fd);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 6px;
+      cursor: pointer
+    }
+
+    .ncol-hl:hover {
+      color: var(--g)
+    }
+
+    .ncol-body {
+      font-size: 12.5px;
+      color: var(--ink3);
+      line-height: 1.65
+    }
+
+    .ncol-meta {
+      font-size: 10.5px;
+      color: var(--mu2);
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .ncol-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px
+    }
+
+    .ntg-p {
+      background: var(--bl);
+      color: var(--b)
+    }
+
+    .ntg-a {
+      background: var(--pul);
+      color: var(--pu)
+    }
+
+    .ntg-r {
+      background: var(--gl);
+      color: var(--gd)
+    }
+
+    .ntg-l {
+      background: var(--aml);
+      color: var(--am)
+    }
+
+    /* ── DOWNLOAD PANEL ── */
+    .dl-panel {
+      background: var(--ink);
+      border-radius: var(--radxl);
+      padding: 28px 32px;
+      color: white;
+      position: relative;
+      overflow: hidden
+    }
+
+    .dl-panel::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(6, 179, 122, .08);
+      pointer-events: none
+    }
+
+    .dl-ttl {
+      font-family: var(--fd);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .dl-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 20px
+    }
+
+    .dl-files {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    .dl-file {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .dl-file:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(6, 179, 122, .4)
+    }
+
+    .dl-icon {
+      font-size: 22px;
+      flex-shrink: 0
+    }
+
+    .dl-fname {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: white;
+      line-height: 1.3
+    }
+
+    .dl-fsize {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 2px
+    }
+
+    .dl-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--white);
+      border-top: 1.5px solid var(--border);
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .footer-link {
+      font-size: 11.5px;
+      color: var(--mu);
+      cursor: pointer;
+      transition: color .15s
+    }
+
+    .footer-link:hover {
+      color: var(--g)
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--mu2)
+    }
+
+    /* ── MISC ── */
+    .winner-party,
+    .party-class {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px;
+      display: inline-block
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .pgbtn {
+      font-family: var(--fs);
+      font-size: 12px;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--mu);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s
+    }
+
+    .pgbtn:hover {
+      background: var(--surf)
+    }
+
+    .pgbtn.active {
+      background: var(--g);
+      color: white;
+      border-color: var(--g)
+    }
+
+    .pill-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px
+    }
+
+    .tag-pill {
+      font-size: 11px;
+      padding: 4px 11px;
+      border-radius: 99px;
+      background: var(--surf2);
+      color: var(--mu);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .tag-pill:hover {
+      background: var(--gl);
+      color: var(--gd);
+      border-color: #a7e8d0
+    }
+
+    input[type=email],
+    input[type=text],
+    select {
+      font-family: var(--fs);
+      font-size: 13px;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border2);
+      border-radius: var(--rad);
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s
+    }
+
+    input[type=email]:focus,
+    input[type=text]:focus,
+    select:focus {
+      border-color: var(--g);
+      box-shadow: 0 0 0 3px rgba(11, 138, 92, .1)
+    }
+
+    /* ── TREND CANVAS ── */
+    .trend-wrap {
+      position: relative;
+      height: 190px;
+      margin: 6px 0 10px
+    }
+
+    canvas {
+      display: block
+    }
+
+    /* ── OUTROS ESTADOS ── */
+    .uf-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    .uf-nav-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      background: var(--surf2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: var(--fs);
+      transition: all .15s;
+      letter-spacing: .03em;
+      color: var(--ink3)
+    }
+
+    .uf-nav-pill:hover {
+      background: var(--gl);
+      border-color: #a7e8d0;
+      color: var(--gd)
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1000px) {
+      .grid-main {
+        grid-template-columns: 1fr
+      }
+
+      .metrics-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr
+      }
+
+      .news-cols-rule {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .lead-art {
+        border-right: none;
+        padding-right: 0
+      }
+    }
+
+    @media(max-width:640px) {
+      .topbar {
+        padding: 0 14px;
+        gap: 10px
+      }
+
+      .page {
+        padding: 14px 14px 48px
+      }
+
+      .hero-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px
+      }
+
+      .uf-hero-in {
+        flex-direction: column
+      }
+
+      .news-cols-rule {
+        grid-template-columns: 1fr
+      }
+
+      .dl-files {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero-right {
+        flex-wrap: wrap
+      }
+
+      .metrics-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .uf-grid {
+        grid-template-columns: repeat(7, 1fr)
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-label">AO VIVO</div>
-  <div class="ticker-track">
-    <div class="ticker-inner">
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
-      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
-      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
-      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
-      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-label">AO VIVO</div>
+    <div class="ticker-track">
+      <div class="ticker-inner">
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% —
+          publicado há 12 min</div>
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% —
+          publicado hoje</div>
+        <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em
+          14 de maio</div>
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026
+          disponível</div>
+        <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais
+          publicadas</div>
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% —
+          publicado há 12 min</div>
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% —
+          publicado hoje</div>
+        <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em
+          14 de maio</div>
+        <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026
+          disponível</div>
+        <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais
+          publicadas</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="logo" onclick="navigate('home')">
-    <div class="logo-mark">
-      <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h4v2H3zM3 18h4v2H3zM9 14h2v7H9z"/></svg>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="logo" onclick="navigate('home')">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h4v2H3zM3 18h4v2H3zM9 14h2v7H9z" />
+        </svg>
+      </div>
+      <div class="logo-wordmark">
+        <div class="logo-name">Vota<span>Data</span></div>
+        <div class="logo-tagline">Portal Eleitoral 2026</div>
+      </div>
     </div>
-    <div class="logo-wordmark">
-      <div class="logo-name">Vota<span>Data</span></div>
-      <div class="logo-tagline">Portal Eleitoral 2026</div>
+    <div class="search-wrap">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input type="text" placeholder="Candidato, cargo, UF, instituto, registro TSE…">
+      </div>
     </div>
-  </div>
-  <div class="search-wrap">
-    <div class="search-box">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Candidato, cargo, UF, instituto, registro TSE…">
+    <div class="topbar-right">
+      <div class="live-dot" title="Dados atualizados em tempo real"></div>
+      <button class="btn btn-ghost" onclick="navigate('noticias')">📰 Noticiário</button>
+      <button class="btn btn-primary" onclick="navigate('alertas')">🔔 Alertas</button>
+      <div class="avatar" title="Perfil">JD</div>
     </div>
-  </div>
-  <div class="topbar-right">
-    <div class="live-dot" title="Dados atualizados em tempo real"></div>
-    <button class="btn btn-ghost" onclick="navigate('noticias')">📰 Noticiário</button>
-    <button class="btn btn-primary" onclick="navigate('alertas')">🔔 Alertas</button>
-    <button class="btn btn-download" onclick="navigate('download')">⬇ Baixar projeto</button>
-    <div class="avatar" title="Perfil">JD</div>
-  </div>
-</header>
+  </header>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="mainNav">
-  <div class="nav-item active" data-page="home" onclick="navigate('home')">Início</div>
-  <div class="nav-sep"></div>
-  <div class="nav-item" data-page="eleicoes" onclick="navigate('eleicoes')">Eleições ▾</div>
-  <div class="nav-item" data-page="pesquisas" onclick="navigate('pesquisas')">Pesquisas <span class="nav-badge">1.284</span></div>
-  <div class="nav-item" data-page="alertas" onclick="navigate('alertas')">Alertas por UF</div>
-  <div class="nav-sep"></div>
-  <div class="nav-item" data-page="noticias" onclick="navigate('noticias')" style="position:relative">Noticiário <span class="nav-new">NOVO</span></div>
-  <div class="nav-item" data-page="calendario" onclick="navigate('calendario')">Calendário 2026</div>
-  <div class="nav-sep"></div>
-  <div class="nav-item" data-page="api" onclick="navigate('api')">API / Dados</div>
-  <div class="nav-item" data-page="sobre" onclick="navigate('sobre')">Sobre</div>
-  <div class="nav-item" data-page="download" onclick="navigate('download')" style="margin-left:auto;color:var(--g)">⬇ Download</div>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="mainNav">
+    <div class="nav-item active" data-page="home" onclick="navigate('home')">Início</div>
+    <div class="nav-sep"></div>
+    <div class="nav-item" data-page="eleicoes" onclick="navigate('eleicoes')">Eleições ▾</div>
+    <div class="nav-item" data-page="pesquisas" onclick="navigate('pesquisas')">Pesquisas <span
+        class="nav-badge">1.284</span></div>
+    <div class="nav-item" data-page="alertas" onclick="navigate('alertas')">Alertas por UF</div>
+    <div class="nav-sep"></div>
+    <div class="nav-item" data-page="noticias" onclick="navigate('noticias')" style="position:relative">Noticiário <span
+        class="nav-new">NOVO</span></div>
+    <div class="nav-item" data-page="calendario" onclick="navigate('calendario')">Calendário 2026</div>
+    <div class="nav-sep"></div>
+    <div class="nav-item" data-page="api" onclick="navigate('api')">API / Dados</div>
+    <div class="nav-item" data-page="sobre" onclick="navigate('sobre')">Sobre</div>
+    <div class="nav-item" data-page="download" onclick="navigate('download')" style="margin-left:auto;color:var(--g)">⬇
+      Download</div>
+  </nav>
 
-<div id="app"></div>
+  <div id="app"></div>
 
-<footer class="footer">
-  <div class="footer-copy">© 2026 VotaData · Fontes: TSE · TREs · Institutos registrados · Conforme LGPD</div>
-  <div class="footer-links">
-    <span class="footer-link" onclick="navigate('sobre')">Termos de uso</span>
-    <span class="footer-link" onclick="navigate('sobre')">Privacidade & LGPD</span>
-    <span class="footer-link" onclick="navigate('api')">API pública</span>
-    <span class="footer-link">RSS</span>
-    <span class="footer-link" onclick="navigate('sobre')">Contato</span>
-    <span class="footer-link" onclick="navigate('download')">⬇ Baixar projeto</span>
-  </div>
-</footer>
+  <footer class="footer">
+    <div class="footer-copy">© 2026 VotaData · Fontes: TSE · TREs · Institutos registrados · Conforme LGPD</div>
+    <div class="footer-links">
+      <span class="footer-link" onclick="navigate('sobre')">Termos de uso</span>
+      <span class="footer-link" onclick="navigate('sobre')">Privacidade & LGPD</span>
+      <span class="footer-link" onclick="navigate('api')">API pública</span>
+      <span class="footer-link">RSS</span>
+      <span class="footer-link" onclick="navigate('sobre')">Contato</span>
+      <span class="footer-link" onclick="navigate('download')">⬇ Baixar projeto</span>
+    </div>
+  </footer>
 
-<script>
-// ── DATA ─────────────────────────────────────────────────────────────────────
-const PARTY_MAP={PT:'pt',PL:'pl',PSDB:'psdb',MDB:'mdb',PSD:'psd',Novo:'novo',Republicanos:'rep','União':'uni',PSB:'mdb',PSC:'pt',DEM:'mdb',PMDB:'mdb',PRB:'rep',PP:'psd'};
-function pc(p){return PARTY_MAP[p]||'mdb'}
+  <script>
+    // ── DATA ─────────────────────────────────────────────────────────────────────
+    const PARTY_MAP = { PT: 'pt', PL: 'pl', PSDB: 'psdb', MDB: 'mdb', PSD: 'psd', Novo: 'novo', Republicanos: 'rep', 'União': 'uni', PSB: 'mdb', PSC: 'pt', DEM: 'mdb', PMDB: 'mdb', PRB: 'rep', PP: 'psd' };
+    function pc(p) { return PARTY_MAP[p] || 'mdb' }
 
-const UF_DATA={
-  SP:{name:'São Paulo',region:'Sudeste',eleitores:'34,6M',pesquisas:38,candidatos:4821,tier:'h',history:[
-    {ano:2022,cargo:'Governador',turno:2,vencedor:'Tarcísio de Freitas',partido:'Republicanos',pct:56.1,segundo:'Fernando Haddad',partido2:'PT',pct2:43.9},
-    {ano:2022,cargo:'Senador',turno:1,vencedor:'Marcos Pontes',partido:'PL',pct:34.2,segundo:'Marta Suplicy',partido2:'MDB',pct2:30.1},
-    {ano:2018,cargo:'Governador',turno:2,vencedor:'João Doria',partido:'PSDB',pct:52.6,segundo:'Marcio França',partido2:'PSB',pct2:47.4},
-    {ano:2014,cargo:'Governador',turno:2,vencedor:'Geraldo Alckmin',partido:'PSDB',pct:57.3,segundo:'Paulo Skaf',partido2:'PMDB',pct2:42.7},
-  ],polls:[
-    {instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',amostra:1200,margem:2.8,cargo:'Governador',res:[{c:'Cand. A (PT)',p:38},{c:'Cand. B (Rep.)',p:32},{c:'Cand. C (PL)',p:18},{c:'Outros',p:12}]},
-    {instituto:'Quaest',registro:'00210/2026',campo:'01–03/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (PT)',p:36},{c:'Cand. B (Rep.)',p:34},{c:'Cand. C (PL)',p:17},{c:'Outros',p:13}]},
-  ]},
-  RJ:{name:'Rio de Janeiro',region:'Sudeste',eleitores:'12,5M',pesquisas:31,candidatos:2103,tier:'h',history:[
-    {ano:2022,cargo:'Governador',turno:2,vencedor:'Cláudio Castro',partido:'PL',pct:58.8,segundo:'Marcelo Freixo',partido2:'PSB',pct2:41.2},
-    {ano:2018,cargo:'Governador',turno:2,vencedor:'Wilson Witzel',partido:'PSC',pct:59.3,segundo:'Eduardo Paes',partido2:'DEM',pct2:40.7},
-    {ano:2014,cargo:'Governador',turno:2,vencedor:'Luiz Fernando Pezão',partido:'PMDB',pct:52.7,segundo:'Marcelo Crivella',partido2:'PRB',pct2:47.3},
-  ],polls:[
-    {instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',amostra:800,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PL)',p:41},{c:'Cand. B (PT)',p:29},{c:'Cand. C (MDB)',p:15},{c:'Outros',p:15}]},
-  ]},
-  MG:{name:'Minas Gerais',region:'Sudeste',eleitores:'16,5M',pesquisas:22,candidatos:2876,tier:'m',history:[
-    {ano:2022,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:56.2,segundo:'Alexandre Kalil',partido2:'PSD',pct2:43.8},
-    {ano:2018,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:42.7,segundo:'Antonio Anastasia',partido2:'PSDB',pct2:25.8},
-    {ano:2014,cargo:'Governador',turno:2,vencedor:'Fernando Pimentel',partido:'PT',pct:52.7,segundo:'Pimenta da Veiga',partido2:'PSDB',pct2:47.3},
-  ],polls:[
-    {instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (Novo)',p:35},{c:'Cand. B (PT)',p:28},{c:'Cand. C (PSD)',p:22},{c:'Outros',p:15}]},
-  ]},
-  RS:{name:'Rio Grande do Sul',region:'Sul',eleitores:'8,5M',pesquisas:18,candidatos:1542,tier:'m',history:[
-    {ano:2022,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:56.9,segundo:'Edegar Pretto',partido2:'PT',pct2:43.1},
-    {ano:2018,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:54.7,segundo:'José Ivo Sartori',partido2:'MDB',pct2:45.3},
-    {ano:2014,cargo:'Governador',turno:2,vencedor:'José Ivo Sartori',partido:'MDB',pct:64.7,segundo:'Tarso Genro',partido2:'PT',pct2:35.3},
-  ],polls:[
-    {instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',amostra:960,margem:3.2,cargo:'Senador',res:[{c:'Cand. A (PSDB)',p:33},{c:'Cand. B (PT)',p:28},{c:'Cand. C (MDB)',p:21},{c:'Outros',p:18}]},
-  ]},
-  BA:{name:'Bahia',region:'Nordeste',eleitores:'10,5M',pesquisas:16,candidatos:1830,tier:'m',history:[
-    {ano:2022,cargo:'Governador',turno:2,vencedor:'Jerônimo Rodrigues',partido:'PT',pct:52.7,segundo:'ACM Neto',partido2:'União',pct2:47.3},
-    {ano:2018,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:75.7,segundo:'João Roma',partido2:'PSD',pct2:12.4},
-    {ano:2014,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:64.9,segundo:'Paulo Souto',partido2:'DEM',pct2:30.4},
-  ],polls:[
-    {instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',amostra:750,margem:3.6,cargo:'Governador',res:[{c:'Cand. A (PT)',p:47},{c:'Cand. B (União)',p:32},{c:'Outros',p:21}]},
-  ]},
-  PR:{name:'Paraná',region:'Sul',eleitores:'8,1M',pesquisas:9,candidatos:1410,tier:'l',history:[
-    {ano:2022,cargo:'Governador',turno:1,vencedor:'Ratinho Jr.',partido:'PSD',pct:68.2,segundo:'Prof. Tadeu',partido2:'PT',pct2:15.6},
-    {ano:2018,cargo:'Governador',turno:2,vencedor:'Ratinho Jr.',partido:'PSD',pct:63.7,segundo:'Cida Borghetti',partido2:'PP',pct2:36.3},
-    {ano:2014,cargo:'Governador',turno:2,vencedor:'Beto Richa',partido:'PSDB',pct:55.5,segundo:'Requião Filho',partido2:'PMDB',pct2:44.5},
-  ],polls:[
-    {instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',amostra:820,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PSD)',p:52},{c:'Cand. B (PT)',p:24},{c:'Outros',p:24}]},
-  ]},
-};
+    const UF_DATA = {
+      SP: {
+        name: 'São Paulo', region: 'Sudeste', eleitores: '34,6M', pesquisas: 38, candidatos: 4821, tier: 'h', history: [
+          { ano: 2022, cargo: 'Governador', turno: 2, vencedor: 'Tarcísio de Freitas', partido: 'Republicanos', pct: 56.1, segundo: 'Fernando Haddad', partido2: 'PT', pct2: 43.9 },
+          { ano: 2022, cargo: 'Senador', turno: 1, vencedor: 'Marcos Pontes', partido: 'PL', pct: 34.2, segundo: 'Marta Suplicy', partido2: 'MDB', pct2: 30.1 },
+          { ano: 2018, cargo: 'Governador', turno: 2, vencedor: 'João Doria', partido: 'PSDB', pct: 52.6, segundo: 'Marcio França', partido2: 'PSB', pct2: 47.4 },
+          { ano: 2014, cargo: 'Governador', turno: 2, vencedor: 'Geraldo Alckmin', partido: 'PSDB', pct: 57.3, segundo: 'Paulo Skaf', partido2: 'PMDB', pct2: 42.7 },
+        ], polls: [
+          { instituto: 'Datafolha', registro: '00238/2026', campo: '06–08/05', amostra: 1200, margem: 2.8, cargo: 'Governador', res: [{ c: 'Cand. A (PT)', p: 38 }, { c: 'Cand. B (Rep.)', p: 32 }, { c: 'Cand. C (PL)', p: 18 }, { c: 'Outros', p: 12 }] },
+          { instituto: 'Quaest', registro: '00210/2026', campo: '01–03/05', amostra: 1000, margem: 3.1, cargo: 'Governador', res: [{ c: 'Cand. A (PT)', p: 36 }, { c: 'Cand. B (Rep.)', p: 34 }, { c: 'Cand. C (PL)', p: 17 }, { c: 'Outros', p: 13 }] },
+        ]
+      },
+      RJ: {
+        name: 'Rio de Janeiro', region: 'Sudeste', eleitores: '12,5M', pesquisas: 31, candidatos: 2103, tier: 'h', history: [
+          { ano: 2022, cargo: 'Governador', turno: 2, vencedor: 'Cláudio Castro', partido: 'PL', pct: 58.8, segundo: 'Marcelo Freixo', partido2: 'PSB', pct2: 41.2 },
+          { ano: 2018, cargo: 'Governador', turno: 2, vencedor: 'Wilson Witzel', partido: 'PSC', pct: 59.3, segundo: 'Eduardo Paes', partido2: 'DEM', pct2: 40.7 },
+          { ano: 2014, cargo: 'Governador', turno: 2, vencedor: 'Luiz Fernando Pezão', partido: 'PMDB', pct: 52.7, segundo: 'Marcelo Crivella', partido2: 'PRB', pct2: 47.3 },
+        ], polls: [
+          { instituto: 'Quaest', registro: '00191/2026', campo: '05–07/05', amostra: 800, margem: 3.4, cargo: 'Governador', res: [{ c: 'Cand. A (PL)', p: 41 }, { c: 'Cand. B (PT)', p: 29 }, { c: 'Cand. C (MDB)', p: 15 }, { c: 'Outros', p: 15 }] },
+        ]
+      },
+      MG: {
+        name: 'Minas Gerais', region: 'Sudeste', eleitores: '16,5M', pesquisas: 22, candidatos: 2876, tier: 'm', history: [
+          { ano: 2022, cargo: 'Governador', turno: 2, vencedor: 'Romeu Zema', partido: 'Novo', pct: 56.2, segundo: 'Alexandre Kalil', partido2: 'PSD', pct2: 43.8 },
+          { ano: 2018, cargo: 'Governador', turno: 2, vencedor: 'Romeu Zema', partido: 'Novo', pct: 42.7, segundo: 'Antonio Anastasia', partido2: 'PSDB', pct2: 25.8 },
+          { ano: 2014, cargo: 'Governador', turno: 2, vencedor: 'Fernando Pimentel', partido: 'PT', pct: 52.7, segundo: 'Pimenta da Veiga', partido2: 'PSDB', pct2: 47.3 },
+        ], polls: [
+          { instituto: 'Ipec', registro: '00174/2026', campo: '04–06/05', amostra: 1000, margem: 3.1, cargo: 'Governador', res: [{ c: 'Cand. A (Novo)', p: 35 }, { c: 'Cand. B (PT)', p: 28 }, { c: 'Cand. C (PSD)', p: 22 }, { c: 'Outros', p: 15 }] },
+        ]
+      },
+      RS: {
+        name: 'Rio Grande do Sul', region: 'Sul', eleitores: '8,5M', pesquisas: 18, candidatos: 1542, tier: 'm', history: [
+          { ano: 2022, cargo: 'Governador', turno: 2, vencedor: 'Eduardo Leite', partido: 'PSDB', pct: 56.9, segundo: 'Edegar Pretto', partido2: 'PT', pct2: 43.1 },
+          { ano: 2018, cargo: 'Governador', turno: 2, vencedor: 'Eduardo Leite', partido: 'PSDB', pct: 54.7, segundo: 'José Ivo Sartori', partido2: 'MDB', pct2: 45.3 },
+          { ano: 2014, cargo: 'Governador', turno: 2, vencedor: 'José Ivo Sartori', partido: 'MDB', pct: 64.7, segundo: 'Tarso Genro', partido2: 'PT', pct2: 35.3 },
+        ], polls: [
+          { instituto: 'AtlasIntel', registro: '00162/2026', campo: '03–05/05', amostra: 960, margem: 3.2, cargo: 'Senador', res: [{ c: 'Cand. A (PSDB)', p: 33 }, { c: 'Cand. B (PT)', p: 28 }, { c: 'Cand. C (MDB)', p: 21 }, { c: 'Outros', p: 18 }] },
+        ]
+      },
+      BA: {
+        name: 'Bahia', region: 'Nordeste', eleitores: '10,5M', pesquisas: 16, candidatos: 1830, tier: 'm', history: [
+          { ano: 2022, cargo: 'Governador', turno: 2, vencedor: 'Jerônimo Rodrigues', partido: 'PT', pct: 52.7, segundo: 'ACM Neto', partido2: 'União', pct2: 47.3 },
+          { ano: 2018, cargo: 'Governador', turno: 1, vencedor: 'Rui Costa', partido: 'PT', pct: 75.7, segundo: 'João Roma', partido2: 'PSD', pct2: 12.4 },
+          { ano: 2014, cargo: 'Governador', turno: 1, vencedor: 'Rui Costa', partido: 'PT', pct: 64.9, segundo: 'Paulo Souto', partido2: 'DEM', pct2: 30.4 },
+        ], polls: [
+          { instituto: 'Paraná Pesquisas', registro: '00155/2026', campo: '02–04/05', amostra: 750, margem: 3.6, cargo: 'Governador', res: [{ c: 'Cand. A (PT)', p: 47 }, { c: 'Cand. B (União)', p: 32 }, { c: 'Outros', p: 21 }] },
+        ]
+      },
+      PR: {
+        name: 'Paraná', region: 'Sul', eleitores: '8,1M', pesquisas: 9, candidatos: 1410, tier: 'l', history: [
+          { ano: 2022, cargo: 'Governador', turno: 1, vencedor: 'Ratinho Jr.', partido: 'PSD', pct: 68.2, segundo: 'Prof. Tadeu', partido2: 'PT', pct2: 15.6 },
+          { ano: 2018, cargo: 'Governador', turno: 2, vencedor: 'Ratinho Jr.', partido: 'PSD', pct: 63.7, segundo: 'Cida Borghetti', partido2: 'PP', pct2: 36.3 },
+          { ano: 2014, cargo: 'Governador', turno: 2, vencedor: 'Beto Richa', partido: 'PSDB', pct: 55.5, segundo: 'Requião Filho', partido2: 'PMDB', pct2: 44.5 },
+        ], polls: [
+          { instituto: 'MDA Pesquisa', registro: '00149/2026', campo: '01–03/05', amostra: 820, margem: 3.4, cargo: 'Governador', res: [{ c: 'Cand. A (PSD)', p: 52 }, { c: 'Cand. B (PT)', p: 24 }, { c: 'Outros', p: 24 }] },
+        ]
+      },
+    };
 
-const UF_CELLS=[
-  {uf:'SP',tier:'h',pesquisas:38},{uf:'RJ',tier:'h',pesquisas:31},{uf:'MG',tier:'m',pesquisas:22},
-  {uf:'RS',tier:'m',pesquisas:18},{uf:'BA',tier:'m',pesquisas:16},{uf:'PR',tier:'l',pesquisas:9},
-  {uf:'CE',tier:'l',pesquisas:8},{uf:'PE',tier:'l',pesquisas:7},{uf:'GO',tier:'l',pesquisas:6},
-  {uf:'AM',tier:'m',pesquisas:11},{uf:'MT',tier:'l',pesquisas:5},{uf:'MS',tier:'l',pesquisas:4},
-  {uf:'PA',tier:'l',pesquisas:7},{uf:'MA',tier:'l',pesquisas:5},{uf:'PI',tier:'l',pesquisas:3},
-  {uf:'RN',tier:'l',pesquisas:3},{uf:'PB',tier:'l',pesquisas:3},{uf:'AL',tier:'l',pesquisas:2},
-  {uf:'SE',tier:'l',pesquisas:2},{uf:'ES',tier:'l',pesquisas:4},{uf:'RO',tier:'l',pesquisas:2},
-  {uf:'AC',tier:'l',pesquisas:1},{uf:'RR',tier:'n',pesquisas:0},{uf:'AP',tier:'l',pesquisas:1},
-  {uf:'TO',tier:'l',pesquisas:2},{uf:'DF',tier:'m',pesquisas:12},{uf:'SC',tier:'l',pesquisas:8},
-];
+    const UF_CELLS = [
+      { uf: 'SP', tier: 'h', pesquisas: 38 }, { uf: 'RJ', tier: 'h', pesquisas: 31 }, { uf: 'MG', tier: 'm', pesquisas: 22 },
+      { uf: 'RS', tier: 'm', pesquisas: 18 }, { uf: 'BA', tier: 'm', pesquisas: 16 }, { uf: 'PR', tier: 'l', pesquisas: 9 },
+      { uf: 'CE', tier: 'l', pesquisas: 8 }, { uf: 'PE', tier: 'l', pesquisas: 7 }, { uf: 'GO', tier: 'l', pesquisas: 6 },
+      { uf: 'AM', tier: 'm', pesquisas: 11 }, { uf: 'MT', tier: 'l', pesquisas: 5 }, { uf: 'MS', tier: 'l', pesquisas: 4 },
+      { uf: 'PA', tier: 'l', pesquisas: 7 }, { uf: 'MA', tier: 'l', pesquisas: 5 }, { uf: 'PI', tier: 'l', pesquisas: 3 },
+      { uf: 'RN', tier: 'l', pesquisas: 3 }, { uf: 'PB', tier: 'l', pesquisas: 3 }, { uf: 'AL', tier: 'l', pesquisas: 2 },
+      { uf: 'SE', tier: 'l', pesquisas: 2 }, { uf: 'ES', tier: 'l', pesquisas: 4 }, { uf: 'RO', tier: 'l', pesquisas: 2 },
+      { uf: 'AC', tier: 'l', pesquisas: 1 }, { uf: 'RR', tier: 'n', pesquisas: 0 }, { uf: 'AP', tier: 'l', pesquisas: 1 },
+      { uf: 'TO', tier: 'l', pesquisas: 2 }, { uf: 'DF', tier: 'm', pesquisas: 12 }, { uf: 'SC', tier: 'l', pesquisas: 8 },
+    ];
 
-const POLLS_ALL=[
-  {uf:'SP',pill:'p-sp',instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',cargo:'Governador',amostra:1200,margem:2.8,data:'09/05'},
-  {uf:'RJ',pill:'p-rj',instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',cargo:'Governador',amostra:800,margem:3.4,data:'08/05'},
-  {uf:'MG',pill:'p-mg',instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',cargo:'Governador',amostra:1000,margem:3.1,data:'07/05'},
-  {uf:'RS',pill:'p-rs',instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',cargo:'Senador',amostra:960,margem:3.2,data:'06/05'},
-  {uf:'BA',pill:'p-ba',instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',cargo:'Governador',amostra:750,margem:3.6,data:'05/05'},
-  {uf:'PR',pill:'p-pr',instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',cargo:'Governador',amostra:820,margem:3.4,data:'04/05'},
-  {uf:'MG',pill:'p-mg',instituto:'Quaest',registro:'00141/2026',campo:'28–30/04',cargo:'Senador',amostra:900,margem:3.3,data:'01/05'},
-  {uf:'SP',pill:'p-sp',instituto:'AtlasIntel',registro:'00195/2026',campo:'25–28/04',cargo:'Governador',amostra:980,margem:3.2,data:'29/04'},
-];
+    const POLLS_ALL = [
+      { uf: 'SP', pill: 'p-sp', instituto: 'Datafolha', registro: '00238/2026', campo: '06–08/05', cargo: 'Governador', amostra: 1200, margem: 2.8, data: '09/05' },
+      { uf: 'RJ', pill: 'p-rj', instituto: 'Quaest', registro: '00191/2026', campo: '05–07/05', cargo: 'Governador', amostra: 800, margem: 3.4, data: '08/05' },
+      { uf: 'MG', pill: 'p-mg', instituto: 'Ipec', registro: '00174/2026', campo: '04–06/05', cargo: 'Governador', amostra: 1000, margem: 3.1, data: '07/05' },
+      { uf: 'RS', pill: 'p-rs', instituto: 'AtlasIntel', registro: '00162/2026', campo: '03–05/05', cargo: 'Senador', amostra: 960, margem: 3.2, data: '06/05' },
+      { uf: 'BA', pill: 'p-ba', instituto: 'Paraná Pesquisas', registro: '00155/2026', campo: '02–04/05', cargo: 'Governador', amostra: 750, margem: 3.6, data: '05/05' },
+      { uf: 'PR', pill: 'p-pr', instituto: 'MDA Pesquisa', registro: '00149/2026', campo: '01–03/05', cargo: 'Governador', amostra: 820, margem: 3.4, data: '04/05' },
+      { uf: 'MG', pill: 'p-mg', instituto: 'Quaest', registro: '00141/2026', campo: '28–30/04', cargo: 'Senador', amostra: 900, margem: 3.3, data: '01/05' },
+      { uf: 'SP', pill: 'p-sp', instituto: 'AtlasIntel', registro: '00195/2026', campo: '25–28/04', cargo: 'Governador', amostra: 980, margem: 3.2, data: '29/04' },
+    ];
 
-const UF_NAMES={SP:'São Paulo',RJ:'Rio de Janeiro',MG:'Minas Gerais',RS:'Rio Grande do Sul',BA:'Bahia',PR:'Paraná'};
+    const UF_NAMES = { SP: 'São Paulo', RJ: 'Rio de Janeiro', MG: 'Minas Gerais', RS: 'Rio Grande do Sul', BA: 'Bahia', PR: 'Paraná' };
 
-// ── ROUTER ────────────────────────────────────────────────────────────────────
-let currentPage='home', currentUF=null;
-function navigate(page,param){
-  currentPage=page; currentUF=param||null;
-  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
-  document.getElementById('app').innerHTML=`<div class="page page-anim">${(PAGES[page]||PAGES.home)(param)}</div>`;
-  bindAll();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+    // ── ROUTER ────────────────────────────────────────────────────────────────────
+    let currentPage = 'home', currentUF = null;
+    function navigate(page, param) {
+      currentPage = page; currentUF = param || null;
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+      document.getElementById('app').innerHTML = `<div class="page page-anim">${(PAGES[page] || PAGES.home)(param)}</div>`;
+      bindAll();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-// ── SHARED COMPONENTS ─────────────────────────────────────────────────────────
-function bc(...crumbs){
-  let html=`<div class="breadcrumb">`;
-  crumbs.forEach((c,i)=>{
-    if(i>0) html+=`<span class="bc-sep">›</span>`;
-    if(c.page) html+=`<span class="bc-link" onclick="navigate('${c.page}','${c.param||''}')">${c.label}</span>`;
-    else html+=`<span>${c.label}</span>`;
-  });
-  return html+`</div>`;
-}
+    // ── SHARED COMPONENTS ─────────────────────────────────────────────────────────
+    function bc(...crumbs) {
+      let html = `<div class="breadcrumb">`;
+      crumbs.forEach((c, i) => {
+        if (i > 0) html += `<span class="bc-sep">›</span>`;
+        if (c.page) html += `<span class="bc-link" onclick="navigate('${c.page}','${c.param || ''}')">${c.label}</span>`;
+        else html += `<span>${c.label}</span>`;
+      });
+      return html + `</div>`;
+    }
 
-function heroStrip(eye,title,sub,stats=''){
-  return `<div class="hero-strip"><div class="hero-left"><div class="hero-eye">${eye}</div><div class="hero-title">${title}</div><div class="hero-sub">${sub}</div></div>${stats?`<div class="hero-right">${stats}</div>`:''}</div>`;
-}
-function hstat(num,label,g=false){return `<div class="hero-stat"><div class="hstat-num${g?' g':''}">${num}</div><div class="hstat-label">${label}</div></div>`}
-function hdiv(){return`<div style="width:1px;background:rgba(255,255,255,.08)"></div>`}
+    function heroStrip(eye, title, sub, stats = '') {
+      return `<div class="hero-strip"><div class="hero-left"><div class="hero-eye">${eye}</div><div class="hero-title">${title}</div><div class="hero-sub">${sub}</div></div>${stats ? `<div class="hero-right">${stats}</div>` : ''}</div>`;
+    }
+    function hstat(num, label, g = false) { return `<div class="hero-stat"><div class="hstat-num${g ? ' g' : ''}">${num}</div><div class="hstat-label">${label}</div></div>` }
+    function hdiv() { return `<div style="width:1px;background:rgba(255,255,255,.08)"></div>` }
 
-function pollRows(arr,max=6){
-  return arr.slice(0,max).map(p=>`
+    function pollRows(arr, max = 6) {
+      return arr.slice(0, max).map(p => `
     <div class="poll-row" onclick="navigate('uf','${p.uf}')">
       <div class="uf-pill ${p.pill}" onclick="event.stopPropagation();navigate('uf','${p.uf}')">${p.uf}</div>
       <div class="poll-info">
-        <div class="poll-ttl">${p.cargo} ${UF_NAMES[p.uf]||p.uf} — ${p.instituto}</div>
+        <div class="poll-ttl">${p.cargo} ${UF_NAMES[p.uf] || p.uf} — ${p.instituto}</div>
         <div class="poll-meta">TSE ${p.registro} · Amostra ${p.amostra.toLocaleString('pt-BR')} · Margem ±${p.margem}%</div>
       </div>
       <div class="poll-right">
@@ -549,19 +2423,19 @@ function pollRows(arr,max=6){
         <button class="ico-btn" title="Baixar CSV" onclick="event.stopPropagation()">⬇</button>
       </div>
     </div>`).join('');
-}
+    }
 
-function barChart(res){
-  return res.map((r,i)=>`
+    function barChart(res) {
+      return res.map((r, i) => `
     <div class="bchart-row">
       <div class="bc-name">${r.c}</div>
-      <div class="bc-bar"><div class="bc-fill bc${['a','b','c','d'][i]}" style="width:0%" data-target="${r.p}%"></div></div>
+      <div class="bc-bar"><div class="bc-fill bc${['a', 'b', 'c', 'd'][i]}" style="width:0%" data-target="${r.p}%"></div></div>
       <div class="bc-pct">${r.p}%</div>
     </div>`).join('');
-}
+    }
 
-function calSide(onclick_prefix=''){
-  return `
+    function calSide(onclick_prefix = '') {
+      return `
     <div class="cd-block">
       <div class="cd-unit"><div class="cd-num">149</div><div class="cd-lbl">Dias</div></div>
       <div class="cd-unit"><div class="cd-num">21</div><div class="cd-lbl">Semanas</div></div>
@@ -587,46 +2461,46 @@ function calSide(onclick_prefix=''){
       <button class="btn" style="flex:1;justify-content:center">📆 Google</button>
       <button class="btn" style="flex:1;justify-content:center">📥 iCal</button>
     </div>`;
-}
+    }
 
-function alertsSide(){
-  return [
-    {uf:'SP',name:'São Paulo',sub:'Gov. · Email + Push',on:true},
-    {uf:'RJ',name:'Rio de Janeiro',sub:'Todos · Email',on:true},
-    {uf:'MG',name:'Minas Gerais',sub:'Senador · Push',on:false},
-    {uf:'RS',name:'Rio Grande do Sul',sub:'Gov. · Email',on:true},
-  ].map(a=>`
+    function alertsSide() {
+      return [
+        { uf: 'SP', name: 'São Paulo', sub: 'Gov. · Email + Push', on: true },
+        { uf: 'RJ', name: 'Rio de Janeiro', sub: 'Todos · Email', on: true },
+        { uf: 'MG', name: 'Minas Gerais', sub: 'Senador · Push', on: false },
+        { uf: 'RS', name: 'Rio Grande do Sul', sub: 'Gov. · Email', on: true },
+      ].map(a => `
     <div class="alt-row">
       <div><div class="alt-uf" onclick="navigate('uf','${a.uf}')">${a.uf} — ${a.name}</div><div class="alt-sub">${a.sub}</div></div>
-      <button class="toggle ${a.on?'on':''}" onclick="this.classList.toggle('on')"></button>
+      <button class="toggle ${a.on ? 'on' : ''}" onclick="this.classList.toggle('on')"></button>
     </div>`).join('');
-}
+    }
 
-function newsSide(){
-  return [
-    {tag:'ntg-p',tl:'Pesquisa',hl:'Empate técnico no governo SP entre candidatos A e B',by:'Datafolha',ago:'há 2h'},
-    {tag:'ntg-a',tl:'Análise',hl:'Eleitorado nordestino em 2026: o que dizem os dados históricos',by:'Redação',ago:'há 5h'},
-    {tag:'ntg-l',tl:'Legislação',hl:'TSE publica novas regras para pesquisas eleitorais',by:'TSE',ago:'ontem'},
-    {tag:'ntg-r',tl:'Resultado',hl:'Padrão de reeleição de 2022 pode se repetir em 2026?',by:'Redação',ago:'2 dias'},
-  ].map(n=>`
+    function newsSide() {
+      return [
+        { tag: 'ntg-p', tl: 'Pesquisa', hl: 'Empate técnico no governo SP entre candidatos A e B', by: 'Datafolha', ago: 'há 2h' },
+        { tag: 'ntg-a', tl: 'Análise', hl: 'Eleitorado nordestino em 2026: o que dizem os dados históricos', by: 'Redação', ago: 'há 5h' },
+        { tag: 'ntg-l', tl: 'Legislação', hl: 'TSE publica novas regras para pesquisas eleitorais', by: 'TSE', ago: 'ontem' },
+        { tag: 'ntg-r', tl: 'Resultado', hl: 'Padrão de reeleição de 2022 pode se repetir em 2026?', by: 'Redação', ago: '2 dias' },
+      ].map(n => `
     <div class="poll-row" onclick="navigate('noticias')" style="flex-direction:column;align-items:flex-start;gap:5px">
       <span class="ncol-tag ${n.tag}">${n.tl}</span>
       <div style="font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4;cursor:pointer" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--ink)'">${n.hl}</div>
       <div style="font-size:10.5px;color:var(--mu2)">${n.by} · ${n.ago}</div>
     </div>`).join('');
-}
+    }
 
-// ── PAGE: HOME ────────────────────────────────────────────────────────────────
-function pageHome(){
-  const ufGrid=UF_CELLS.map(u=>`<div class="uf-cell uf-${u.tier}" title="${u.uf} — ${u.pesquisas} pesquisas" onclick="navigate('uf','${u.uf}')">${u.uf}</div>`).join('');
-  return `
+    // ── PAGE: HOME ────────────────────────────────────────────────────────────────
+    function pageHome() {
+      const ufGrid = UF_CELLS.map(u => `<div class="uf-cell uf-${u.tier}" title="${u.uf} — ${u.pesquisas} pesquisas" onclick="navigate('uf','${u.uf}')">${u.uf}</div>`).join('');
+      return `
     <div class="alert-banner" id="alertBanner">
       <span style="font-size:16px">🔔</span>
       <span><strong>Nova pesquisa registrada em SP</strong> — Datafolha / TSE 00238/2026 publicada há 12 minutos.</span>
       <button class="alert-dismiss" onclick="this.parentElement.remove()">✕</button>
     </div>
-    ${heroStrip('Eleições Gerais 2026','Portal Eleitoral Brasileiro','Pesquisas registradas, histórico eleitoral e calendário em tempo real',
-      hstat('1.284','Pesquisas registradas',true)+hdiv()+hstat('28.941','Candidatos 2026')+hdiv()+hstat('149','Dias para o 1° turno',true))}
+    ${heroStrip('Eleições Gerais 2026', 'Portal Eleitoral Brasileiro', 'Pesquisas registradas, histórico eleitoral e calendário em tempo real',
+        hstat('1.284', 'Pesquisas registradas', true) + hdiv() + hstat('28.941', 'Candidatos 2026') + hdiv() + hstat('149', 'Dias para o 1° turno', true))}
     <div class="metrics-row">
       <div class="mcard mg"><div class="mlabel">Pesquisas — 7 dias</div><div class="mvalue">47</div><div class="msub up">9 novas hoje</div></div>
       <div class="mcard mb"><div class="mlabel">UFs com cobertura</div><div class="mvalue">24</div><div class="msub">de 27 estados + DF</div></div>
@@ -670,18 +2544,18 @@ function pageHome(){
         <div class="card"><div class="card-hd"><div class="card-ttl"><div class="cicon cia">📰</div>Noticiário</div><span class="c-link" onclick="navigate('noticias')">Ver tudo →</span></div>${newsSide()}</div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: ELEIÇÕES ─────────────────────────────────────────────────────────────
-function pageEleicoes(){
-  return `${bc({label:'Início',page:'home'},{label:'Eleições'})}
-    ${heroStrip('Histórico & 2026','Eleições por ano e estado','Resultados oficiais de 2014, 2018, 2020, 2022, 2024 e 2026')}
+    // ── PAGE: ELEIÇÕES ─────────────────────────────────────────────────────────────
+    function pageEleicoes() {
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Eleições' })}
+    ${heroStrip('Histórico & 2026', 'Eleições por ano e estado', 'Resultados oficiais de 2014, 2018, 2020, 2022, 2024 e 2026')}
     <div class="card" style="margin-bottom:16px">
       <div class="card-hd"><div class="card-ttl"><div class="cicon cib">📅</div>Selecione o ano</div></div>
-      <div class="chip-row">${[2014,2018,2020,2022,2024,2026].map((y,i)=>`<button class="chip ${i===5?'active':''}" onclick="setChip(this)">${y}</button>`).join('')}</div>
+      <div class="chip-row">${[2014, 2018, 2020, 2022, 2024, 2026].map((y, i) => `<button class="chip ${i === 5 ? 'active' : ''}" onclick="setChip(this)">${y}</button>`).join('')}</div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px">
-      ${Object.entries(UF_DATA).map(([code,d])=>`
+      ${Object.entries(UF_DATA).map(([code, d]) => `
       <div class="card" style="cursor:pointer;transition:box-shadow .15s,transform .15s" onmouseover="this.style.boxShadow='var(--shmd)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''" onclick="navigate('uf','${code}')">
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
           <div style="font-family:var(--fd);font-size:32px;font-weight:700;color:var(--g)">${code}</div>
@@ -691,17 +2565,17 @@ function pageEleicoes(){
           <span>📊 ${d.pesquisas} pesquisas</span><span>🗳 ${d.history.length} eleições</span><span>👥 ${d.eleitores}</span>
         </div>
         <div style="font-size:12px;color:var(--ink3);padding-top:10px;border-top:1px solid var(--border)">
-          <strong>Gov. 2022:</strong> ${d.history[0].vencedor.split(' ').slice(0,2).join(' ')}
+          <strong>Gov. 2022:</strong> ${d.history[0].vencedor.split(' ').slice(0, 2).join(' ')}
           <span class="${d.history[0].partido} pty">${d.history[0].partido}</span>
           <span style="color:var(--g);font-weight:700;margin-left:5px">${d.history[0].pct}%</span>
         </div>
       </div>`).join('')}
     </div>`;
-}
+    }
 
-// ── PAGE: PESQUISAS ────────────────────────────────────────────────────────────
-function pagePesquisas(){
-  const rows=POLLS_ALL.map(p=>`
+    // ── PAGE: PESQUISAS ────────────────────────────────────────────────────────────
+    function pagePesquisas() {
+      const rows = POLLS_ALL.map(p => `
     <tr class="click" onclick="navigate('uf','${p.uf}')">
       <td><span class="uf-pill ${p.pill}" onclick="event.stopPropagation();navigate('uf','${p.uf}')">${p.uf}</span></td>
       <td><strong>${p.cargo}</strong></td>
@@ -716,11 +2590,11 @@ function pagePesquisas(){
         <button class="ico-btn" onclick="event.stopPropagation()" title="CSV">⬇</button>
       </td>
     </tr>`).join('');
-  return `${bc({label:'Início',page:'home'},{label:'Pesquisas'})}
-    ${heroStrip('Registro TSE','Pesquisas eleitorais registradas','Filtros por UF, cargo, instituto e período',hstat('1.284','Total registradas',true)+hdiv()+hstat('47','Esta semana'))}
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Pesquisas' })}
+    ${heroStrip('Registro TSE', 'Pesquisas eleitorais registradas', 'Filtros por UF, cargo, instituto e período', hstat('1.284', 'Total registradas', true) + hdiv() + hstat('47', 'Esta semana'))}
     <div class="card">
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
-        <select style="font-size:12px"><option>Todas as UFs</option>${Object.keys(UF_DATA).map(u=>`<option>${u}</option>`).join('')}</select>
+        <select style="font-size:12px"><option>Todas as UFs</option>${Object.keys(UF_DATA).map(u => `<option>${u}</option>`).join('')}</select>
         <select style="font-size:12px"><option>Todos os cargos</option><option>Governador</option><option>Senador</option><option>Presidente</option><option>Dep. Federal</option></select>
         <select style="font-size:12px"><option>Todos os institutos</option><option>Datafolha</option><option>Quaest</option><option>AtlasIntel</option><option>Ipec</option></select>
         <select style="font-size:12px"><option>Mais recente</option><option>Maior amostra</option><option>Menor margem</option></select>
@@ -738,13 +2612,13 @@ function pagePesquisas(){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: UF ─────────────────────────────────────────────────────────────────
-function pageUF(uf){
-  const d=UF_DATA[uf];
-  if(!d) return `<div style="padding:60px;text-align:center;color:var(--mu)">Estado não encontrado. <span class="bc-link" onclick="navigate('home')">Voltar</span></div>`;
-  const histRows=d.history.map(h=>`
+    // ── PAGE: UF ─────────────────────────────────────────────────────────────────
+    function pageUF(uf) {
+      const d = UF_DATA[uf];
+      if (!d) return `<div style="padding:60px;text-align:center;color:var(--mu)">Estado não encontrado. <span class="bc-link" onclick="navigate('home')">Voltar</span></div>`;
+      const histRows = d.history.map(h => `
     <tr onclick="navigate('eleicoes')">
       <td><strong>${h.ano}</strong></td>
       <td>${h.cargo}</td>
@@ -754,7 +2628,7 @@ function pageUF(uf){
       <td style="font-size:12px;color:var(--mu2)">${h.segundo} <span class="${pc(h.partido2)} pty" style="font-size:9px">${h.partido2}</span></td>
       <td style="font-size:12px;color:var(--mu2)">${h.pct2}%</td>
     </tr>`).join('');
-  const pollCards=d.polls.map(p=>`
+      const pollCards = d.polls.map(p => `
     <div style="background:var(--surf);border:1px solid var(--border);border-radius:var(--rad);padding:16px 18px;margin-bottom:10px">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px">
         <div><div style="font-size:13.5px;font-weight:600;color:var(--ink)">${p.instituto} — ${p.cargo}</div>
@@ -769,8 +2643,8 @@ function pageUF(uf){
         <button class="btn btn-primary" style="font-size:11.5px" onclick="navigate('alertas')">🔔 Alertas ${uf}</button>
       </div>
     </div>`).join('');
-  const otherUFs=Object.keys(UF_DATA).filter(u=>u!==uf);
-  return `${bc({label:'Início',page:'home'},{label:'Eleições',page:'eleicoes'},{label:`${d.name} (${uf})`})}
+      const otherUFs = Object.keys(UF_DATA).filter(u => u !== uf);
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Eleições', page: 'eleicoes' }, { label: `${d.name} (${uf})` })}
     <div class="uf-hero">
       <div class="uf-hero-in">
         <div style="position:relative;z-index:1">
@@ -813,21 +2687,21 @@ function pageUF(uf){
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">🔔</div>Alertas — ${uf}</div>
           <p style="font-size:12.5px;color:var(--mu);margin-bottom:12px">Notificações quando novas pesquisas forem registradas para ${d.name}.</p>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
-            ${['Governador','Senador','Dep. Federal','Todos os cargos'].map(c=>`<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" ${c==='Governador'?'checked':''} style="accent-color:var(--g)"> ${c}</label>`).join('')}
+            ${['Governador', 'Senador', 'Dep. Federal', 'Todos os cargos'].map(c => `<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" ${c === 'Governador' ? 'checked' : ''} style="accent-color:var(--g)"> ${c}</label>`).join('')}
           </div>
           <div class="chip-row" style="margin-bottom:12px">
-            ${['Email','Push web','Telegram'].map((c,i)=>`<button class="chip ${i===0?'active':''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
+            ${['Email', 'Push web', 'Telegram'].map((c, i) => `<button class="chip ${i === 0 ? 'active' : ''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
           </div>
           <button class="btn btn-primary" style="width:100%">🔔 Ativar alertas para ${uf}</button>
         </div>
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">🗺</div>Outros estados</div>
-          <div class="uf-pills-grid">${otherUFs.map(u=>`<span class="uf-nav-pill" onclick="navigate('uf','${u}')">${u}</span>`).join('')}</div>
+          <div class="uf-pills-grid">${otherUFs.map(u => `<span class="uf-nav-pill" onclick="navigate('uf','${u}')">${u}</span>`).join('')}</div>
           <span class="c-link" style="display:block;margin-top:10px" onclick="navigate('eleicoes')">Ver todos os estados →</span>
         </div>
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cib">📥</div>Dados abertos</div>
-          ${[{l:'Histórico completo '+uf,f:'CSV'},{l:'Pesquisas 2026 — '+uf,f:'JSON'},{l:'Candidatos registrados — '+uf,f:'CSV'}].map(x=>`
+          ${[{ l: 'Histórico completo ' + uf, f: 'CSV' }, { l: 'Pesquisas 2026 — ' + uf, f: 'JSON' }, { l: 'Candidatos registrados — ' + uf, f: 'CSV' }].map(x => `
           <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surf);border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
             <span style="font-size:12px;color:var(--ink3)">${x.l}</span>
             <button class="btn" style="font-size:11px">${x.f} ⬇</button>
@@ -835,18 +2709,18 @@ function pageUF(uf){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: NOTICIÁRIO ───────────────────────────────────────────────────────────
-function pageNoticias(){
-  return `${bc({label:'Início',page:'home'},{label:'Noticiário'})}
+    // ── PAGE: NOTICIÁRIO ───────────────────────────────────────────────────────────
+    function pageNoticias() {
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Noticiário' })}
     <div class="news-header">
       <div class="news-date-line">Segunda-feira, 11 de maio de 2026</div>
       <div class="news-masthead">Vota<span>Data</span> Noticiário</div>
       <div class="news-sub-rule">
         <span>Análise · Pesquisas · Legislação · Resultados</span>
         <div class="chip-row" style="margin:0;gap:6px">
-          ${['Todos','Pesquisa','Análise','Legislação','Resultado'].map((t,i)=>`<button class="chip ${i===0?'active':''}" onclick="setChip(this)">${t}</button>`).join('')}
+          ${['Todos', 'Pesquisa', 'Análise', 'Legislação', 'Resultado'].map((t, i) => `<button class="chip ${i === 0 ? 'active' : ''}" onclick="setChip(this)">${t}</button>`).join('')}
         </div>
       </div>
     </div>
@@ -906,24 +2780,24 @@ function pageNoticias(){
         <button class="btn">RSS</button>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: ALERTAS ─────────────────────────────────────────────────────────────
-function pageAlertas(){
-  return `${bc({label:'Início',page:'home'},{label:'Alertas por UF'})}
-    ${heroStrip('Notificações em tempo real','Alertas por UF e cargo','Seja notificado quando novas pesquisas forem registradas')}
+    // ── PAGE: ALERTAS ─────────────────────────────────────────────────────────────
+    function pageAlertas() {
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Alertas por UF' })}
+    ${heroStrip('Notificações em tempo real', 'Alertas por UF e cargo', 'Seja notificado quando novas pesquisas forem registradas')}
     <div class="grid-main">
       <div class="left-col">
         <div class="card">
           <div class="card-hd"><div class="card-ttl"><div class="cicon cig">➕</div>Novo alerta</div></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
             <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Estado (UF)</label>
-              <select style="width:100%"><option>Selecionar UF…</option>${Object.keys(UF_DATA).map(u=>`<option>${u} — ${UF_DATA[u].name}</option>`).join('')}</select></div>
+              <select style="width:100%"><option>Selecionar UF…</option>${Object.keys(UF_DATA).map(u => `<option>${u} — ${UF_DATA[u].name}</option>`).join('')}</select></div>
             <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Cargo</label>
               <select style="width:100%"><option>Todos os cargos</option><option>Governador</option><option>Senador</option><option>Dep. Federal</option><option>Presidente</option></select></div>
             <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Canal de notificação</label>
               <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:2px">
-                ${['Email','Push web','Telegram','WhatsApp'].map((c,i)=>`<button class="chip ${i<2?'active':''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
+                ${['Email', 'Push web', 'Telegram', 'WhatsApp'].map((c, i) => `<button class="chip ${i < 2 ? 'active' : ''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
               </div></div>
             <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Limiar de variação</label>
               <select style="width:100%"><option>Qualquer nova pesquisa</option><option>Variação &gt;3%</option><option>Variação &gt;5%</option><option>Variação &gt;10%</option></select></div>
@@ -933,17 +2807,17 @@ function pageAlertas(){
         <div class="card">
           <div class="card-hd"><div class="card-ttl"><div class="cicon cip">📋</div>Alertas configurados</div></div>
           ${[
-            {uf:'SP',name:'São Paulo',sub:'Governador · Email + Push · Qualquer pesquisa',on:true},
-            {uf:'RJ',name:'Rio de Janeiro',sub:'Todos os cargos · Email · Variação >5%',on:true},
-            {uf:'MG',name:'Minas Gerais',sub:'Senador · Push web · Qualquer pesquisa',on:false},
-            {uf:'RS',name:'Rio Grande do Sul',sub:'Governador · Email · Variação >3%',on:true},
-          ].map(a=>`
+          { uf: 'SP', name: 'São Paulo', sub: 'Governador · Email + Push · Qualquer pesquisa', on: true },
+          { uf: 'RJ', name: 'Rio de Janeiro', sub: 'Todos os cargos · Email · Variação >5%', on: true },
+          { uf: 'MG', name: 'Minas Gerais', sub: 'Senador · Push web · Qualquer pesquisa', on: false },
+          { uf: 'RS', name: 'Rio Grande do Sul', sub: 'Governador · Email · Variação >3%', on: true },
+        ].map(a => `
           <div class="alt-row">
             <div><div class="alt-uf" onclick="navigate('uf','${a.uf}')">${a.uf} — ${a.name}</div><div class="alt-sub">${a.sub}</div></div>
             <div style="display:flex;align-items:center;gap:8px">
               <button class="ico-btn">✏️</button>
               <button class="ico-btn">🗑</button>
-              <button class="toggle ${a.on?'on':''}" onclick="this.classList.toggle('on')"></button>
+              <button class="toggle ${a.on ? 'on' : ''}" onclick="this.classList.toggle('on')"></button>
             </div>
           </div>`).join('')}
         </div>
@@ -952,14 +2826,14 @@ function pageAlertas(){
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📬</div>Últimas notificações</div>
           ${[
-            {uf:'SP',msg:'Nova pesquisa Datafolha para Gov. SP registrada',ago:'há 12 min',novo:true},
-            {uf:'RJ',msg:'Quaest Gov. RJ: variação de 4,2% em relação à pesquisa anterior',ago:'há 3h',novo:true},
-            {uf:'MG',msg:'Nova pesquisa Ipec para Gov. MG',ago:'ontem',novo:false},
-            {uf:'RS',msg:'AtlasIntel — Senado RS: nova pesquisa registrada',ago:'2 dias',novo:false},
-          ].map(n=>`
+          { uf: 'SP', msg: 'Nova pesquisa Datafolha para Gov. SP registrada', ago: 'há 12 min', novo: true },
+          { uf: 'RJ', msg: 'Quaest Gov. RJ: variação de 4,2% em relação à pesquisa anterior', ago: 'há 3h', novo: true },
+          { uf: 'MG', msg: 'Nova pesquisa Ipec para Gov. MG', ago: 'ontem', novo: false },
+          { uf: 'RS', msg: 'AtlasIntel — Senado RS: nova pesquisa registrada', ago: '2 dias', novo: false },
+        ].map(n => `
           <div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start">
-            <div style="width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;background:${n.novo?'var(--g)':'var(--border2)'}"></div>
-            <div style="flex:1"><div style="font-size:12.5px;font-weight:${n.novo?'500':'400'};color:var(--ink)">${n.msg}</div>
+            <div style="width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;background:${n.novo ? 'var(--g)' : 'var(--border2)'}"></div>
+            <div style="flex:1"><div style="font-size:12.5px;font-weight:${n.novo ? '500' : '400'};color:var(--ink)">${n.msg}</div>
               <div style="font-size:10.5px;color:var(--mu2);margin-top:2px">${n.uf} · ${n.ago}</div>
             </div>
             <span class="c-link" style="font-size:11px" onclick="navigate('uf','${n.uf}')">Ver →</span>
@@ -967,26 +2841,26 @@ function pageAlertas(){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: CALENDÁRIO ──────────────────────────────────────────────────────────
-function pageCalendario(){
-  const evs=[
-    {data:'14/05/2026',tipo:'Registro',desc:'Prazo para registro de candidaturas no TSE',dot:'db',tag:'trg'},
-    {data:'23/05/2026',tipo:'Propaganda',desc:'Início da propaganda eleitoral gratuita no rádio e TV',dot:'da',tag:'tpr'},
-    {data:'30/05/2026',tipo:'Prazo',desc:'Prazo para divulgação de pesquisas (quinzena)',dot:'dr',tag:'tpz'},
-    {data:'15/08/2026',tipo:'Prazo',desc:'Prazo final para filiação partidária',dot:'dr',tag:'tpz'},
-    {data:'27/09/2026',tipo:'Prazo',desc:'Encerramento da propaganda eleitoral (48h antes)',dot:'dr',tag:'tpz'},
-    {data:'04/10/2026',tipo:'Votação',desc:'1° Turno — Eleições Gerais 2026',dot:'dg',tag:'tvt'},
-    {data:'11/10/2026',tipo:'Prazo',desc:'Registro dos resultados do 1° Turno',dot:'db',tag:'trg'},
-    {data:'25/10/2026',tipo:'Votação',desc:'2° Turno — Eleições Gerais 2026',dot:'dg',tag:'tvt'},
-    {data:'10/11/2026',tipo:'Registro',desc:'Diplomação dos eleitos no 1° Turno',dot:'db',tag:'trg'},
-    {data:'01/01/2027',tipo:'Registro',desc:'Posse dos governadores e senadores eleitos',dot:'db',tag:'trg'},
-  ];
-  return `${bc({label:'Início',page:'home'},{label:'Calendário 2026'})}
-    ${heroStrip('Prazos oficiais TSE','Calendário Eleitoral 2026','Todos os eventos, prazos e datas oficiais das eleições gerais',hstat('149','Dias para o 1° turno',true)+hdiv()+hstat('4 out','Data da eleição'))}
+    // ── PAGE: CALENDÁRIO ──────────────────────────────────────────────────────────
+    function pageCalendario() {
+      const evs = [
+        { data: '14/05/2026', tipo: 'Registro', desc: 'Prazo para registro de candidaturas no TSE', dot: 'db', tag: 'trg' },
+        { data: '23/05/2026', tipo: 'Propaganda', desc: 'Início da propaganda eleitoral gratuita no rádio e TV', dot: 'da', tag: 'tpr' },
+        { data: '30/05/2026', tipo: 'Prazo', desc: 'Prazo para divulgação de pesquisas (quinzena)', dot: 'dr', tag: 'tpz' },
+        { data: '15/08/2026', tipo: 'Prazo', desc: 'Prazo final para filiação partidária', dot: 'dr', tag: 'tpz' },
+        { data: '27/09/2026', tipo: 'Prazo', desc: 'Encerramento da propaganda eleitoral (48h antes)', dot: 'dr', tag: 'tpz' },
+        { data: '04/10/2026', tipo: 'Votação', desc: '1° Turno — Eleições Gerais 2026', dot: 'dg', tag: 'tvt' },
+        { data: '11/10/2026', tipo: 'Prazo', desc: 'Registro dos resultados do 1° Turno', dot: 'db', tag: 'trg' },
+        { data: '25/10/2026', tipo: 'Votação', desc: '2° Turno — Eleições Gerais 2026', dot: 'dg', tag: 'tvt' },
+        { data: '10/11/2026', tipo: 'Registro', desc: 'Diplomação dos eleitos no 1° Turno', dot: 'db', tag: 'trg' },
+        { data: '01/01/2027', tipo: 'Registro', desc: 'Posse dos governadores e senadores eleitos', dot: 'db', tag: 'trg' },
+      ];
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Calendário 2026' })}
+    ${heroStrip('Prazos oficiais TSE', 'Calendário Eleitoral 2026', 'Todos os eventos, prazos e datas oficiais das eleições gerais', hstat('149', 'Dias para o 1° turno', true) + hdiv() + hstat('4 out', 'Data da eleição'))}
     <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center">
-      ${['Todos','Votação','Prazos','Registro','Propaganda'].map((t,i)=>`<button class="chip ${i===0?'active':''}" onclick="setChip(this)">${t}</button>`).join('')}
+      ${['Todos', 'Votação', 'Prazos', 'Registro', 'Propaganda'].map((t, i) => `<button class="chip ${i === 0 ? 'active' : ''}" onclick="setChip(this)">${t}</button>`).join('')}
       <div style="margin-left:auto;display:flex;gap:8px">
         <button class="btn">📆 Google Calendar</button>
         <button class="btn btn-primary">📥 Exportar iCal</button>
@@ -994,7 +2868,7 @@ function pageCalendario(){
     </div>
     <div class="card">
       <div style="display:flex;flex-direction:column;gap:9px">
-        ${evs.map(e=>`
+        ${evs.map(e => `
         <div class="ev-item">
           <div class="ev-dot ${e.dot}"></div>
           <div class="ev-body"><div class="ev-txt" style="font-size:13px">${e.desc}</div><div class="ev-date">${e.data}</div></div>
@@ -1003,29 +2877,29 @@ function pageCalendario(){
         </div>`).join('')}
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: API ─────────────────────────────────────────────────────────────────
-function pageAPI(){
-  const eps=[
-    {m:'GET',p:'/api/elections?year=&uf=&cargo=',d:'Lista eleições com filtros'},
-    {m:'GET',p:'/api/elections/{id}',d:'Detalhe de uma eleição'},
-    {m:'GET',p:'/api/polls?uf=&cargo=&institute=&from=&to=',d:'Lista pesquisas registradas'},
-    {m:'GET',p:'/api/polls/{id}',d:'Detalhe completo de uma pesquisa'},
-    {m:'POST',p:'/api/alerts',d:'Criar assinatura de alerta por UF'},
-    {m:'GET',p:'/api/calendar?uf=&from=&to=',d:'Eventos do calendário eleitoral'},
-    {m:'GET',p:'/api/news?tags=&uf=',d:'Feed de notícias categorizado'},
-  ];
-  return `${bc({label:'Início',page:'home'},{label:'API / Dados abertos'})}
-    ${heroStrip('Acesso programático','API pública VotaData','REST/JSON · OpenAPI 3.0 · Gratuita para uso não-comercial')}
+    // ── PAGE: API ─────────────────────────────────────────────────────────────────
+    function pageAPI() {
+      const eps = [
+        { m: 'GET', p: '/api/elections?year=&uf=&cargo=', d: 'Lista eleições com filtros' },
+        { m: 'GET', p: '/api/elections/{id}', d: 'Detalhe de uma eleição' },
+        { m: 'GET', p: '/api/polls?uf=&cargo=&institute=&from=&to=', d: 'Lista pesquisas registradas' },
+        { m: 'GET', p: '/api/polls/{id}', d: 'Detalhe completo de uma pesquisa' },
+        { m: 'POST', p: '/api/alerts', d: 'Criar assinatura de alerta por UF' },
+        { m: 'GET', p: '/api/calendar?uf=&from=&to=', d: 'Eventos do calendário eleitoral' },
+        { m: 'GET', p: '/api/news?tags=&uf=', d: 'Feed de notícias categorizado' },
+      ];
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'API / Dados abertos' })}
+    ${heroStrip('Acesso programático', 'API pública VotaData', 'REST/JSON · OpenAPI 3.0 · Gratuita para uso não-comercial')}
     <div class="grid-main">
       <div class="left-col">
         <div class="card">
           <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🔌</div>Endpoints disponíveis</div><button class="btn">📄 OpenAPI spec</button></div>
           <div style="display:flex;flex-direction:column;gap:8px">
-            ${eps.map(e=>`
+            ${eps.map(e => `
             <div style="display:flex;align-items:flex-start;gap:12px;padding:11px 14px;background:var(--surf);border:1px solid var(--border);border-radius:9px">
-              <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;flex-shrink:0;font-family:var(--fm);background:${e.m==='GET'?'var(--gl)':'var(--bl)'};color:${e.m==='GET'?'var(--gd)':'var(--b)'}">${e.m}</span>
+              <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;flex-shrink:0;font-family:var(--fm);background:${e.m === 'GET' ? 'var(--gl)' : 'var(--bl)'};color:${e.m === 'GET' ? 'var(--gd)' : 'var(--b)'}">${e.m}</span>
               <div><div style="font-size:12.5px;font-weight:600;font-family:var(--fm);color:var(--ink)">${e.p}</div>
                 <div style="font-size:11px;color:var(--mu2);margin-top:2px">${e.d}</div></div>
             </div>`).join('')}
@@ -1041,7 +2915,7 @@ function pageAPI(){
         </div>
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📦</div>Downloads em massa</div>
-          ${[{l:'Histórico completo 2014–2024',s:'12 MB'},{l:'Pesquisas 2026 (atualização diária)',s:'3,4 MB'},{l:'Candidatos registrados 2026',s:'8,1 MB'}].map(x=>`
+          ${[{ l: 'Histórico completo 2014–2024', s: '12 MB' }, { l: 'Pesquisas 2026 (atualização diária)', s: '3,4 MB' }, { l: 'Candidatos registrados 2026', s: '8,1 MB' }].map(x => `
           <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--surf);border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
             <span style="font-size:12.5px;color:var(--ink3)">${x.l} <span style="color:var(--mu2)">(${x.s})</span></span>
             <button class="btn" style="font-size:11px">CSV ⬇</button>
@@ -1049,12 +2923,12 @@ function pageAPI(){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: SOBRE ───────────────────────────────────────────────────────────────
-function pageSobre(){
-  return `${bc({label:'Início',page:'home'},{label:'Sobre'})}
-    ${heroStrip('Missão & metodologia','Sobre o VotaData 2026','Transparência, fontes oficiais e metodologia aberta')}
+    // ── PAGE: SOBRE ───────────────────────────────────────────────────────────────
+    function pageSobre() {
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Sobre' })}
+    ${heroStrip('Missão & metodologia', 'Sobre o VotaData 2026', 'Transparência, fontes oficiais e metodologia aberta')}
     <div class="grid-main">
       <div class="left-col">
         <div class="card">
@@ -1064,13 +2938,13 @@ function pageSobre(){
         </div>
         <div class="card">
           <div class="card-hd"><div class="card-ttl"><div class="cicon cib">📚</div>Fontes de dados</div></div>
-          ${[{n:'Tribunal Superior Eleitoral (TSE)',u:'tse.jus.br',d:'Resultados oficiais, registro de candidatos e pesquisas'},
-             {n:'Tribunais Regionais Eleitorais (TREs)',u:'tre-*.jus.br',d:'Dados estaduais detalhados e atas de apuração'},
-             {n:'Institutos de pesquisa registrados',u:'',d:'Datafolha, Quaest, AtlasIntel, Ipec, Paraná Pesquisas e outros'},
-          ].map(f=>`
+          ${[{ n: 'Tribunal Superior Eleitoral (TSE)', u: 'tse.jus.br', d: 'Resultados oficiais, registro de candidatos e pesquisas' },
+        { n: 'Tribunais Regionais Eleitorais (TREs)', u: 'tre-*.jus.br', d: 'Dados estaduais detalhados e atas de apuração' },
+        { n: 'Institutos de pesquisa registrados', u: '', d: 'Datafolha, Quaest, AtlasIntel, Ipec, Paraná Pesquisas e outros' },
+        ].map(f => `
           <div style="padding:11px 0;border-bottom:1px solid var(--border)">
             <div style="font-size:13.5px;font-weight:600;color:var(--ink)">${f.n}</div>
-            ${f.u?`<div style="font-size:11px;color:var(--g);margin-top:2px;font-family:var(--fm)">${f.u}</div>`:''}
+            ${f.u ? `<div style="font-size:11px;color:var(--g);margin-top:2px;font-family:var(--fm)">${f.u}</div>` : ''}
             <div style="font-size:12px;color:var(--mu2);margin-top:3px">${f.d}</div>
           </div>`).join('')}
         </div>
@@ -1078,7 +2952,7 @@ function pageSobre(){
       <div class="right-col">
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">⚖️</div>Conformidade legal</div>
-          ${['LGPD — Lei Geral de Proteção de Dados (13.709/2018)','Resolução TSE nº 23.610/2019 — Pesquisas eleitorais','Código Eleitoral Brasileiro — Lei 9.504/1997','Política de dados abertos do governo federal'].map(l=>`
+          ${['LGPD — Lei Geral de Proteção de Dados (13.709/2018)', 'Resolução TSE nº 23.610/2019 — Pesquisas eleitorais', 'Código Eleitoral Brasileiro — Lei 9.504/1997', 'Política de dados abertos do governo federal'].map(l => `
           <div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink3)">
             <span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>${l}
           </div>`).join('')}
@@ -1094,11 +2968,11 @@ function pageSobre(){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE: DOWNLOAD ─────────────────────────────────────────────────────────────
-function pageDownload(){
-  return `${bc({label:'Início',page:'home'},{label:'Download do projeto'})}
+    // ── PAGE: DOWNLOAD ─────────────────────────────────────────────────────────────
+    function pageDownload() {
+      return `${bc({ label: 'Início', page: 'home' }, { label: 'Download do projeto' })}
     <div class="dl-panel" style="margin-bottom:20px">
       <div style="position:relative;z-index:1">
         <div style="font-size:10.5px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:20px;height:1.5px;background:var(--g2)"></span>Projeto completo</div>
@@ -1143,13 +3017,13 @@ function pageDownload(){
           <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🛠</div>Stack tecnológica do protótipo</div></div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
             ${[
-              {icon:'🌐',name:'HTML5 + CSS3',desc:'Single-file, sem build'},
-              {icon:'⚡',name:'JavaScript ES6+',desc:'Vanilla, sem frameworks'},
-              {icon:'🔤',name:'Playfair Display',desc:'Tipografia editorial'},
-              {icon:'📐',name:'CSS Grid & Flexbox',desc:'Layout responsivo'},
-              {icon:'🎨',name:'CSS Custom Properties',desc:'Design system tokens'},
-              {icon:'📊',name:'Canvas API',desc:'Gráficos de tendência'},
-            ].map(s=>`
+          { icon: '🌐', name: 'HTML5 + CSS3', desc: 'Single-file, sem build' },
+          { icon: '⚡', name: 'JavaScript ES6+', desc: 'Vanilla, sem frameworks' },
+          { icon: '🔤', name: 'Playfair Display', desc: 'Tipografia editorial' },
+          { icon: '📐', name: 'CSS Grid & Flexbox', desc: 'Layout responsivo' },
+          { icon: '🎨', name: 'CSS Custom Properties', desc: 'Design system tokens' },
+          { icon: '📊', name: 'Canvas API', desc: 'Gráficos de tendência' },
+        ].map(s => `
             <div style="background:var(--surf);border:1px solid var(--border);border-radius:9px;padding:12px 14px">
               <div style="font-size:20px;margin-bottom:6px">${s.icon}</div>
               <div style="font-size:13px;font-weight:600;color:var(--ink)">${s.name}</div>
@@ -1161,13 +3035,13 @@ function pageDownload(){
           <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🏗</div>Stack recomendada para produção</div></div>
           <div style="display:flex;flex-direction:column;gap:10px">
             ${[
-              {camada:'Frontend',tech:'Next.js + TypeScript + Tailwind CSS',icon:'⚛️'},
-              {camada:'Mapas',tech:'Mapbox GL JS ou Leaflet.js',icon:'🗺'},
-              {camada:'Backend',tech:'FastAPI (Python) ou NestJS (Node)',icon:'🚀'},
-              {camada:'Banco de dados',tech:'PostgreSQL + Elasticsearch',icon:'🗄'},
-              {camada:'Notificações',tech:'Firebase + SendGrid + Twilio',icon:'📣'},
-              {camada:'Hospedagem',tech:'AWS / GCP — Docker + Kubernetes',icon:'☁️'},
-            ].map(r=>`
+          { camada: 'Frontend', tech: 'Next.js + TypeScript + Tailwind CSS', icon: '⚛️' },
+          { camada: 'Mapas', tech: 'Mapbox GL JS ou Leaflet.js', icon: '🗺' },
+          { camada: 'Backend', tech: 'FastAPI (Python) ou NestJS (Node)', icon: '🚀' },
+          { camada: 'Banco de dados', tech: 'PostgreSQL + Elasticsearch', icon: '🗄' },
+          { camada: 'Notificações', tech: 'Firebase + SendGrid + Twilio', icon: '📣' },
+          { camada: 'Hospedagem', tech: 'AWS / GCP — Docker + Kubernetes', icon: '☁️' },
+        ].map(r => `
             <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surf);border:1px solid var(--border);border-radius:9px">
               <span style="font-size:18px;flex-shrink:0">${r.icon}</span>
               <div><div style="font-size:11px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em">${r.camada}</div>
@@ -1180,14 +3054,14 @@ function pageDownload(){
         <div class="card">
           <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cia">📋</div>Roadmap MVP</div>
           ${[
-            {sem:'0–2',fase:'Planejamento',desc:'Wireframes, fontes, requisitos'},
-            {sem:'3–6',fase:'Backend base',desc:'Modelos de dados, ingestão TSE'},
-            {sem:'7–10',fase:'Frontend dashboard',desc:'Mapa, pesquisas, filtros'},
-            {sem:'11–14',fase:'Alertas & Notícias',desc:'Push, email, CMS'},
-            {sem:'15–18',fase:'Calendário & Deploy',desc:'Testes, docs API, lançamento'},
-          ].map((r,i)=>`
+          { sem: '0–2', fase: 'Planejamento', desc: 'Wireframes, fontes, requisitos' },
+          { sem: '3–6', fase: 'Backend base', desc: 'Modelos de dados, ingestão TSE' },
+          { sem: '7–10', fase: 'Frontend dashboard', desc: 'Mapa, pesquisas, filtros' },
+          { sem: '11–14', fase: 'Alertas & Notícias', desc: 'Push, email, CMS' },
+          { sem: '15–18', fase: 'Calendário & Deploy', desc: 'Testes, docs API, lançamento' },
+        ].map((r, i) => `
           <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start">
-            <div style="width:28px;height:28px;border-radius:50%;background:${i===0?'var(--g)':'var(--surf2)'};border:2px solid ${i===0?'var(--g)':'var(--border2)'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:${i===0?'white':'var(--mu2)'};flex-shrink:0">${i+1}</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:${i === 0 ? 'var(--g)' : 'var(--surf2)'};border:2px solid ${i === 0 ? 'var(--g)' : 'var(--border2)'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:${i === 0 ? 'white' : 'var(--mu2)'};flex-shrink:0">${i + 1}</div>
             <div><div style="font-size:12px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.05em">Sem. ${r.sem}</div>
               <div style="font-size:13px;font-weight:600;color:var(--ink)">${r.fase}</div>
               <div style="font-size:12px;color:var(--mu2)">${r.desc}</div></div>
@@ -1195,7 +3069,7 @@ function pageDownload(){
         </div>
         <div class="card">
           <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">📊</div>Métricas de sucesso</div>
-          ${[{m:'Latência de publicação',v:'< 5 min'},{m:'Taxa de assinaturas/UF',v:'Meta: 500+'},{m:'Precisão de fontes oficiais',v:'> 98%'},{m:'Uptime da plataforma',v:'> 99,5%'}].map(x=>`
+          ${[{ m: 'Latência de publicação', v: '< 5 min' }, { m: 'Taxa de assinaturas/UF', v: 'Meta: 500+' }, { m: 'Precisão de fontes oficiais', v: '> 98%' }, { m: 'Uptime da plataforma', v: '> 99,5%' }].map(x => `
           <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border)">
             <span style="font-size:12.5px;color:var(--ink3)">${x.m}</span>
             <span style="font-size:13px;font-weight:700;color:var(--g);font-family:var(--fm)">${x.v}</span>
@@ -1203,89 +3077,90 @@ function pageDownload(){
         </div>
       </div>
     </div>`;
-}
+    }
 
-// ── PAGE MAP ──────────────────────────────────────────────────────────────────
-const PAGES={home:pageHome,eleicoes:pageEleicoes,pesquisas:pagePesquisas,uf:pageUF,alertas:pageAlertas,noticias:pageNoticias,calendario:pageCalendario,api:pageAPI,sobre:pageSobre,download:pageDownload};
+    // ── PAGE MAP ──────────────────────────────────────────────────────────────────
+    const PAGES = { home: pageHome, eleicoes: pageEleicoes, pesquisas: pagePesquisas, uf: pageUF, alertas: pageAlertas, noticias: pageNoticias, calendario: pageCalendario, api: pageAPI, sobre: pageSobre, download: pageDownload };
 
-// ── EVENTS ───────────────────────────────────────────────────────────────────
-function setChip(el){
-  const parent=el.closest('.chip-row,.filter-chips');
-  if(parent) parent.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-}
-function switchTab(el,showId){
-  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  ['t-hist','t-trend'].forEach(id=>{
-    const e=document.getElementById(id);
-    if(e) e.style.display=id===showId?'':'none';
-  });
-  if(showId==='t-trend') drawTrend();
-}
-function drawTrend(){
-  const canvas=document.getElementById('trendCanvas');
-  if(!canvas||!currentUF) return;
-  const d=UF_DATA[currentUF];
-  if(!d) return;
-  const ctx=canvas.getContext('2d');
-  const W=canvas.parentElement.offsetWidth, H=190;
-  canvas.width=W; canvas.height=H;
-  const pts=[...d.history].reverse();
-  const pcts=pts.map(p=>p.pct);
-  const minV=Math.min(...pcts)-8, maxV=100;
-  const pad={l:44,r:20,t:24,b:32};
-  const toX=i=>pad.l+i*(W-pad.l-pad.r)/(pts.length-1||1);
-  const toY=v=>pad.t+(maxV-v)/(maxV-minV)*(H-pad.t-pad.b);
-  ctx.clearRect(0,0,W,H);
-  [40,50,60,70,80].forEach(v=>{
-    ctx.strokeStyle='#dde3ec';ctx.lineWidth=1;
-    ctx.setLineDash([4,4]);
-    ctx.beginPath();ctx.moveTo(pad.l,toY(v));ctx.lineTo(W-pad.r,toY(v));ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='#8896aa';ctx.font='10px Inter,sans-serif';ctx.textAlign='right';
-    ctx.fillText(v+'%',pad.l-8,toY(v)+4);
-  });
-  const grad=ctx.createLinearGradient(0,pad.t,0,H-pad.b);
-  grad.addColorStop(0,'rgba(11,138,92,.15)');grad.addColorStop(1,'rgba(11,138,92,0)');
-  ctx.fillStyle=grad;
-  ctx.beginPath();ctx.moveTo(toX(0),toY(pts[0].pct));
-  pts.forEach((p,i)=>ctx.lineTo(toX(i),toY(p.pct)));
-  ctx.lineTo(toX(pts.length-1),H-pad.b);ctx.lineTo(toX(0),H-pad.b);ctx.closePath();ctx.fill();
-  ctx.strokeStyle='#0b8a5c';ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.setLineDash([]);
-  ctx.beginPath();
-  pts.forEach((p,i)=>i===0?ctx.moveTo(toX(i),toY(p.pct)):ctx.lineTo(toX(i),toY(p.pct)));
-  ctx.stroke();
-  pts.forEach((p,i)=>{
-    ctx.fillStyle='#0b8a5c';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),5,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='white';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),2.5,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#0a0f1e';ctx.font='bold 10.5px Inter,sans-serif';ctx.textAlign='center';
-    ctx.fillText(p.ano,toX(i),H-pad.b+18);
-    ctx.fillStyle='#054d35';ctx.font='bold 10px Inter,sans-serif';
-    ctx.fillText(p.pct+'%',toX(i),toY(p.pct)-10);
-  });
-}
+    // ── EVENTS ───────────────────────────────────────────────────────────────────
+    function setChip(el) {
+      const parent = el.closest('.chip-row,.filter-chips');
+      if (parent) parent.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+    function switchTab(el, showId) {
+      el.closest('.tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      ['t-hist', 't-trend'].forEach(id => {
+        const e = document.getElementById(id);
+        if (e) e.style.display = id === showId ? '' : 'none';
+      });
+      if (showId === 't-trend') drawTrend();
+    }
+    function drawTrend() {
+      const canvas = document.getElementById('trendCanvas');
+      if (!canvas || !currentUF) return;
+      const d = UF_DATA[currentUF];
+      if (!d) return;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.parentElement.offsetWidth, H = 190;
+      canvas.width = W; canvas.height = H;
+      const pts = [...d.history].reverse();
+      const pcts = pts.map(p => p.pct);
+      const minV = Math.min(...pcts) - 8, maxV = 100;
+      const pad = { l: 44, r: 20, t: 24, b: 32 };
+      const toX = i => pad.l + i * (W - pad.l - pad.r) / (pts.length - 1 || 1);
+      const toY = v => pad.t + (maxV - v) / (maxV - minV) * (H - pad.t - pad.b);
+      ctx.clearRect(0, 0, W, H);
+      [40, 50, 60, 70, 80].forEach(v => {
+        ctx.strokeStyle = '#dde3ec'; ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(pad.l, toY(v)); ctx.lineTo(W - pad.r, toY(v)); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#8896aa'; ctx.font = '10px Inter,sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v + '%', pad.l - 8, toY(v) + 4);
+      });
+      const grad = ctx.createLinearGradient(0, pad.t, 0, H - pad.b);
+      grad.addColorStop(0, 'rgba(11,138,92,.15)'); grad.addColorStop(1, 'rgba(11,138,92,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.moveTo(toX(0), toY(pts[0].pct));
+      pts.forEach((p, i) => ctx.lineTo(toX(i), toY(p.pct)));
+      ctx.lineTo(toX(pts.length - 1), H - pad.b); ctx.lineTo(toX(0), H - pad.b); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#0b8a5c'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.setLineDash([]);
+      ctx.beginPath();
+      pts.forEach((p, i) => i === 0 ? ctx.moveTo(toX(i), toY(p.pct)) : ctx.lineTo(toX(i), toY(p.pct)));
+      ctx.stroke();
+      pts.forEach((p, i) => {
+        ctx.fillStyle = '#0b8a5c'; ctx.beginPath(); ctx.arc(toX(i), toY(p.pct), 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = 'white'; ctx.beginPath(); ctx.arc(toX(i), toY(p.pct), 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#0a0f1e'; ctx.font = 'bold 10.5px Inter,sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(p.ano, toX(i), H - pad.b + 18);
+        ctx.fillStyle = '#054d35'; ctx.font = 'bold 10px Inter,sans-serif';
+        ctx.fillText(p.pct + '%', toX(i), toY(p.pct) - 10);
+      });
+    }
 
-function downloadHTML(){
-  const src=document.documentElement.outerHTML;
-  const blob=new Blob([src],{type:'text/html;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='votadata2026.html';
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
+    function downloadHTML() {
+      const src = document.documentElement.outerHTML;
+      const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'votadata2026.html';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
 
-function bindAll(){
-  // Animate bar fills
-  setTimeout(()=>{
-    document.querySelectorAll('.bc-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target});
-    document.querySelectorAll('.bc-fill').forEach(el=>{if(el.style.width==='0%'&&!el.dataset.target) el.style.width='0%'});
-  },80);
-}
+    function bindAll() {
+      // Animate bar fills
+      setTimeout(() => {
+        document.querySelectorAll('.bc-fill[data-target]').forEach(el => { el.style.width = el.dataset.target });
+        document.querySelectorAll('.bc-fill').forEach(el => { if (el.style.width === '0%' && !el.dataset.target) el.style.width = '0%' });
+      }, 80);
+    }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-navigate('home');
-</script>
+    // ── INIT ──────────────────────────────────────────────────────────────────────
+    navigate('home');
+  </script>
 </body>
+
 </html>
