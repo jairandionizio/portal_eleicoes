@@ -6,1171 +6,1286 @@
 <title>VotaData 2026 — Portal Eleitoral</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --green: #0e9f6e;
-  --green-light: #d1fae5;
-  --green-dark: #065f46;
-  --green-mid: #34d399;
-  --blue: #2563eb;
-  --blue-light: #dbeafe;
-  --amber: #d97706;
-  --amber-light: #fef3c7;
-  --red: #dc2626;
-  --red-light: #fee2e2;
-  --purple: #7c3aed;
-  --purple-light: #ede9fe;
-  --ink: #0f172a;
-  --ink-2: #1e293b;
-  --ink-3: #334155;
-  --muted: #64748b;
-  --muted-2: #94a3b8;
-  --border: #e2e8f0;
-  --border-2: #cbd5e1;
-  --surface: #f8fafc;
-  --white: #ffffff;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --radius: 10px;
-  --radius-lg: 16px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+:root{
+  --g:#0b8a5c;--g2:#06b37a;--gd:#054d35;--gl:#e6f7f1;--gll:#f0fbf7;
+  --b:#1a56db;--bl:#e8f0fe;--r:#c0392b;--rl:#fdecea;
+  --am:#b45309;--aml:#fef3c7;--pu:#6d28d9;--pul:#ede9fe;
+  --ink:#0a0f1e;--ink2:#1c2333;--ink3:#2d3748;--mu:#56657f;--mu2:#8896aa;
+  --border:#dde3ec;--border2:#c8d2df;--surf:#f5f7fa;--surf2:#eef1f6;--white:#fff;
+  --fd:'Playfair Display',Georgia,serif;
+  --fs:'Inter',-apple-system,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --rad:8px;--radlg:14px;--radxl:20px;
+  --sh:0 1px 4px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shmd:0 4px 16px rgba(0,0,0,.09),0 2px 6px rgba(0,0,0,.05);
+  --shlg:0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fs);background:var(--surf);color:var(--ink);font-size:14px;line-height:1.6;min-height:100vh}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 14px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
+/* ── TOP TICKER ── */
+.ticker-bar{background:var(--ink);padding:7px 24px;display:flex;align-items:center;gap:12px;overflow:hidden}
+.ticker-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);flex-shrink:0;border:1px solid var(--g);border-radius:3px;padding:2px 8px}
+.ticker-track{overflow:hidden;flex:1}
+.ticker-inner{display:flex;gap:40px;animation:ticker 28s linear infinite;white-space:nowrap}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{font-size:12px;color:rgba(255,255,255,.75);flex-shrink:0;cursor:pointer}
+.ticker-item span{color:var(--g2);font-weight:600;margin-right:6px}
+.ticker-item:hover{color:white}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── TOPBAR ── */
-.topbar {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  height: 56px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:18px;height:60px;position:sticky;top:0;z-index:300;box-shadow:var(--sh)}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0}
+.logo-mark{width:36px;height:36px;background:var(--ink);border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative}
+.logo-mark::after{content:'';position:absolute;inset:0;border-radius:9px;background:linear-gradient(135deg,rgba(6,179,122,.3),transparent);pointer-events:none}
+.logo-mark svg{width:20px;height:20px;fill:var(--g2)}
+.logo-wordmark{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.logo-name span{color:var(--g)}
+.logo-tagline{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2)}
+.search-wrap{flex:1;max-width:440px}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--surf);border:1.5px solid var(--border2);border-radius:var(--rad);padding:8px 14px;transition:all .2s}
+.search-box:focus-within{border-color:var(--g);background:white;box-shadow:0 0 0 3px rgba(11,138,92,.1)}
+.search-box input{border:none;background:none;outline:none;font-family:var(--fs);font-size:13px;color:var(--ink);width:100%}
+.search-box input::placeholder{color:var(--mu2)}
+.search-icon{color:var(--mu2);flex-shrink:0;width:16px;height:16px}
+.topbar-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.btn{font-family:var(--fs);font-size:12.5px;padding:7px 16px;border-radius:var(--rad);border:1.5px solid var(--border2);background:transparent;color:var(--mu);cursor:pointer;transition:all .15s;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--surf);border-color:var(--border)}
+.btn-primary{background:var(--g);color:white;border-color:var(--g);box-shadow:0 1px 4px rgba(11,138,92,.3)}
+.btn-primary:hover{background:var(--gd);border-color:var(--gd);box-shadow:0 2px 8px rgba(11,138,92,.35)}
+.btn-ghost{border-color:transparent;color:var(--mu)}
+.btn-ghost:hover{background:var(--surf);border-color:var(--border)}
+.btn-download{background:var(--ink);color:white;border-color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.btn-download:hover{background:var(--ink2)}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:white;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ef4444;animation:pulse 1.5s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.logo-mark {
-  width: 32px;
-  height: 32px;
-  background: var(--ink);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo-mark svg { width: 18px; height: 18px; fill: var(--green-mid); }
-.logo-text {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.logo-text span { color: var(--green); }
-
-.search-wrap {
-  flex: 1;
-  max-width: 480px;
-}
-.search-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border-2);
-  border-radius: 8px;
-  padding: 7px 12px;
-  transition: border-color 0.2s;
-}
-.search-box:focus-within { border-color: var(--green); }
-.search-box input {
-  border: none;
-  background: none;
-  outline: none;
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--ink);
-  width: 100%;
-}
-.search-box input::placeholder { color: var(--muted-2); }
-.search-icon { color: var(--muted-2); flex-shrink: 0; }
-
-.topbar-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.btn-sm {
-  font-family: var(--font-body);
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 7px;
-  border: 1px solid var(--border-2);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all 0.15s;
-  font-weight: 500;
-}
-.btn-sm:hover { background: var(--surface); border-color: var(--border); }
-.btn-primary {
-  background: var(--green);
-  color: white;
-  border-color: var(--green);
-}
-.btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
-
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--green), var(--blue));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-}
-
-/* ── NAV ── */
-.navbar {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.navbar::-webkit-scrollbar { display: none; }
-.nav-item {
-  font-size: 13px;
-  color: var(--muted);
-  padding: 12px 14px;
-  cursor: pointer;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: all 0.15s;
-  font-weight: 500;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.nav-item:hover { color: var(--ink); }
-.nav-item.active { color: var(--green); border-bottom-color: var(--green); }
-.nav-badge {
-  font-size: 10px;
-  background: var(--green);
-  color: white;
-  padding: 1px 6px;
-  border-radius: 99px;
-  font-weight: 600;
-}
+/* ── NAVBAR ── */
+.navbar{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:60px;z-index:299}
+.navbar::-webkit-scrollbar{display:none}
+.nav-item{font-size:13px;color:var(--mu);padding:13px 15px;cursor:pointer;white-space:nowrap;border-bottom:2.5px solid transparent;transition:all .15s;font-weight:500;display:flex;align-items:center;gap:6px;position:relative}
+.nav-item:hover{color:var(--ink)}
+.nav-item.active{color:var(--g);border-bottom-color:var(--g);font-weight:600}
+.nav-badge{font-size:10px;background:var(--g);color:white;padding:1px 7px;border-radius:99px;font-weight:700}
+.nav-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
+.nav-new{font-size:9px;font-weight:700;color:white;background:var(--r);border-radius:3px;padding:1px 5px;letter-spacing:.05em;position:absolute;top:8px;right:4px}
 
 /* ── LAYOUT ── */
-.page { max-width: 1280px; margin: 0 auto; padding: 20px 24px 40px; }
+.page{max-width:1340px;margin:0 auto;padding:24px 28px 80px}
+.page-anim{animation:fadeUp .22s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HERO STRIP ── */
-.hero-strip {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 18px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-strip::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 80% 50%, rgba(52,211,153,0.12) 0%, transparent 60%);
-  pointer-events: none;
-}
-.hero-left { position: relative; }
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--green-mid);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-.hero-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-}
-.hero-right { display: flex; gap: 28px; position: relative; }
-.hero-stat { text-align: center; }
-.hero-stat-num {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.03em;
-}
-.hero-stat-num.accent { color: var(--green-mid); }
-.hero-stat-label {
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-  margin-top: 1px;
-}
-.hero-divider { width: 1px; background: rgba(255,255,255,0.1); }
-
-/* ── GRID ── */
-.grid-main {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 16px;
-  align-items: start;
-}
-.left-col { display: flex; flex-direction: column; gap: 16px; }
-.right-col { display: flex; flex-direction: column; gap: 16px; }
-
-/* ── CARD ── */
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 18px 20px;
-  box-shadow: var(--shadow);
-}
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-.card-title {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.card-title-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.icon-green { background: var(--green-light); color: var(--green-dark); }
-.icon-blue { background: var(--blue-light); color: var(--blue); }
-.icon-amber { background: var(--amber-light); color: var(--amber); }
-.icon-purple { background: var(--purple-light); color: var(--purple); }
-.card-link { font-size: 12px; color: var(--green); text-decoration: none; font-weight: 500; }
-.card-link:hover { color: var(--green-dark); }
-
-/* ── METRICS ROW ── */
-.metrics-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.metric-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-}
-.metric-label {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
-.metric-value {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.03em;
-}
-.metric-sub {
-  font-size: 11px;
-  color: var(--muted-2);
-  margin-top: 3px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.metric-sub.up { color: var(--green); }
-.metric-sub.up::before { content: '↑'; }
-
-/* ── UF GRID (mapa simplificado) ── */
-.uf-section { margin-bottom: 10px; }
-.filter-chips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-.chip {
-  font-size: 12px;
-  padding: 5px 13px;
-  border-radius: 99px;
-  border: 1px solid var(--border-2);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-weight: 500;
-  transition: all 0.15s;
-}
-.chip:hover { background: var(--surface); }
-.chip.active { background: var(--ink); color: white; border-color: var(--ink); }
-
-.uf-grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 5px;
-}
-.uf-cell {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  letter-spacing: 0;
-  font-family: var(--font-display);
-}
-.uf-cell:hover { transform: scale(1.08); box-shadow: var(--shadow-md); }
-.uf-h { background: var(--green-dark); color: white; }
-.uf-m { background: var(--green); color: white; }
-.uf-l { background: var(--green-light); color: var(--green-dark); }
-.uf-n { background: var(--surface); color: var(--muted-2); border: 1px solid var(--border); }
-
-.map-legend {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
-.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
-
-/* ── POLLS LIST ── */
-.poll-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.12s;
-  cursor: pointer;
-}
-.poll-row:last-child { border-bottom: none; padding-bottom: 0; }
-.poll-row:hover { background: var(--surface); margin: 0 -4px; padding-left: 4px; padding-right: 4px; border-radius: 8px; }
-.uf-pill {
-  font-size: 11px;
-  font-weight: 700;
-  font-family: var(--font-display);
-  padding: 4px 9px;
-  border-radius: 6px;
-  min-width: 36px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.pill-sp { background: #dbeafe; color: #1e40af; }
-.pill-rj { background: #fce7f3; color: #9d174d; }
-.pill-mg { background: #ede9fe; color: #5b21b6; }
-.pill-rs { background: #fef3c7; color: #92400e; }
-.pill-ba { background: #d1fae5; color: #065f46; }
-.pill-pr { background: #fee2e2; color: #991b1b; }
-.poll-info { flex: 1; min-width: 0; }
-.poll-title { font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.poll-meta { font-size: 11px; color: var(--muted-2); margin-top: 1px; }
-.poll-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.poll-date { font-size: 11px; color: var(--muted-2); }
-.icon-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
-  border: 1px solid var(--border);
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: var(--muted);
-  transition: all 0.15s;
-}
-.icon-btn:hover { background: var(--green-light); color: var(--green-dark); border-color: var(--green-light); }
-
-/* ── CANDID CHART WIDGET ── */
-.poll-chart-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-.poll-chart-row:last-child { margin-bottom: 0; }
-.cand-name { font-size: 12px; font-weight: 500; width: 90px; flex-shrink: 0; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-.bar-a { background: var(--green); }
-.bar-b { background: var(--blue); }
-.bar-c { background: var(--amber); }
-.bar-d { background: var(--muted-2); }
-.bar-pct { font-size: 12px; font-weight: 600; font-family: var(--font-display); color: var(--ink); min-width: 34px; text-align: right; }
-
-/* ── TREND CHART (mini) ── */
-canvas { display: block; }
-
-/* ── CALENDAR SIDE ── */
-.countdown-block {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.countdown-unit {
-  flex: 1;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 6px;
-  text-align: center;
-}
-.countdown-num {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--green);
-  letter-spacing: -0.03em;
-}
-.countdown-label { font-size: 10px; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px; }
-
-.cal-mini { margin-bottom: 14px; }
-.cal-month-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-.cal-month-label { font-size: 12px; font-weight: 600; color: var(--ink); }
-.cal-nav { font-size: 18px; color: var(--muted-2); cursor: pointer; padding: 0 4px; background: none; border: none; line-height: 1; }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
-.cal-head { font-size: 9px; font-weight: 600; text-align: center; color: var(--muted-2); text-transform: uppercase; padding: 3px 0; }
-.cal-day {
-  font-size: 11px;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all 0.12s;
-}
-.cal-day:hover { background: var(--surface); color: var(--ink); }
-.cal-day.today { background: var(--ink); color: white; font-weight: 700; }
-.cal-day.event-day { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
-.cal-day.other-month { color: var(--border-2); }
-
-.events-list { display: flex; flex-direction: column; gap: 8px; }
-.event-item {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 8px 10px;
-  border-radius: 9px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-.event-item:hover { border-color: var(--border-2); }
-.event-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-.dot-blue { background: var(--blue); }
-.dot-red { background: var(--red); }
-.dot-green { background: var(--green); }
-.dot-amber { background: var(--amber); }
-.event-text { font-size: 12px; color: var(--ink-3); font-weight: 500; line-height: 1.35; }
-.event-date { font-size: 10px; color: var(--muted-2); margin-top: 2px; }
-.event-tag {
-  font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 5px;
-  font-weight: 600;
-  margin-left: auto;
-  flex-shrink: 0;
-  align-self: flex-start;
-}
-.tag-prazo { background: var(--red-light); color: var(--red); }
-.tag-voto { background: var(--green-light); color: var(--green-dark); }
-.tag-reg { background: var(--blue-light); color: var(--blue); }
-.tag-prop { background: var(--amber-light); color: var(--amber); }
-
-/* ── NEWS ── */
-.news-item {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  transition: all 0.12s;
-}
-.news-item:last-child { border-bottom: none; padding-bottom: 0; }
-.news-tag-wrap { margin-bottom: 4px; }
-.news-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.ntag-p { background: var(--blue-light); color: var(--blue); }
-.ntag-a { background: var(--purple-light); color: var(--purple); }
-.ntag-r { background: var(--green-light); color: var(--green-dark); }
-.ntag-l { background: var(--amber-light); color: var(--amber); }
-.news-headline {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1.45;
-  margin-bottom: 3px;
-}
-.news-byline { font-size: 10px; color: var(--muted-2); display: flex; gap: 6px; }
-.news-byline-sep { color: var(--border-2); }
-
-/* ── ALERTS PANEL ── */
-.alert-state-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-}
-.alert-state-row:last-child { border-bottom: none; }
-.alert-uf { font-size: 13px; font-weight: 700; font-family: var(--font-display); color: var(--ink); }
-.alert-sub { font-size: 11px; color: var(--muted-2); margin-top: 1px; }
-.toggle {
-  width: 36px;
-  height: 20px;
-  background: var(--border-2);
-  border-radius: 99px;
-  cursor: pointer;
-  position: relative;
-  transition: background 0.2s;
-  border: none;
-  flex-shrink: 0;
-}
-.toggle.on { background: var(--green); }
-.toggle::after {
-  content: '';
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: white;
-  top: 3px;
-  left: 3px;
-  transition: left 0.2s;
-}
-.toggle.on::after { left: 19px; }
-
-/* ── FOOTER ── */
-.footer {
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 32px;
-}
-.footer-links { display: flex; gap: 16px; }
-.footer-link { font-size: 11px; color: var(--muted); text-decoration: none; }
-.footer-link:hover { color: var(--ink); }
-.footer-copy { font-size: 11px; color: var(--muted-2); }
-
-/* ── SECTION DIVIDER ── */
-.section-label {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted-2);
-  margin-bottom: 10px;
-}
+/* ── BREADCRUMB ── */
+.breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mu2);margin-bottom:18px}
+.bc-link{color:var(--g);cursor:pointer;font-weight:500}
+.bc-link:hover{color:var(--gd)}
+.bc-sep{color:var(--border2)}
 
 /* ── ALERT BANNER ── */
-.alert-banner {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--green-light);
-  border: 1px solid #a7f3d0;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
-  font-size: 12px;
-  color: var(--green-dark);
-}
-.alert-banner strong { font-weight: 600; }
-.alert-banner-icon { font-size: 16px; }
-.alert-dismiss { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--green-dark); font-size: 16px; opacity: 0.6; }
-.alert-dismiss:hover { opacity: 1; }
+.alert-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,#f0fbf7,#e6f7f1);border:1px solid #a7e8d0;border-radius:var(--rad);padding:11px 16px;margin-bottom:20px;font-size:12.5px;color:var(--gd)}
+.alert-banner strong{font-weight:600}
+.alert-dismiss{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--g);font-size:18px;opacity:.6;line-height:1}
+.alert-dismiss:hover{opacity:1}
 
-@media (max-width: 900px) {
-  .grid-main { grid-template-columns: 1fr; }
-  .hero-right { gap: 16px; }
-  .metrics-row { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .topbar { padding: 0 14px; gap: 10px; }
-  .page { padding: 14px 14px 32px; }
-  .hero-strip { flex-direction: column; align-items: flex-start; }
-  .uf-grid { grid-template-columns: repeat(7, 1fr); }
-}
+/* ── HERO ── */
+.hero-strip{background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 100%);border-radius:var(--radxl);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px;position:relative;overflow:hidden}
+.hero-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(6,179,122,.15) 0%,transparent 55%);pointer-events:none}
+.hero-strip::after{content:'';position:absolute;bottom:-40px;right:-40px;width:200px;height:200px;border-radius:50%;border:40px solid rgba(6,179,122,.05);pointer-events:none}
+.hero-left{position:relative;z-index:1}
+.hero-eye{font-size:10.5px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.hero-eye::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--g2)}
+.hero-title{font-family:var(--fd);font-size:26px;font-weight:700;color:white;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;max-width:360px}
+.hero-right{display:flex;gap:0;position:relative;z-index:1}
+.hero-stat{text-align:center;padding:0 28px;border-right:1px solid rgba(255,255,255,.08)}
+.hero-stat:last-child{border-right:none}
+.hstat-num{font-family:var(--fd);font-size:32px;font-weight:700;color:white;letter-spacing:-.04em;line-height:1}
+.hstat-num.g{color:var(--g2)}
+.hstat-label{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.03em}
+
+/* ── METRICS ── */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.mcard{background:var(--white);border:1px solid var(--border);border-radius:var(--radlg);padding:16px 18px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radlg) var(--radlg) 0 0}
+.mcard.mg::before{background:linear-gradient(90deg,var(--g),var(--g2))}
+.mcard.mb::before{background:linear-gradient(90deg,var(--b),#60a5fa)}
+.mcard.mr::before{background:linear-gradient(90deg,var(--r),#f87171)}
+.mcard.ma::before{background:linear-gradient(90deg,var(--am),#fbbf24)}
+.mlabel{font-size:10.5px;color:var(--mu2);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.mvalue{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.msub{font-size:11px;color:var(--mu2);margin-top:4px;display:flex;align-items:center;gap:4px}
+.msub.up{color:var(--g);font-weight:500}
+.msub.up::before{content:'▲ ';font-size:9px}
+
+/* ── GRID ── */
+.grid-main{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
+.left-col{display:flex;flex-direction:column;gap:18px}
+.right-col{display:flex;flex-direction:column;gap:18px}
+
+/* ── CARD ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radlg);padding:20px 22px;box-shadow:var(--sh)}
+.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.card-ttl{font-size:14px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
+.cicon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.cig{background:var(--gl);color:var(--gd)}.cib{background:var(--bl);color:var(--b)}.cia{background:var(--aml);color:var(--am)}.cip{background:var(--pul);color:var(--pu)}
+.c-link{font-size:12px;color:var(--g);font-weight:500;cursor:pointer;display:flex;align-items:center;gap:4px}
+.c-link:hover{color:var(--gd)}
+
+/* ── UF MAP ── */
+.chip-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font-size:12px;padding:5px 14px;border-radius:99px;border:1.5px solid var(--border2);background:transparent;color:var(--mu);cursor:pointer;font-family:var(--fs);font-weight:500;transition:all .15s}
+.chip:hover{background:var(--surf)}
+.chip.active{background:var(--ink);color:white;border-color:var(--ink)}
+.uf-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
+.uf-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;border-radius:7px;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'Inter',sans-serif;letter-spacing:.02em}
+.uf-cell:hover{transform:scale(1.12);box-shadow:var(--shmd);z-index:2;position:relative}
+.uf-h{background:var(--gd);color:white}
+.uf-m{background:var(--g);color:white}
+.uf-l{background:var(--gl);color:var(--gd)}
+.uf-n{background:var(--surf2);color:var(--mu2);border:1px solid var(--border)}
+.map-legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu)}
+.leg-dot{width:10px;height:10px;border-radius:3px}
+
+/* ── POLL ROWS ── */
+.poll-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all .12s}
+.poll-row:last-child{border-bottom:none;padding-bottom:0}
+.poll-row:hover{background:var(--surf);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:9px}
+.uf-pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;min-width:36px;text-align:center;flex-shrink:0;cursor:pointer;letter-spacing:.03em}
+.uf-pill:hover{opacity:.8}
+.p-sp{background:#dbeafe;color:#1e40af}.p-rj{background:#fce7f3;color:#9d174d}
+.p-mg{background:#ede9fe;color:#5b21b6}.p-rs{background:#fef3c7;color:#92400e}
+.p-ba{background:#d1fae5;color:#065f46}.p-pr{background:#fee2e2;color:#991b1b}
+.poll-info{flex:1;min-width:0}
+.poll-ttl{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.poll-meta{font-size:11px;color:var(--mu2);margin-top:1px}
+.poll-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.poll-date{font-size:11px;color:var(--mu2)}
+.ico-btn{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--mu);transition:all .15s;flex-shrink:0}
+.ico-btn:hover{background:var(--gl);color:var(--gd);border-color:#a7e8d0}
+
+/* ── BAR CHART ── */
+.bchart-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.bchart-row:last-child{margin-bottom:0}
+.bc-name{font-size:12px;font-weight:500;width:95px;flex-shrink:0;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bc-bar{flex:1;height:9px;background:var(--surf2);border-radius:99px;overflow:hidden}
+.bc-fill{height:100%;border-radius:99px;transition:width .9s cubic-bezier(.25,1,.5,1)}
+.bca{background:linear-gradient(90deg,var(--g),var(--g2))}
+.bcb{background:linear-gradient(90deg,var(--b),#60a5fa)}
+.bcc{background:linear-gradient(90deg,var(--am),#fbbf24)}
+.bcd{background:var(--mu2)}
+.bc-pct{font-size:12px;font-weight:700;color:var(--ink);min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ── CALENDAR SIDE ── */
+.cd-block{display:flex;gap:8px;margin-bottom:14px}
+.cd-unit{flex:1;background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:10px 6px;text-align:center}
+.cd-num{font-family:var(--fd);font-size:26px;font-weight:700;color:var(--g);line-height:1}
+.cd-lbl{font-size:10px;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:12px}
+.cal-hd{font-size:9px;font-weight:700;text-align:center;color:var(--mu2);text-transform:uppercase;padding:3px 0}
+.cal-d{font-size:11px;text-align:center;padding:5px 0;border-radius:6px;color:var(--mu);cursor:pointer;transition:all .12s}
+.cal-d:hover{background:var(--surf);color:var(--ink)}
+.cal-d.today{background:var(--ink);color:white;font-weight:700}
+.cal-d.ev{background:var(--gl);color:var(--gd);font-weight:600}
+.cal-d.om{color:var(--border2)}
+.cal-mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-ml{font-size:12.5px;font-weight:600;color:var(--ink)}
+.cal-nav{font-size:18px;color:var(--mu2);cursor:pointer;background:none;border:none;padding:0 4px;line-height:1}
+.ev-list{display:flex;flex-direction:column;gap:7px}
+.ev-item{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border-radius:9px;background:var(--surf);border:1px solid var(--border);cursor:pointer;transition:border-color .15s}
+.ev-item:hover{border-color:var(--border2);background:var(--surf2)}
+.ev-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.db{background:var(--b)}.dr{background:var(--r)}.dg{background:var(--g)}.da{background:var(--am)}
+.ev-body{flex:1}
+.ev-txt{font-size:12px;color:var(--ink3);font-weight:500;line-height:1.35}
+.ev-date{font-size:10px;color:var(--mu2);margin-top:2px}
+.ev-tag{font-size:10px;padding:2px 8px;border-radius:5px;font-weight:700;flex-shrink:0;align-self:flex-start;letter-spacing:.03em}
+.tpz{background:var(--rl);color:var(--r)}.tvt{background:var(--gl);color:var(--gd)}.trg{background:var(--bl);color:var(--b)}.tpr{background:var(--aml);color:var(--am)}
+
+/* ── ALERT TOGGLES ── */
+.alt-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)}
+.alt-row:last-child{border-bottom:none}
+.alt-uf{font-size:13px;font-weight:600;color:var(--ink);cursor:pointer}
+.alt-uf:hover{color:var(--g)}
+.alt-sub{font-size:11px;color:var(--mu2);margin-top:1px}
+.toggle{width:38px;height:21px;background:var(--border2);border-radius:99px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0}
+.toggle.on{background:var(--g)}
+.toggle::after{content:'';position:absolute;width:15px;height:15px;border-radius:50%;background:white;top:3px;left:3px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle.on::after{left:20px}
+
+/* ── SECTION LABEL ── */
+.sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mu2);margin-bottom:10px}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border-bottom:1.5px solid var(--border);margin-bottom:16px}
+.tab{font-size:13px;color:var(--mu);padding:10px 17px;cursor:pointer;border-bottom:2.5px solid transparent;font-weight:500;transition:all .15s;white-space:nowrap;margin-bottom:-1.5px}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--g);border-bottom-color:var(--g);font-weight:600}
+
+/* ── POLLS TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);background:var(--surf)}
+.tbl td{padding:10px 11px;border-bottom:1px solid var(--border);color:var(--ink3);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr.click:hover td{background:var(--surf);cursor:pointer}
+
+/* ── UF HERO PAGE ── */
+.uf-hero{background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 100%);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
+.uf-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 50%,rgba(6,179,122,.18) 0%,transparent 55%);pointer-events:none}
+.uf-hero-in{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.uf-badge-xl{font-family:var(--fd);font-size:56px;font-weight:700;color:white;letter-spacing:-.04em;line-height:1}
+.uf-name-lg{font-size:15px;color:rgba(255,255,255,.55);margin-top:4px}
+.uf-region{font-size:10px;color:var(--g2);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-top:3px}
+.uf-stats{display:flex;gap:0}
+.uf-stat-blk{text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,.08)}
+.uf-stat-blk:last-child{border-right:none}
+.us-num{font-family:var(--fd);font-size:28px;font-weight:700;color:white;letter-spacing:-.03em}
+.us-num.g{color:var(--g2)}
+.us-lbl{font-size:10.5px;color:rgba(255,255,255,.45);margin-top:3px}
+
+/* ── HISTORY TABLE ── */
+.htbl{width:100%;border-collapse:collapse;font-size:13px}
+.htbl th{text-align:left;padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border);background:var(--surf)}
+.htbl td{padding:10px 11px;border-bottom:1px solid var(--border);color:var(--ink3);vertical-align:middle}
+.htbl tr:last-child td{border-bottom:none}
+.htbl tr:hover td{background:var(--surf);cursor:pointer}
+.winner-name{font-size:13px;font-weight:600;color:var(--ink)}
+.pty{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block;margin-left:5px}
+.pt{background:#fee2e2;color:#991b1b}.pl{background:#dbeafe;color:#1e40af}.psdb{background:#ede9fe;color:#5b21b6}
+.mdb{background:#fef3c7;color:#92400e}.psd{background:#fce7f3;color:#9d174d}.novo{background:#d1fae5;color:#065f46}
+.rep{background:#f0fdf4;color:#166534}.uni{background:#e0f2fe;color:#0369a1}
+.pct-wrap{display:flex;align-items:center;gap:8px}
+.pct-bar{width:64px;height:6px;background:var(--surf2);border-radius:99px;overflow:hidden;flex-shrink:0}
+.pct-fill{height:100%;background:linear-gradient(90deg,var(--g),var(--g2));border-radius:99px}
+.pct-val{font-size:12px;font-weight:700;color:var(--gd);font-variant-numeric:tabular-nums}
+.turn{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px}
+.turn.t1{background:var(--bl);color:var(--b)}.turn.t2{background:var(--aml);color:var(--am)}
+
+/* ── NEWS PAGE (Noticiário) ── */
+.news-header{border-bottom:3px double var(--ink);padding-bottom:12px;margin-bottom:20px;text-align:center}
+.news-date-line{font-size:11px;color:var(--mu2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.news-masthead{font-family:var(--fd);font-size:38px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.news-masthead span{color:var(--g)}
+.news-sub-rule{font-size:12px;color:var(--mu);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6px 0;margin-top:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* Lead article */
+.news-grid{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-bottom:28px}
+.lead-art{border-right:1px solid var(--border);padding-right:28px}
+.lead-category{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.lead-headline{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;letter-spacing:-.02em;cursor:pointer}
+.lead-headline:hover{color:var(--g)}
+.lead-deck{font-size:14px;color:var(--ink3);line-height:1.65;margin-bottom:12px}
+.lead-byline{font-size:11px;color:var(--mu2);display:flex;align-items:center;gap:8px}
+.lead-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--gd),var(--g));border-radius:var(--rad);margin-bottom:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.lead-img-placeholder{font-size:48px;opacity:.3}
+.lead-img-label{position:absolute;bottom:8px;left:10px;right:10px;font-size:10px;color:rgba(255,255,255,.7);font-style:italic}
+
+/* Side column articles */
+.side-arts{display:flex;flex-direction:column;gap:16px}
+.side-art{padding-bottom:16px;border-bottom:1px solid var(--border);cursor:pointer}
+.side-art:last-child{border-bottom:none;padding-bottom:0}
+.side-art:hover .side-headline{color:var(--g)}
+.side-cat{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+.side-headline{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:5px;transition:color .15s}
+.side-deck{font-size:12px;color:var(--mu);line-height:1.5}
+.side-meta{font-size:10.5px;color:var(--mu2);margin-top:5px}
+
+/* News body columns */
+.news-cols-rule{border-top:1px solid var(--border);padding-top:20px;margin-bottom:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ncol{border-right:1px solid var(--border);padding-right:24px}
+.ncol:last-child{border-right:none;padding-right:0}
+.ncol-cat{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--r);margin-bottom:8px;border-bottom:2px solid var(--r);padding-bottom:5px;display:inline-block}
+.ncol-hl{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:6px;cursor:pointer}
+.ncol-hl:hover{color:var(--g)}
+.ncol-body{font-size:12.5px;color:var(--ink3);line-height:1.65}
+.ncol-meta{font-size:10.5px;color:var(--mu2);margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.ncol-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+.ntg-p{background:var(--bl);color:var(--b)}.ntg-a{background:var(--pul);color:var(--pu)}.ntg-r{background:var(--gl);color:var(--gd)}.ntg-l{background:var(--aml);color:var(--am)}
+
+/* ── DOWNLOAD PANEL ── */
+.dl-panel{background:var(--ink);border-radius:var(--radxl);padding:28px 32px;color:white;position:relative;overflow:hidden}
+.dl-panel::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(6,179,122,.08);pointer-events:none}
+.dl-ttl{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:6px}
+.dl-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
+.dl-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.dl-file{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .15s}
+.dl-file:hover{background:rgba(255,255,255,.1);border-color:rgba(6,179,122,.4)}
+.dl-icon{font-size:22px;flex-shrink:0}
+.dl-fname{font-size:12.5px;font-weight:500;color:white;line-height:1.3}
+.dl-fsize{font-size:10.5px;color:rgba(255,255,255,.4);margin-top:2px}
+.dl-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+.footer{background:var(--white);border-top:1.5px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-link{font-size:11.5px;color:var(--mu);cursor:pointer;transition:color .15s}
+.footer-link:hover{color:var(--g)}
+.footer-copy{font-size:11px;color:var(--mu2)}
+
+/* ── MISC ── */
+.winner-party,.party-class{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block}
+.pagination{display:flex;align-items:center;gap:4px}
+.pgbtn{font-family:var(--fs);font-size:12px;width:30px;height:30px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--mu);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pgbtn:hover{background:var(--surf)}
+.pgbtn.active{background:var(--g);color:white;border-color:var(--g)}
+.pill-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag-pill{font-size:11px;padding:4px 11px;border-radius:99px;background:var(--surf2);color:var(--mu);border:1px solid var(--border);cursor:pointer;transition:all .15s}
+.tag-pill:hover{background:var(--gl);color:var(--gd);border-color:#a7e8d0}
+input[type=email],input[type=text],select{font-family:var(--fs);font-size:13px;padding:8px 12px;border:1.5px solid var(--border2);border-radius:var(--rad);background:var(--white);color:var(--ink);outline:none;transition:border-color .2s}
+input[type=email]:focus,input[type=text]:focus,select:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(11,138,92,.1)}
+
+/* ── TREND CANVAS ── */
+.trend-wrap{position:relative;height:190px;margin:6px 0 10px}
+canvas{display:block}
+
+/* ── OUTROS ESTADOS ── */
+.uf-pills-grid{display:flex;flex-wrap:wrap;gap:7px}
+.uf-nav-pill{font-size:11px;font-weight:700;padding:6px 12px;background:var(--surf2);border:1px solid var(--border);border-radius:7px;cursor:pointer;font-family:var(--fs);transition:all .15s;letter-spacing:.03em;color:var(--ink3)}
+.uf-nav-pill:hover{background:var(--gl);border-color:#a7e8d0;color:var(--gd)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){.grid-main{grid-template-columns:1fr}.metrics-row{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr}.news-cols-rule{grid-template-columns:1fr 1fr}.lead-art{border-right:none;padding-right:0}}
+@media(max-width:640px){.topbar{padding:0 14px;gap:10px}.page{padding:14px 14px 48px}.hero-strip{flex-direction:column;align-items:flex-start;padding:20px}.uf-hero-in{flex-direction:column}.news-cols-rule{grid-template-columns:1fr}.dl-files{grid-template-columns:1fr 1fr}.hero-right{flex-wrap:wrap}.metrics-row{grid-template-columns:repeat(2,1fr)}.uf-grid{grid-template-columns:repeat(7,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <a class="logo" href="#">
-    <div class="logo-mark">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h4v2H3zM3 18h4v2H3zM9 14h2v7H9z"/></svg>
-    </div>
-    <span class="logo-text">Vota<span>Data</span></span>
-  </a>
-
-  <div class="search-wrap">
-    <div class="search-box">
-      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Buscar candidato, cargo, UF, instituto…">
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">AO VIVO</div>
+  <div class="ticker-track">
+    <div class="ticker-inner">
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
+      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
+      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
+      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
+      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
     </div>
   </div>
+</div>
 
-  <div class="topbar-actions">
-    <button class="btn-sm">PT / EN</button>
-    <button class="btn-sm btn-primary">Alertas</button>
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="logo" onclick="navigate('home')">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h4v2H3zM3 18h4v2H3zM9 14h2v7H9z"/></svg>
+    </div>
+    <div class="logo-wordmark">
+      <div class="logo-name">Vota<span>Data</span></div>
+      <div class="logo-tagline">Portal Eleitoral 2026</div>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Candidato, cargo, UF, instituto, registro TSE…">
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="live-dot" title="Dados atualizados em tempo real"></div>
+    <button class="btn btn-ghost" onclick="navigate('noticias')">📰 Noticiário</button>
+    <button class="btn btn-primary" onclick="navigate('alertas')">🔔 Alertas</button>
+    <button class="btn btn-download" onclick="navigate('download')">⬇ Baixar projeto</button>
     <div class="avatar" title="Perfil">JD</div>
   </div>
 </header>
 
-<!-- NAV -->
-<nav class="navbar">
-  <a class="nav-item active" href="#">Início</a>
-  <a class="nav-item" href="#">Eleições ▾</a>
-  <a class="nav-item" href="#">Pesquisas <span class="nav-badge">1.284</span></a>
-  <a class="nav-item" href="#">Alertas por UF</a>
-  <a class="nav-item" href="#">Notícias</a>
-  <a class="nav-item" href="#">Calendário 2026</a>
-  <a class="nav-item" href="#">API / Dados abertos</a>
-  <a class="nav-item" href="#">Sobre</a>
+<!-- NAVBAR -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-item active" data-page="home" onclick="navigate('home')">Início</div>
+  <div class="nav-sep"></div>
+  <div class="nav-item" data-page="eleicoes" onclick="navigate('eleicoes')">Eleições ▾</div>
+  <div class="nav-item" data-page="pesquisas" onclick="navigate('pesquisas')">Pesquisas <span class="nav-badge">1.284</span></div>
+  <div class="nav-item" data-page="alertas" onclick="navigate('alertas')">Alertas por UF</div>
+  <div class="nav-sep"></div>
+  <div class="nav-item" data-page="noticias" onclick="navigate('noticias')" style="position:relative">Noticiário <span class="nav-new">NOVO</span></div>
+  <div class="nav-item" data-page="calendario" onclick="navigate('calendario')">Calendário 2026</div>
+  <div class="nav-sep"></div>
+  <div class="nav-item" data-page="api" onclick="navigate('api')">API / Dados</div>
+  <div class="nav-item" data-page="sobre" onclick="navigate('sobre')">Sobre</div>
+  <div class="nav-item" data-page="download" onclick="navigate('download')" style="margin-left:auto;color:var(--g)">⬇ Download</div>
 </nav>
 
-<main class="page">
+<div id="app"></div>
 
-  <!-- ALERT BANNER -->
-  <div class="alert-banner" id="alertBanner">
-    <span class="alert-banner-icon">🔔</span>
-    <span><strong>Nova pesquisa registrada em SP</strong> — Datafolha / TSE 00238/2026 publicada há 12 minutos.</span>
-    <button class="alert-dismiss" onclick="document.getElementById('alertBanner').style.display='none'">✕</button>
-  </div>
-
-  <!-- HERO STRIP -->
-  <div class="hero-strip">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Eleições Gerais 2026</div>
-      <div class="hero-title">Portal Eleitoral Brasileiro</div>
-      <div class="hero-sub">Pesquisas registradas, histórico e calendário em tempo real</div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stat">
-        <div class="hero-stat-num accent" id="cntPoll">1.284</div>
-        <div class="hero-stat-label">Pesquisas registradas</div>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num" id="cntCand">28.941</div>
-        <div class="hero-stat-label">Candidatos 2026</div>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num accent" id="cntDias">149</div>
-        <div class="hero-stat-label">Dias para o 1° turno</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- METRICS ROW -->
-  <div class="metrics-row">
-    <div class="metric-card">
-      <div class="metric-label">Pesquisas (7 dias)</div>
-      <div class="metric-value">47</div>
-      <div class="metric-sub up">9 novas hoje</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">UFs com cobertura</div>
-      <div class="metric-value">24</div>
-      <div class="metric-sub">de 27 estados + DF</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Cargos monitorados</div>
-      <div class="metric-value">6</div>
-      <div class="metric-sub">Pres · Gov · Sen · Dep</div>
-    </div>
-  </div>
-
-  <!-- MAIN GRID -->
-  <div class="grid-main">
-    <div class="left-col">
-
-      <!-- UF MAP CARD -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-title-icon icon-green">🗺</div>
-            Pesquisas por UF
-          </div>
-          <a href="#" class="card-link">Ver mapa completo →</a>
-        </div>
-        <div class="filter-chips">
-          <button class="chip active" onclick="setChip(this)">Governador</button>
-          <button class="chip" onclick="setChip(this)">Presidente</button>
-          <button class="chip" onclick="setChip(this)">Senador</button>
-          <button class="chip" onclick="setChip(this)">Dep. Federal</button>
-        </div>
-        <div class="uf-grid">
-          <div class="uf-cell uf-h" title="São Paulo — 38 pesquisas">SP</div>
-          <div class="uf-cell uf-h" title="Rio de Janeiro — 31 pesquisas">RJ</div>
-          <div class="uf-cell uf-m" title="Minas Gerais — 22 pesquisas">MG</div>
-          <div class="uf-cell uf-m" title="Rio Grande do Sul — 18 pesquisas">RS</div>
-          <div class="uf-cell uf-m" title="Bahia — 16 pesquisas">BA</div>
-          <div class="uf-cell uf-l" title="Paraná — 9 pesquisas">PR</div>
-          <div class="uf-cell uf-l" title="Ceará — 8 pesquisas">CE</div>
-          <div class="uf-cell uf-l" title="Pernambuco — 7 pesquisas">PE</div>
-          <div class="uf-cell uf-l" title="Goiás — 6 pesquisas">GO</div>
-          <div class="uf-cell uf-m" title="Amazonas — 11 pesquisas">AM</div>
-          <div class="uf-cell uf-l" title="Mato Grosso — 5 pesquisas">MT</div>
-          <div class="uf-cell uf-l" title="Mato Grosso do Sul — 4 pesquisas">MS</div>
-          <div class="uf-cell uf-l" title="Pará — 7 pesquisas">PA</div>
-          <div class="uf-cell uf-l" title="Maranhão — 5 pesquisas">MA</div>
-          <div class="uf-cell uf-l" title="Piauí — 3 pesquisas">PI</div>
-          <div class="uf-cell uf-l" title="Rio Grande do Norte — 3 pesquisas">RN</div>
-          <div class="uf-cell uf-l" title="Paraíba — 3 pesquisas">PB</div>
-          <div class="uf-cell uf-l" title="Alagoas — 2 pesquisas">AL</div>
-          <div class="uf-cell uf-l" title="Sergipe — 2 pesquisas">SE</div>
-          <div class="uf-cell uf-l" title="Espírito Santo — 4 pesquisas">ES</div>
-          <div class="uf-cell uf-l" title="Rondônia — 2 pesquisas">RO</div>
-          <div class="uf-cell uf-l" title="Acre — 1 pesquisa">AC</div>
-          <div class="uf-cell uf-n" title="Roraima — sem pesquisas">RR</div>
-          <div class="uf-cell uf-l" title="Amapá — 1 pesquisa">AP</div>
-          <div class="uf-cell uf-l" title="Tocantins — 2 pesquisas">TO</div>
-          <div class="uf-cell uf-m" title="Distrito Federal — 12 pesquisas">DF</div>
-          <div class="uf-cell uf-l" title="Santa Catarina — 8 pesquisas">SC</div>
-        </div>
-        <div class="map-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green-dark)"></div> +20 pesquisas</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> 10–19</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green-light); border:1px solid #a7f3d0"></div> 1–9</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--surface); border:1px solid var(--border)"></div> Sem dados</div>
-        </div>
-      </div>
-
-      <!-- LATEST POLLS -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-title-icon icon-blue">📊</div>
-            Últimas pesquisas registradas
-          </div>
-          <a href="#" class="card-link">Ver todas →</a>
-        </div>
-        <div>
-          <div class="poll-row">
-            <div class="uf-pill pill-sp">SP</div>
-            <div class="poll-info">
-              <div class="poll-title">Governador São Paulo — Datafolha</div>
-              <div class="poll-meta">TSE 00238/2026 · Amostra 1.200 · Margem ±2,8% · Presencial</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">09/05</span>
-              <button class="icon-btn" title="Receber alerta desta UF">🔔</button>
-              <button class="icon-btn" title="Baixar CSV">⬇</button>
-            </div>
-          </div>
-          <div class="poll-row">
-            <div class="uf-pill pill-rj">RJ</div>
-            <div class="poll-info">
-              <div class="poll-title">Governador Rio de Janeiro — Quaest</div>
-              <div class="poll-meta">TSE 00191/2026 · Amostra 800 · Margem ±3,4% · Telefone</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">08/05</span>
-              <button class="icon-btn" title="Alerta">🔔</button>
-              <button class="icon-btn" title="CSV">⬇</button>
-            </div>
-          </div>
-          <div class="poll-row">
-            <div class="uf-pill pill-mg">MG</div>
-            <div class="poll-info">
-              <div class="poll-title">Governador Minas Gerais — Ipec</div>
-              <div class="poll-meta">TSE 00174/2026 · Amostra 1.000 · Margem ±3,1% · Presencial</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">07/05</span>
-              <button class="icon-btn" title="Alerta">🔔</button>
-              <button class="icon-btn" title="CSV">⬇</button>
-            </div>
-          </div>
-          <div class="poll-row">
-            <div class="uf-pill pill-rs">RS</div>
-            <div class="poll-info">
-              <div class="poll-title">Senado Rio Grande do Sul — AtlasIntel</div>
-              <div class="poll-meta">TSE 00162/2026 · Amostra 960 · Margem ±3,2% · Online</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">06/05</span>
-              <button class="icon-btn" title="Alerta">🔔</button>
-              <button class="icon-btn" title="CSV">⬇</button>
-            </div>
-          </div>
-          <div class="poll-row">
-            <div class="uf-pill pill-ba">BA</div>
-            <div class="poll-info">
-              <div class="poll-title">Governador Bahia — Paraná Pesquisas</div>
-              <div class="poll-meta">TSE 00155/2026 · Amostra 750 · Margem ±3,6% · Presencial</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">05/05</span>
-              <button class="icon-btn" title="Alerta">🔔</button>
-              <button class="icon-btn" title="CSV">⬇</button>
-            </div>
-          </div>
-          <div class="poll-row">
-            <div class="uf-pill pill-pr">PR</div>
-            <div class="poll-info">
-              <div class="poll-title">Governador Paraná — MDA Pesquisa</div>
-              <div class="poll-meta">TSE 00149/2026 · Amostra 820 · Margem ±3,4% · Presencial</div>
-            </div>
-            <div class="poll-right">
-              <span class="poll-date">04/05</span>
-              <button class="icon-btn" title="Alerta">🔔</button>
-              <button class="icon-btn" title="CSV">⬇</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- POLL DETAIL SNAPSHOT -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-title-icon icon-green">📈</div>
-            Intenção de voto — Gov. SP (Datafolha, 09/05/2026)
-          </div>
-          <a href="#" class="card-link">Ver tendência →</a>
-        </div>
-        <div style="margin-bottom: 16px;">
-          <div class="poll-chart-row">
-            <div class="cand-name">Cand. A (PT)</div>
-            <div class="bar-wrap"><div class="bar-fill bar-a" style="width:38%"></div></div>
-            <div class="bar-pct">38%</div>
-          </div>
-          <div class="poll-chart-row">
-            <div class="cand-name">Cand. B (PL)</div>
-            <div class="bar-wrap"><div class="bar-fill bar-b" style="width:32%"></div></div>
-            <div class="bar-pct">32%</div>
-          </div>
-          <div class="poll-chart-row">
-            <div class="cand-name">Cand. C (PSDB)</div>
-            <div class="bar-wrap"><div class="bar-fill bar-c" style="width:14%"></div></div>
-            <div class="bar-pct">14%</div>
-          </div>
-          <div class="poll-chart-row">
-            <div class="cand-name">Outros / Brancos</div>
-            <div class="bar-wrap"><div class="bar-fill bar-d" style="width:16%"></div></div>
-            <div class="bar-pct">16%</div>
-          </div>
-        </div>
-        <div style="display:flex; gap:12px; font-size:11px; color:var(--muted-2); flex-wrap:wrap; border-top:1px solid var(--border); padding-top:10px;">
-          <span>📅 Campo: 06–08/05/2026</span>
-          <span>👥 Amostra: 1.200</span>
-          <span>±2,8% margem</span>
-          <span>Nível conf. 95%</span>
-          <span>Método: presencial</span>
-          <a href="#" style="color:var(--green); text-decoration:none; margin-left:auto;">Ver registro TSE →</a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="right-col">
-
-      <!-- CALENDAR CARD -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom:12px;">
-          <div class="card-title-icon icon-amber">📅</div>
-          Calendário Eleitoral 2026
-        </div>
-
-        <div class="countdown-block">
-          <div class="countdown-unit">
-            <div class="countdown-num">149</div>
-            <div class="countdown-label">Dias</div>
-          </div>
-          <div class="countdown-unit">
-            <div class="countdown-num">21</div>
-            <div class="countdown-label">Semanas</div>
-          </div>
-          <div class="countdown-unit" style="background:var(--green-light); border-color:#a7f3d0;">
-            <div class="countdown-num" style="color:var(--green-dark);">4 out</div>
-            <div class="countdown-label">1° turno</div>
-          </div>
-        </div>
-
-        <div class="cal-mini">
-          <div class="cal-month-header">
-            <button class="cal-nav">‹</button>
-            <span class="cal-month-label">Maio 2026</span>
-            <button class="cal-nav">›</button>
-          </div>
-          <div class="cal-grid">
-            <div class="cal-head">D</div><div class="cal-head">S</div><div class="cal-head">T</div>
-            <div class="cal-head">Q</div><div class="cal-head">Q</div><div class="cal-head">S</div>
-            <div class="cal-head">S</div>
-            <!-- Week 1 -->
-            <div class="cal-day other-month">27</div><div class="cal-day other-month">28</div>
-            <div class="cal-day other-month">29</div><div class="cal-day other-month">30</div>
-            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
-            <!-- Week 2 -->
-            <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
-            <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
-            <div class="cal-day today">10</div>
-            <!-- Week 3 -->
-            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div>
-            <div class="cal-day event-day" title="Prazo registro candidaturas">14</div>
-            <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
-            <!-- Week 4 -->
-            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
-            <div class="cal-day">21</div><div class="cal-day">22</div>
-            <div class="cal-day event-day" title="Início propaganda">23</div>
-            <div class="cal-day">24</div>
-            <!-- Week 5 -->
-            <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div>
-            <div class="cal-day">28</div><div class="cal-day">29</div>
-            <div class="cal-day event-day" title="Prazo pesquisas — divulgação">30</div>
-            <div class="cal-day">31</div>
-          </div>
-        </div>
-
-        <div class="section-label">Próximos eventos</div>
-        <div class="events-list">
-          <div class="event-item">
-            <div class="event-dot dot-blue"></div>
-            <div style="flex:1">
-              <div class="event-text">Prazo de registro de candidaturas</div>
-              <div class="event-date">14 de maio de 2026</div>
-            </div>
-            <span class="event-tag tag-reg">Registro</span>
-          </div>
-          <div class="event-item">
-            <div class="event-dot dot-amber"></div>
-            <div style="flex:1">
-              <div class="event-text">Início da propaganda eleitoral</div>
-              <div class="event-date">23 de maio de 2026</div>
-            </div>
-            <span class="event-tag tag-prop">Propaganda</span>
-          </div>
-          <div class="event-item">
-            <div class="event-dot dot-red"></div>
-            <div style="flex:1">
-              <div class="event-text">Prazo para divulgação de pesquisas</div>
-              <div class="event-date">30 de maio de 2026</div>
-            </div>
-            <span class="event-tag tag-prazo">Prazo</span>
-          </div>
-          <div class="event-item">
-            <div class="event-dot dot-green"></div>
-            <div style="flex:1">
-              <div class="event-text">1° Turno — Eleições Gerais</div>
-              <div class="event-date">4 de outubro de 2026</div>
-            </div>
-            <span class="event-tag tag-voto">Votação</span>
-          </div>
-          <div class="event-item">
-            <div class="event-dot dot-green"></div>
-            <div style="flex:1">
-              <div class="event-text">2° Turno — Eleições Gerais</div>
-              <div class="event-date">25 de outubro de 2026</div>
-            </div>
-            <span class="event-tag tag-voto">Votação</span>
-          </div>
-        </div>
-        <div style="margin-top:12px; display:flex; gap:6px;">
-          <button class="btn-sm" style="flex:1; justify-content:center; display:flex; align-items:center; gap:5px;">📆 Google Calendar</button>
-          <button class="btn-sm" style="flex:1; justify-content:center; display:flex; align-items:center; gap:5px;">📥 Exportar iCal</button>
-        </div>
-      </div>
-
-      <!-- ALERTS CARD -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom:12px;">
-          <div class="card-title-icon icon-purple">🔔</div>
-          Alertas por UF
-        </div>
-        <div class="section-label">Meus alertas ativos</div>
-        <div>
-          <div class="alert-state-row">
-            <div>
-              <div class="alert-uf">SP — São Paulo</div>
-              <div class="alert-sub">Governador · Email + Push</div>
-            </div>
-            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
-          </div>
-          <div class="alert-state-row">
-            <div>
-              <div class="alert-uf">RJ — Rio de Janeiro</div>
-              <div class="alert-sub">Todos os cargos · Email</div>
-            </div>
-            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
-          </div>
-          <div class="alert-state-row">
-            <div>
-              <div class="alert-uf">MG — Minas Gerais</div>
-              <div class="alert-sub">Senador · Push web</div>
-            </div>
-            <button class="toggle" onclick="this.classList.toggle('on')"></button>
-          </div>
-          <div class="alert-state-row">
-            <div>
-              <div class="alert-uf">RS — Rio Grande do Sul</div>
-              <div class="alert-sub">Governador · Email</div>
-            </div>
-            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
-          </div>
-        </div>
-        <button class="btn-sm btn-primary" style="width:100%; margin-top:12px; justify-content:center; display:flex; align-items:center; gap:6px;">
-          + Adicionar alerta por UF
-        </button>
-      </div>
-
-      <!-- NEWS CARD -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-title-icon icon-amber">📰</div>
-            Notícias
-          </div>
-          <a href="#" class="card-link">Ver todas →</a>
-        </div>
-        <div>
-          <div class="news-item">
-            <div class="news-tag-wrap"><span class="news-tag ntag-p">Pesquisa</span></div>
-            <div class="news-headline">Nova pesquisa aponta empate técnico no governo de SP entre candidatos A e B</div>
-            <div class="news-byline"><span>Datafolha</span><span class="news-byline-sep">·</span><span>há 2h</span></div>
-          </div>
-          <div class="news-item">
-            <div class="news-tag-wrap"><span class="news-tag ntag-a">Análise</span></div>
-            <div class="news-headline">Como o eleitorado nordestino tende a votar em 2026? Veja os dados históricos</div>
-            <div class="news-byline"><span>Redação VotaData</span><span class="news-byline-sep">·</span><span>há 5h</span></div>
-          </div>
-          <div class="news-item">
-            <div class="news-tag-wrap"><span class="news-tag ntag-l">Legislação</span></div>
-            <div class="news-headline">TSE publica novas regras para registro e divulgação de pesquisas eleitorais</div>
-            <div class="news-byline"><span>TSE</span><span class="news-byline-sep">·</span><span>ontem</span></div>
-          </div>
-          <div class="news-item">
-            <div class="news-tag-wrap"><span class="news-tag ntag-r">Resultado</span></div>
-            <div class="news-headline">Reeleição de governadores em 2022: quais estados podem repetir o padrão em 2026</div>
-            <div class="news-byline"><span>Redação VotaData</span><span class="news-byline-sep">·</span><span>2 dias atrás</span></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</main>
-
-<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-copy">© 2026 VotaData · Fontes: TSE, TREs, Institutos oficiais · Conforme LGPD</div>
+  <div class="footer-copy">© 2026 VotaData · Fontes: TSE · TREs · Institutos registrados · Conforme LGPD</div>
   <div class="footer-links">
-    <a href="#" class="footer-link">Termos de uso</a>
-    <a href="#" class="footer-link">Política de dados</a>
-    <a href="#" class="footer-link">API pública</a>
-    <a href="#" class="footer-link">RSS</a>
-    <a href="#" class="footer-link">Contato</a>
+    <span class="footer-link" onclick="navigate('sobre')">Termos de uso</span>
+    <span class="footer-link" onclick="navigate('sobre')">Privacidade & LGPD</span>
+    <span class="footer-link" onclick="navigate('api')">API pública</span>
+    <span class="footer-link">RSS</span>
+    <span class="footer-link" onclick="navigate('sobre')">Contato</span>
+    <span class="footer-link" onclick="navigate('download')">⬇ Baixar projeto</span>
   </div>
 </footer>
 
 <script>
-function setChip(el) {
-  el.closest('.filter-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  el.classList.add('active');
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const PARTY_MAP={PT:'pt',PL:'pl',PSDB:'psdb',MDB:'mdb',PSD:'psd',Novo:'novo',Republicanos:'rep','União':'uni',PSB:'mdb',PSC:'pt',DEM:'mdb',PMDB:'mdb',PRB:'rep',PP:'psd'};
+function pc(p){return PARTY_MAP[p]||'mdb'}
+
+const UF_DATA={
+  SP:{name:'São Paulo',region:'Sudeste',eleitores:'34,6M',pesquisas:38,candidatos:4821,tier:'h',history:[
+    {ano:2022,cargo:'Governador',turno:2,vencedor:'Tarcísio de Freitas',partido:'Republicanos',pct:56.1,segundo:'Fernando Haddad',partido2:'PT',pct2:43.9},
+    {ano:2022,cargo:'Senador',turno:1,vencedor:'Marcos Pontes',partido:'PL',pct:34.2,segundo:'Marta Suplicy',partido2:'MDB',pct2:30.1},
+    {ano:2018,cargo:'Governador',turno:2,vencedor:'João Doria',partido:'PSDB',pct:52.6,segundo:'Marcio França',partido2:'PSB',pct2:47.4},
+    {ano:2014,cargo:'Governador',turno:2,vencedor:'Geraldo Alckmin',partido:'PSDB',pct:57.3,segundo:'Paulo Skaf',partido2:'PMDB',pct2:42.7},
+  ],polls:[
+    {instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',amostra:1200,margem:2.8,cargo:'Governador',res:[{c:'Cand. A (PT)',p:38},{c:'Cand. B (Rep.)',p:32},{c:'Cand. C (PL)',p:18},{c:'Outros',p:12}]},
+    {instituto:'Quaest',registro:'00210/2026',campo:'01–03/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (PT)',p:36},{c:'Cand. B (Rep.)',p:34},{c:'Cand. C (PL)',p:17},{c:'Outros',p:13}]},
+  ]},
+  RJ:{name:'Rio de Janeiro',region:'Sudeste',eleitores:'12,5M',pesquisas:31,candidatos:2103,tier:'h',history:[
+    {ano:2022,cargo:'Governador',turno:2,vencedor:'Cláudio Castro',partido:'PL',pct:58.8,segundo:'Marcelo Freixo',partido2:'PSB',pct2:41.2},
+    {ano:2018,cargo:'Governador',turno:2,vencedor:'Wilson Witzel',partido:'PSC',pct:59.3,segundo:'Eduardo Paes',partido2:'DEM',pct2:40.7},
+    {ano:2014,cargo:'Governador',turno:2,vencedor:'Luiz Fernando Pezão',partido:'PMDB',pct:52.7,segundo:'Marcelo Crivella',partido2:'PRB',pct2:47.3},
+  ],polls:[
+    {instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',amostra:800,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PL)',p:41},{c:'Cand. B (PT)',p:29},{c:'Cand. C (MDB)',p:15},{c:'Outros',p:15}]},
+  ]},
+  MG:{name:'Minas Gerais',region:'Sudeste',eleitores:'16,5M',pesquisas:22,candidatos:2876,tier:'m',history:[
+    {ano:2022,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:56.2,segundo:'Alexandre Kalil',partido2:'PSD',pct2:43.8},
+    {ano:2018,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:42.7,segundo:'Antonio Anastasia',partido2:'PSDB',pct2:25.8},
+    {ano:2014,cargo:'Governador',turno:2,vencedor:'Fernando Pimentel',partido:'PT',pct:52.7,segundo:'Pimenta da Veiga',partido2:'PSDB',pct2:47.3},
+  ],polls:[
+    {instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (Novo)',p:35},{c:'Cand. B (PT)',p:28},{c:'Cand. C (PSD)',p:22},{c:'Outros',p:15}]},
+  ]},
+  RS:{name:'Rio Grande do Sul',region:'Sul',eleitores:'8,5M',pesquisas:18,candidatos:1542,tier:'m',history:[
+    {ano:2022,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:56.9,segundo:'Edegar Pretto',partido2:'PT',pct2:43.1},
+    {ano:2018,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:54.7,segundo:'José Ivo Sartori',partido2:'MDB',pct2:45.3},
+    {ano:2014,cargo:'Governador',turno:2,vencedor:'José Ivo Sartori',partido:'MDB',pct:64.7,segundo:'Tarso Genro',partido2:'PT',pct2:35.3},
+  ],polls:[
+    {instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',amostra:960,margem:3.2,cargo:'Senador',res:[{c:'Cand. A (PSDB)',p:33},{c:'Cand. B (PT)',p:28},{c:'Cand. C (MDB)',p:21},{c:'Outros',p:18}]},
+  ]},
+  BA:{name:'Bahia',region:'Nordeste',eleitores:'10,5M',pesquisas:16,candidatos:1830,tier:'m',history:[
+    {ano:2022,cargo:'Governador',turno:2,vencedor:'Jerônimo Rodrigues',partido:'PT',pct:52.7,segundo:'ACM Neto',partido2:'União',pct2:47.3},
+    {ano:2018,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:75.7,segundo:'João Roma',partido2:'PSD',pct2:12.4},
+    {ano:2014,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:64.9,segundo:'Paulo Souto',partido2:'DEM',pct2:30.4},
+  ],polls:[
+    {instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',amostra:750,margem:3.6,cargo:'Governador',res:[{c:'Cand. A (PT)',p:47},{c:'Cand. B (União)',p:32},{c:'Outros',p:21}]},
+  ]},
+  PR:{name:'Paraná',region:'Sul',eleitores:'8,1M',pesquisas:9,candidatos:1410,tier:'l',history:[
+    {ano:2022,cargo:'Governador',turno:1,vencedor:'Ratinho Jr.',partido:'PSD',pct:68.2,segundo:'Prof. Tadeu',partido2:'PT',pct2:15.6},
+    {ano:2018,cargo:'Governador',turno:2,vencedor:'Ratinho Jr.',partido:'PSD',pct:63.7,segundo:'Cida Borghetti',partido2:'PP',pct2:36.3},
+    {ano:2014,cargo:'Governador',turno:2,vencedor:'Beto Richa',partido:'PSDB',pct:55.5,segundo:'Requião Filho',partido2:'PMDB',pct2:44.5},
+  ],polls:[
+    {instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',amostra:820,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PSD)',p:52},{c:'Cand. B (PT)',p:24},{c:'Outros',p:24}]},
+  ]},
+};
+
+const UF_CELLS=[
+  {uf:'SP',tier:'h',pesquisas:38},{uf:'RJ',tier:'h',pesquisas:31},{uf:'MG',tier:'m',pesquisas:22},
+  {uf:'RS',tier:'m',pesquisas:18},{uf:'BA',tier:'m',pesquisas:16},{uf:'PR',tier:'l',pesquisas:9},
+  {uf:'CE',tier:'l',pesquisas:8},{uf:'PE',tier:'l',pesquisas:7},{uf:'GO',tier:'l',pesquisas:6},
+  {uf:'AM',tier:'m',pesquisas:11},{uf:'MT',tier:'l',pesquisas:5},{uf:'MS',tier:'l',pesquisas:4},
+  {uf:'PA',tier:'l',pesquisas:7},{uf:'MA',tier:'l',pesquisas:5},{uf:'PI',tier:'l',pesquisas:3},
+  {uf:'RN',tier:'l',pesquisas:3},{uf:'PB',tier:'l',pesquisas:3},{uf:'AL',tier:'l',pesquisas:2},
+  {uf:'SE',tier:'l',pesquisas:2},{uf:'ES',tier:'l',pesquisas:4},{uf:'RO',tier:'l',pesquisas:2},
+  {uf:'AC',tier:'l',pesquisas:1},{uf:'RR',tier:'n',pesquisas:0},{uf:'AP',tier:'l',pesquisas:1},
+  {uf:'TO',tier:'l',pesquisas:2},{uf:'DF',tier:'m',pesquisas:12},{uf:'SC',tier:'l',pesquisas:8},
+];
+
+const POLLS_ALL=[
+  {uf:'SP',pill:'p-sp',instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',cargo:'Governador',amostra:1200,margem:2.8,data:'09/05'},
+  {uf:'RJ',pill:'p-rj',instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',cargo:'Governador',amostra:800,margem:3.4,data:'08/05'},
+  {uf:'MG',pill:'p-mg',instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',cargo:'Governador',amostra:1000,margem:3.1,data:'07/05'},
+  {uf:'RS',pill:'p-rs',instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',cargo:'Senador',amostra:960,margem:3.2,data:'06/05'},
+  {uf:'BA',pill:'p-ba',instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',cargo:'Governador',amostra:750,margem:3.6,data:'05/05'},
+  {uf:'PR',pill:'p-pr',instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',cargo:'Governador',amostra:820,margem:3.4,data:'04/05'},
+  {uf:'MG',pill:'p-mg',instituto:'Quaest',registro:'00141/2026',campo:'28–30/04',cargo:'Senador',amostra:900,margem:3.3,data:'01/05'},
+  {uf:'SP',pill:'p-sp',instituto:'AtlasIntel',registro:'00195/2026',campo:'25–28/04',cargo:'Governador',amostra:980,margem:3.2,data:'29/04'},
+];
+
+const UF_NAMES={SP:'São Paulo',RJ:'Rio de Janeiro',MG:'Minas Gerais',RS:'Rio Grande do Sul',BA:'Bahia',PR:'Paraná'};
+
+// ── ROUTER ────────────────────────────────────────────────────────────────────
+let currentPage='home', currentUF=null;
+function navigate(page,param){
+  currentPage=page; currentUF=param||null;
+  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
+  document.getElementById('app').innerHTML=`<div class="page page-anim">${(PAGES[page]||PAGES.home)(param)}</div>`;
+  bindAll();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Animate bars on load
-document.addEventListener('DOMContentLoaded', () => {
-  const fills = document.querySelectorAll('.bar-fill');
-  fills.forEach(f => {
-    const target = f.style.width;
-    f.style.width = '0%';
-    setTimeout(() => { f.style.width = target; }, 200);
+// ── SHARED COMPONENTS ─────────────────────────────────────────────────────────
+function bc(...crumbs){
+  let html=`<div class="breadcrumb">`;
+  crumbs.forEach((c,i)=>{
+    if(i>0) html+=`<span class="bc-sep">›</span>`;
+    if(c.page) html+=`<span class="bc-link" onclick="navigate('${c.page}','${c.param||''}')">${c.label}</span>`;
+    else html+=`<span>${c.label}</span>`;
   });
+  return html+`</div>`;
+}
 
-  // UF cell click tooltip
-  document.querySelectorAll('.uf-cell').forEach(cell => {
-    cell.addEventListener('click', () => {
-      const uf = cell.textContent.trim();
-      const title = cell.getAttribute('title') || uf;
-      // In production this would navigate to /uf/uf-code
-      alert(`${title}\n\nClique para ver pesquisas detalhadas por cargo neste estado.`);
-    });
+function heroStrip(eye,title,sub,stats=''){
+  return `<div class="hero-strip"><div class="hero-left"><div class="hero-eye">${eye}</div><div class="hero-title">${title}</div><div class="hero-sub">${sub}</div></div>${stats?`<div class="hero-right">${stats}</div>`:''}</div>`;
+}
+function hstat(num,label,g=false){return `<div class="hero-stat"><div class="hstat-num${g?' g':''}">${num}</div><div class="hstat-label">${label}</div></div>`}
+function hdiv(){return`<div style="width:1px;background:rgba(255,255,255,.08)"></div>`}
+
+function pollRows(arr,max=6){
+  return arr.slice(0,max).map(p=>`
+    <div class="poll-row" onclick="navigate('uf','${p.uf}')">
+      <div class="uf-pill ${p.pill}" onclick="event.stopPropagation();navigate('uf','${p.uf}')">${p.uf}</div>
+      <div class="poll-info">
+        <div class="poll-ttl">${p.cargo} ${UF_NAMES[p.uf]||p.uf} — ${p.instituto}</div>
+        <div class="poll-meta">TSE ${p.registro} · Amostra ${p.amostra.toLocaleString('pt-BR')} · Margem ±${p.margem}%</div>
+      </div>
+      <div class="poll-right">
+        <span class="poll-date">${p.data}</span>
+        <button class="ico-btn" title="Alerta UF" onclick="event.stopPropagation();navigate('alertas')">🔔</button>
+        <button class="ico-btn" title="Baixar CSV" onclick="event.stopPropagation()">⬇</button>
+      </div>
+    </div>`).join('');
+}
+
+function barChart(res){
+  return res.map((r,i)=>`
+    <div class="bchart-row">
+      <div class="bc-name">${r.c}</div>
+      <div class="bc-bar"><div class="bc-fill bc${['a','b','c','d'][i]}" style="width:0%" data-target="${r.p}%"></div></div>
+      <div class="bc-pct">${r.p}%</div>
+    </div>`).join('');
+}
+
+function calSide(onclick_prefix=''){
+  return `
+    <div class="cd-block">
+      <div class="cd-unit"><div class="cd-num">149</div><div class="cd-lbl">Dias</div></div>
+      <div class="cd-unit"><div class="cd-num">21</div><div class="cd-lbl">Semanas</div></div>
+      <div class="cd-unit" style="background:var(--gll);border-color:#a7e8d0"><div class="cd-num" style="color:var(--gd)">4 out</div><div class="cd-lbl">1° turno</div></div>
+    </div>
+    <div><div class="cal-mh"><button class="cal-nav">‹</button><span class="cal-ml">Maio 2026</span><button class="cal-nav">›</button></div>
+    <div class="cal-grid">
+      <div class="cal-hd">D</div><div class="cal-hd">S</div><div class="cal-hd">T</div><div class="cal-hd">Q</div><div class="cal-hd">Q</div><div class="cal-hd">S</div><div class="cal-hd">S</div>
+      <div class="cal-d om">27</div><div class="cal-d om">28</div><div class="cal-d om">29</div><div class="cal-d om">30</div><div class="cal-d">1</div><div class="cal-d">2</div><div class="cal-d">3</div>
+      <div class="cal-d">4</div><div class="cal-d">5</div><div class="cal-d">6</div><div class="cal-d">7</div><div class="cal-d">8</div><div class="cal-d">9</div><div class="cal-d today">10</div>
+      <div class="cal-d">11</div><div class="cal-d">12</div><div class="cal-d">13</div><div class="cal-d ev" title="Prazo registro">14</div><div class="cal-d">15</div><div class="cal-d">16</div><div class="cal-d">17</div>
+      <div class="cal-d">18</div><div class="cal-d">19</div><div class="cal-d">20</div><div class="cal-d">21</div><div class="cal-d">22</div><div class="cal-d ev" title="Propaganda">23</div><div class="cal-d">24</div>
+      <div class="cal-d">25</div><div class="cal-d">26</div><div class="cal-d">27</div><div class="cal-d">28</div><div class="cal-d">29</div><div class="cal-d ev" title="Prazo pesquisas">30</div><div class="cal-d">31</div>
+    </div></div>
+    <div class="sec-lbl" style="margin-top:14px">Próximos eventos</div>
+    <div class="ev-list">
+      <div class="ev-item" onclick="navigate('calendario')"><div class="ev-dot db"></div><div class="ev-body"><div class="ev-txt">Prazo de registro de candidaturas</div><div class="ev-date">14 mai 2026</div></div><span class="ev-tag trg">Registro</span></div>
+      <div class="ev-item" onclick="navigate('calendario')"><div class="ev-dot da"></div><div class="ev-body"><div class="ev-txt">Início da propaganda eleitoral</div><div class="ev-date">23 mai 2026</div></div><span class="ev-tag tpr">Propaganda</span></div>
+      <div class="ev-item" onclick="navigate('calendario')"><div class="ev-dot dg"></div><div class="ev-body"><div class="ev-txt">1° Turno — Eleições Gerais</div><div class="ev-date">4 out 2026</div></div><span class="ev-tag tvt">Votação</span></div>
+      <div class="ev-item" onclick="navigate('calendario')"><div class="ev-dot dg"></div><div class="ev-body"><div class="ev-txt">2° Turno — Eleições Gerais</div><div class="ev-date">25 out 2026</div></div><span class="ev-tag tvt">Votação</span></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn" style="flex:1;justify-content:center">📆 Google</button>
+      <button class="btn" style="flex:1;justify-content:center">📥 iCal</button>
+    </div>`;
+}
+
+function alertsSide(){
+  return [
+    {uf:'SP',name:'São Paulo',sub:'Gov. · Email + Push',on:true},
+    {uf:'RJ',name:'Rio de Janeiro',sub:'Todos · Email',on:true},
+    {uf:'MG',name:'Minas Gerais',sub:'Senador · Push',on:false},
+    {uf:'RS',name:'Rio Grande do Sul',sub:'Gov. · Email',on:true},
+  ].map(a=>`
+    <div class="alt-row">
+      <div><div class="alt-uf" onclick="navigate('uf','${a.uf}')">${a.uf} — ${a.name}</div><div class="alt-sub">${a.sub}</div></div>
+      <button class="toggle ${a.on?'on':''}" onclick="this.classList.toggle('on')"></button>
+    </div>`).join('');
+}
+
+function newsSide(){
+  return [
+    {tag:'ntg-p',tl:'Pesquisa',hl:'Empate técnico no governo SP entre candidatos A e B',by:'Datafolha',ago:'há 2h'},
+    {tag:'ntg-a',tl:'Análise',hl:'Eleitorado nordestino em 2026: o que dizem os dados históricos',by:'Redação',ago:'há 5h'},
+    {tag:'ntg-l',tl:'Legislação',hl:'TSE publica novas regras para pesquisas eleitorais',by:'TSE',ago:'ontem'},
+    {tag:'ntg-r',tl:'Resultado',hl:'Padrão de reeleição de 2022 pode se repetir em 2026?',by:'Redação',ago:'2 dias'},
+  ].map(n=>`
+    <div class="poll-row" onclick="navigate('noticias')" style="flex-direction:column;align-items:flex-start;gap:5px">
+      <span class="ncol-tag ${n.tag}">${n.tl}</span>
+      <div style="font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4;cursor:pointer" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--ink)'">${n.hl}</div>
+      <div style="font-size:10.5px;color:var(--mu2)">${n.by} · ${n.ago}</div>
+    </div>`).join('');
+}
+
+// ── PAGE: HOME ────────────────────────────────────────────────────────────────
+function pageHome(){
+  const ufGrid=UF_CELLS.map(u=>`<div class="uf-cell uf-${u.tier}" title="${u.uf} — ${u.pesquisas} pesquisas" onclick="navigate('uf','${u.uf}')">${u.uf}</div>`).join('');
+  return `
+    <div class="alert-banner" id="alertBanner">
+      <span style="font-size:16px">🔔</span>
+      <span><strong>Nova pesquisa registrada em SP</strong> — Datafolha / TSE 00238/2026 publicada há 12 minutos.</span>
+      <button class="alert-dismiss" onclick="this.parentElement.remove()">✕</button>
+    </div>
+    ${heroStrip('Eleições Gerais 2026','Portal Eleitoral Brasileiro','Pesquisas registradas, histórico eleitoral e calendário em tempo real',
+      hstat('1.284','Pesquisas registradas',true)+hdiv()+hstat('28.941','Candidatos 2026')+hdiv()+hstat('149','Dias para o 1° turno',true))}
+    <div class="metrics-row">
+      <div class="mcard mg"><div class="mlabel">Pesquisas — 7 dias</div><div class="mvalue">47</div><div class="msub up">9 novas hoje</div></div>
+      <div class="mcard mb"><div class="mlabel">UFs com cobertura</div><div class="mvalue">24</div><div class="msub">de 27 estados + DF</div></div>
+      <div class="mcard mr"><div class="mlabel">1° Turno em</div><div class="mvalue">149</div><div class="msub">4 de outubro de 2026</div></div>
+      <div class="mcard ma"><div class="mlabel">Cargos monitorados</div><div class="mvalue">6</div><div class="msub">Gov · Sen · Pres · Dep</div></div>
+    </div>
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🗺</div>Pesquisas por UF — clique para detalhar</div><span class="c-link" onclick="navigate('pesquisas')">Ver todas →</span></div>
+          <div class="chip-row">
+            <button class="chip active" onclick="setChip(this)">Governador</button>
+            <button class="chip" onclick="setChip(this)">Presidente</button>
+            <button class="chip" onclick="setChip(this)">Senador</button>
+            <button class="chip" onclick="setChip(this)">Dep. Federal</button>
+          </div>
+          <div class="uf-grid">${ufGrid}</div>
+          <div class="map-legend">
+            <div class="leg-item"><div class="leg-dot" style="background:var(--gd)"></div>+20 pesquisas</div>
+            <div class="leg-item"><div class="leg-dot" style="background:var(--g)"></div>10–19</div>
+            <div class="leg-item"><div class="leg-dot" style="background:var(--gl);border:1px solid #a7e8d0"></div>1–9</div>
+            <div class="leg-item"><div class="leg-dot" style="background:var(--surf2);border:1px solid var(--border)"></div>Sem dados</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">📊</div>Últimas pesquisas registradas</div><span class="c-link" onclick="navigate('pesquisas')">Ver todas →</span></div>
+          ${pollRows(POLLS_ALL)}
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">📈</div>Intenção de voto — Gov. SP (Datafolha, 09/05/2026)</div><span class="c-link" onclick="navigate('uf','SP')">Tendência →</span></div>
+          ${barChart(UF_DATA.SP.polls[0].res)}
+          <div style="display:flex;gap:12px;font-size:11px;color:var(--mu2);flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;margin-top:14px;align-items:center">
+            <span>📅 06–08/05/2026</span><span>👥 1.200 entrevistas</span><span>±2,8% margem</span><span>95% confiança</span>
+            <span class="c-link" style="margin-left:auto" onclick="navigate('uf','SP')">Ver registro TSE →</span>
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card"><div class="card-ttl" style="margin-bottom:14px"><div class="cicon cia">📅</div>Calendário 2026</div>${calSide()}</div>
+        <div class="card"><div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">🔔</div>Alertas por UF</div><div class="sec-lbl">Ativos</div>${alertsSide()}<button class="btn btn-primary" style="width:100%;margin-top:12px;justify-content:center" onclick="navigate('alertas')">+ Adicionar alerta</button></div>
+        <div class="card"><div class="card-hd"><div class="card-ttl"><div class="cicon cia">📰</div>Noticiário</div><span class="c-link" onclick="navigate('noticias')">Ver tudo →</span></div>${newsSide()}</div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: ELEIÇÕES ─────────────────────────────────────────────────────────────
+function pageEleicoes(){
+  return `${bc({label:'Início',page:'home'},{label:'Eleições'})}
+    ${heroStrip('Histórico & 2026','Eleições por ano e estado','Resultados oficiais de 2014, 2018, 2020, 2022, 2024 e 2026')}
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-hd"><div class="card-ttl"><div class="cicon cib">📅</div>Selecione o ano</div></div>
+      <div class="chip-row">${[2014,2018,2020,2022,2024,2026].map((y,i)=>`<button class="chip ${i===5?'active':''}" onclick="setChip(this)">${y}</button>`).join('')}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px">
+      ${Object.entries(UF_DATA).map(([code,d])=>`
+      <div class="card" style="cursor:pointer;transition:box-shadow .15s,transform .15s" onmouseover="this.style.boxShadow='var(--shmd)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''" onclick="navigate('uf','${code}')">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
+          <div style="font-family:var(--fd);font-size:32px;font-weight:700;color:var(--g)">${code}</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink)">${d.name}</div><div style="font-size:11px;color:var(--mu2)">${d.region}</div></div>
+        </div>
+        <div style="display:flex;gap:14px;font-size:11px;color:var(--mu2);margin-bottom:10px">
+          <span>📊 ${d.pesquisas} pesquisas</span><span>🗳 ${d.history.length} eleições</span><span>👥 ${d.eleitores}</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink3);padding-top:10px;border-top:1px solid var(--border)">
+          <strong>Gov. 2022:</strong> ${d.history[0].vencedor.split(' ').slice(0,2).join(' ')}
+          <span class="${d.history[0].partido} pty">${d.history[0].partido}</span>
+          <span style="color:var(--g);font-weight:700;margin-left:5px">${d.history[0].pct}%</span>
+        </div>
+      </div>`).join('')}
+    </div>`;
+}
+
+// ── PAGE: PESQUISAS ────────────────────────────────────────────────────────────
+function pagePesquisas(){
+  const rows=POLLS_ALL.map(p=>`
+    <tr class="click" onclick="navigate('uf','${p.uf}')">
+      <td><span class="uf-pill ${p.pill}" onclick="event.stopPropagation();navigate('uf','${p.uf}')">${p.uf}</span></td>
+      <td><strong>${p.cargo}</strong></td>
+      <td>${p.instituto}</td>
+      <td style="font-family:var(--fm);font-size:11px;color:var(--mu2)">${p.registro}</td>
+      <td style="font-size:12px">${p.campo}</td>
+      <td style="font-variant-numeric:tabular-nums">${p.amostra.toLocaleString('pt-BR')}</td>
+      <td>±${p.margem}%</td>
+      <td style="font-weight:600">${p.data}</td>
+      <td style="white-space:nowrap">
+        <button class="ico-btn" onclick="event.stopPropagation();navigate('alertas')" title="Alerta">🔔</button>
+        <button class="ico-btn" onclick="event.stopPropagation()" title="CSV">⬇</button>
+      </td>
+    </tr>`).join('');
+  return `${bc({label:'Início',page:'home'},{label:'Pesquisas'})}
+    ${heroStrip('Registro TSE','Pesquisas eleitorais registradas','Filtros por UF, cargo, instituto e período',hstat('1.284','Total registradas',true)+hdiv()+hstat('47','Esta semana'))}
+    <div class="card">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+        <select style="font-size:12px"><option>Todas as UFs</option>${Object.keys(UF_DATA).map(u=>`<option>${u}</option>`).join('')}</select>
+        <select style="font-size:12px"><option>Todos os cargos</option><option>Governador</option><option>Senador</option><option>Presidente</option><option>Dep. Federal</option></select>
+        <select style="font-size:12px"><option>Todos os institutos</option><option>Datafolha</option><option>Quaest</option><option>AtlasIntel</option><option>Ipec</option></select>
+        <select style="font-size:12px"><option>Mais recente</option><option>Maior amostra</option><option>Menor margem</option></select>
+        <button class="btn btn-primary" style="margin-left:auto">Filtrar</button>
+        <button class="btn">⬇ Exportar CSV</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="tbl"><thead><tr><th>UF</th><th>Cargo</th><th>Instituto</th><th>Registro TSE</th><th>Campo</th><th>Amostra</th><th>Margem</th><th>Data</th><th>Ações</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+      </div>
+      <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:12px;color:var(--mu2)">Exibindo 1–8 de 1.284 pesquisas</span>
+        <div class="pagination">
+          <button class="pgbtn">‹</button><button class="pgbtn active">1</button><button class="pgbtn">2</button><button class="pgbtn">3</button><span style="font-size:12px;color:var(--mu2);padding:0 6px">…</span><button class="pgbtn">128</button><button class="pgbtn">›</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: UF ─────────────────────────────────────────────────────────────────
+function pageUF(uf){
+  const d=UF_DATA[uf];
+  if(!d) return `<div style="padding:60px;text-align:center;color:var(--mu)">Estado não encontrado. <span class="bc-link" onclick="navigate('home')">Voltar</span></div>`;
+  const histRows=d.history.map(h=>`
+    <tr onclick="navigate('eleicoes')">
+      <td><strong>${h.ano}</strong></td>
+      <td>${h.cargo}</td>
+      <td><span class="turn t${h.turno}">T${h.turno}</span></td>
+      <td><span class="winner-name">${h.vencedor}</span><span class="${pc(h.partido)} pty">${h.partido}</span></td>
+      <td><div class="pct-wrap"><div class="pct-bar"><div class="pct-fill" style="width:${h.pct}%"></div></div><span class="pct-val">${h.pct}%</span></div></td>
+      <td style="font-size:12px;color:var(--mu2)">${h.segundo} <span class="${pc(h.partido2)} pty" style="font-size:9px">${h.partido2}</span></td>
+      <td style="font-size:12px;color:var(--mu2)">${h.pct2}%</td>
+    </tr>`).join('');
+  const pollCards=d.polls.map(p=>`
+    <div style="background:var(--surf);border:1px solid var(--border);border-radius:var(--rad);padding:16px 18px;margin-bottom:10px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px">
+        <div><div style="font-size:13.5px;font-weight:600;color:var(--ink)">${p.instituto} — ${p.cargo}</div>
+          <div style="font-size:11px;color:var(--mu2);margin-top:2px;font-family:var(--fm)">TSE ${p.registro} · Campo: ${p.campo} · Amostra: ${p.amostra.toLocaleString('pt-BR')} · ±${p.margem}%</div>
+        </div>
+        <button class="ico-btn">⬇</button>
+      </div>
+      ${barChart(p.res)}
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn" style="font-size:11.5px">🔗 TSE</button>
+        <button class="btn" style="font-size:11.5px">📥 Baixar dados</button>
+        <button class="btn btn-primary" style="font-size:11.5px" onclick="navigate('alertas')">🔔 Alertas ${uf}</button>
+      </div>
+    </div>`).join('');
+  const otherUFs=Object.keys(UF_DATA).filter(u=>u!==uf);
+  return `${bc({label:'Início',page:'home'},{label:'Eleições',page:'eleicoes'},{label:`${d.name} (${uf})`})}
+    <div class="uf-hero">
+      <div class="uf-hero-in">
+        <div style="position:relative;z-index:1">
+          <div class="uf-badge-xl">${uf}</div>
+          <div class="uf-name-lg">${d.name}</div>
+          <div class="uf-region">${d.region}</div>
+        </div>
+        <div class="uf-stats" style="position:relative;z-index:1">
+          <div class="uf-stat-blk"><div class="us-num g">${d.pesquisas}</div><div class="us-lbl">Pesquisas 2026</div></div>
+          <div class="uf-stat-blk"><div class="us-num">${d.candidatos.toLocaleString('pt-BR')}</div><div class="us-lbl">Candidatos</div></div>
+          <div class="uf-stat-blk"><div class="us-num">${d.eleitores}</div><div class="us-lbl">Eleitores</div></div>
+          <div class="uf-stat-blk"><div class="us-num">${d.history.length}</div><div class="us-lbl">Eleições históricas</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🗓</div>Histórico eleitoral — ${d.name}</div><button class="btn">⬇ CSV</button></div>
+          <div class="tabs">
+            <div class="tab active" onclick="switchTab(this,'t-hist')">Resultados oficiais</div>
+            <div class="tab" onclick="switchTab(this,'t-trend')">Tendência histórica</div>
+          </div>
+          <div id="t-hist" style="overflow-x:auto">
+            <table class="htbl"><thead><tr><th>Ano</th><th>Cargo</th><th>Turno</th><th>Vencedor</th><th>% votos</th><th>2° colocado</th><th>%</th></tr></thead>
+            <tbody>${histRows}</tbody></table>
+          </div>
+          <div id="t-trend" style="display:none">
+            <div class="trend-wrap"><canvas id="trendCanvas"></canvas></div>
+            <div style="font-size:11px;color:var(--mu2);text-align:center">% votos do vencedor por eleição — ${uf}</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">📊</div>Pesquisas registradas — ${d.name} 2026</div><span class="c-link" onclick="navigate('pesquisas')">Ver todas →</span></div>
+          ${pollCards}
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">🔔</div>Alertas — ${uf}</div>
+          <p style="font-size:12.5px;color:var(--mu);margin-bottom:12px">Notificações quando novas pesquisas forem registradas para ${d.name}.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+            ${['Governador','Senador','Dep. Federal','Todos os cargos'].map(c=>`<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer"><input type="checkbox" ${c==='Governador'?'checked':''} style="accent-color:var(--g)"> ${c}</label>`).join('')}
+          </div>
+          <div class="chip-row" style="margin-bottom:12px">
+            ${['Email','Push web','Telegram'].map((c,i)=>`<button class="chip ${i===0?'active':''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
+          </div>
+          <button class="btn btn-primary" style="width:100%">🔔 Ativar alertas para ${uf}</button>
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">🗺</div>Outros estados</div>
+          <div class="uf-pills-grid">${otherUFs.map(u=>`<span class="uf-nav-pill" onclick="navigate('uf','${u}')">${u}</span>`).join('')}</div>
+          <span class="c-link" style="display:block;margin-top:10px" onclick="navigate('eleicoes')">Ver todos os estados →</span>
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cib">📥</div>Dados abertos</div>
+          ${[{l:'Histórico completo '+uf,f:'CSV'},{l:'Pesquisas 2026 — '+uf,f:'JSON'},{l:'Candidatos registrados — '+uf,f:'CSV'}].map(x=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surf);border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--ink3)">${x.l}</span>
+            <button class="btn" style="font-size:11px">${x.f} ⬇</button>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: NOTICIÁRIO ───────────────────────────────────────────────────────────
+function pageNoticias(){
+  return `${bc({label:'Início',page:'home'},{label:'Noticiário'})}
+    <div class="news-header">
+      <div class="news-date-line">Segunda-feira, 11 de maio de 2026</div>
+      <div class="news-masthead">Vota<span>Data</span> Noticiário</div>
+      <div class="news-sub-rule">
+        <span>Análise · Pesquisas · Legislação · Resultados</span>
+        <div class="chip-row" style="margin:0;gap:6px">
+          ${['Todos','Pesquisa','Análise','Legislação','Resultado'].map((t,i)=>`<button class="chip ${i===0?'active':''}" onclick="setChip(this)">${t}</button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="lead-art">
+        <div class="lead-category">Pesquisa eleitoral</div>
+        <div class="lead-headline" onclick="navigate('uf','SP')">Empate técnico persiste em São Paulo: candidatos A e B oscilam dentro da margem de erro em três pesquisas consecutivas</div>
+        <div class="lead-img"><div class="lead-img-placeholder">📊</div><div class="lead-img-label">Gráfico de tendência — Gov. SP 2026 · Fonte: TSE / Datafolha</div></div>
+        <div class="lead-deck">As três pesquisas registradas no TSE em maio mostram variação dentro da margem de erro de ±2,8 pontos percentuais, configurando empate técnico entre os dois principais candidatos ao governo de São Paulo. Especialistas apontam eleitorado indeciso como fator determinante.</div>
+        <div class="lead-byline"><span style="font-weight:600">Redação VotaData</span><span>·</span><span>11 mai 2026, 08h30</span><span>·</span><span class="ncol-tag ntg-p">Pesquisa</span></div>
+      </div>
+      <div class="side-arts">
+        <div class="side-art" onclick="navigate('uf','RJ')">
+          <div class="side-cat">Pesquisa · RJ</div>
+          <div class="side-headline">Quaest registra candidato A com 12 pontos de vantagem no Rio de Janeiro</div>
+          <div class="side-deck">TSE 00191/2026 — amostra de 800 entrevistados, margem de ±3,4%.</div>
+          <div class="side-meta">Quaest · 08 mai 2026 <span class="ncol-tag ntg-p">Pesquisa</span></div>
+        </div>
+        <div class="side-art" onclick="navigate('eleicoes')">
+          <div class="side-cat">Análise</div>
+          <div class="side-headline">Eleitorado nordestino: o que os dados históricos revelam para 2026</div>
+          <div class="side-deck">Levantamento compara resultados de 2014 a 2022 para projetar tendências regionais.</div>
+          <div class="side-meta">Redação VotaData · 11 mai 2026 <span class="ncol-tag ntg-a">Análise</span></div>
+        </div>
+        <div class="side-art" onclick="navigate('calendario')">
+          <div class="side-cat">Legislação · TSE</div>
+          <div class="side-headline">TSE publica portaria com novas regras para registro e divulgação de pesquisas</div>
+          <div class="side-meta">TSE · 10 mai 2026 <span class="ncol-tag ntg-l">Legislação</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="news-cols-rule">
+      <div class="ncol">
+        <div class="ncol-cat">Minas Gerais</div>
+        <div class="ncol-hl" onclick="navigate('uf','MG')">Ipec: Romeu Zema lidera em MG com 35% mas cenário é de indefinição</div>
+        <div class="ncol-body">O levantamento registrado como TSE 00174/2026 aponta vantagem de sete pontos sobre o segundo colocado, dentro da margem de erro acumulada para dois candidatos.</div>
+        <div class="ncol-meta"><span>Ipec · 07 mai 2026</span><span class="ncol-tag ntg-p">Pesquisa</span></div>
+      </div>
+      <div class="ncol">
+        <div class="ncol-cat">Sul do Brasil</div>
+        <div class="ncol-hl" onclick="navigate('uf','RS')">Eduardo Leite lidera Senado gaúcho com 33% em pesquisa AtlasIntel</div>
+        <div class="ncol-body">Pesquisa online de alta precisão ouviu 960 eleitores no RS entre 3 e 5 de maio, com margem de ±3,2%. Candidato do PSDB mantém vantagem na comparação com levantamento anterior.</div>
+        <div class="ncol-meta"><span>AtlasIntel · 06 mai 2026</span><span class="ncol-tag ntg-p">Pesquisa</span></div>
+      </div>
+      <div class="ncol">
+        <div class="ncol-cat">Calendário eleitoral</div>
+        <div class="ncol-hl" onclick="navigate('calendario')">Prazo de registro de candidaturas encerra em 14 de maio; partidos correm contra o tempo</div>
+        <div class="ncol-body">Com apenas quatro dias para o encerramento do prazo, partidos registram candidatos em ritmo acelerado nos 27 estados e DF. TSE espera superar marca de 30 mil candidaturas.</div>
+        <div class="ncol-meta"><span>Redação VotaData · 11 mai 2026</span><span class="ncol-tag ntg-l">Legislação</span></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:8px">
+      <div class="card-hd"><div class="card-ttl"><div class="cicon cia">📬</div>Newsletter semanal</div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <input type="email" placeholder="seu@email.com" style="flex:1;min-width:200px">
+        <button class="btn btn-primary">Assinar newsletter gratuita</button>
+        <button class="btn">RSS</button>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: ALERTAS ─────────────────────────────────────────────────────────────
+function pageAlertas(){
+  return `${bc({label:'Início',page:'home'},{label:'Alertas por UF'})}
+    ${heroStrip('Notificações em tempo real','Alertas por UF e cargo','Seja notificado quando novas pesquisas forem registradas')}
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">➕</div>Novo alerta</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+            <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Estado (UF)</label>
+              <select style="width:100%"><option>Selecionar UF…</option>${Object.keys(UF_DATA).map(u=>`<option>${u} — ${UF_DATA[u].name}</option>`).join('')}</select></div>
+            <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Cargo</label>
+              <select style="width:100%"><option>Todos os cargos</option><option>Governador</option><option>Senador</option><option>Dep. Federal</option><option>Presidente</option></select></div>
+            <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Canal de notificação</label>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:2px">
+                ${['Email','Push web','Telegram','WhatsApp'].map((c,i)=>`<button class="chip ${i<2?'active':''}" onclick="this.classList.toggle('active')">${c}</button>`).join('')}
+              </div></div>
+            <div><label style="font-size:11.5px;color:var(--mu);font-weight:600;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Limiar de variação</label>
+              <select style="width:100%"><option>Qualquer nova pesquisa</option><option>Variação &gt;3%</option><option>Variação &gt;5%</option><option>Variação &gt;10%</option></select></div>
+          </div>
+          <button class="btn btn-primary">🔔 Criar alerta</button>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cip">📋</div>Alertas configurados</div></div>
+          ${[
+            {uf:'SP',name:'São Paulo',sub:'Governador · Email + Push · Qualquer pesquisa',on:true},
+            {uf:'RJ',name:'Rio de Janeiro',sub:'Todos os cargos · Email · Variação >5%',on:true},
+            {uf:'MG',name:'Minas Gerais',sub:'Senador · Push web · Qualquer pesquisa',on:false},
+            {uf:'RS',name:'Rio Grande do Sul',sub:'Governador · Email · Variação >3%',on:true},
+          ].map(a=>`
+          <div class="alt-row">
+            <div><div class="alt-uf" onclick="navigate('uf','${a.uf}')">${a.uf} — ${a.name}</div><div class="alt-sub">${a.sub}</div></div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <button class="ico-btn">✏️</button>
+              <button class="ico-btn">🗑</button>
+              <button class="toggle ${a.on?'on':''}" onclick="this.classList.toggle('on')"></button>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📬</div>Últimas notificações</div>
+          ${[
+            {uf:'SP',msg:'Nova pesquisa Datafolha para Gov. SP registrada',ago:'há 12 min',novo:true},
+            {uf:'RJ',msg:'Quaest Gov. RJ: variação de 4,2% em relação à pesquisa anterior',ago:'há 3h',novo:true},
+            {uf:'MG',msg:'Nova pesquisa Ipec para Gov. MG',ago:'ontem',novo:false},
+            {uf:'RS',msg:'AtlasIntel — Senado RS: nova pesquisa registrada',ago:'2 dias',novo:false},
+          ].map(n=>`
+          <div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+            <div style="width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;background:${n.novo?'var(--g)':'var(--border2)'}"></div>
+            <div style="flex:1"><div style="font-size:12.5px;font-weight:${n.novo?'500':'400'};color:var(--ink)">${n.msg}</div>
+              <div style="font-size:10.5px;color:var(--mu2);margin-top:2px">${n.uf} · ${n.ago}</div>
+            </div>
+            <span class="c-link" style="font-size:11px" onclick="navigate('uf','${n.uf}')">Ver →</span>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: CALENDÁRIO ──────────────────────────────────────────────────────────
+function pageCalendario(){
+  const evs=[
+    {data:'14/05/2026',tipo:'Registro',desc:'Prazo para registro de candidaturas no TSE',dot:'db',tag:'trg'},
+    {data:'23/05/2026',tipo:'Propaganda',desc:'Início da propaganda eleitoral gratuita no rádio e TV',dot:'da',tag:'tpr'},
+    {data:'30/05/2026',tipo:'Prazo',desc:'Prazo para divulgação de pesquisas (quinzena)',dot:'dr',tag:'tpz'},
+    {data:'15/08/2026',tipo:'Prazo',desc:'Prazo final para filiação partidária',dot:'dr',tag:'tpz'},
+    {data:'27/09/2026',tipo:'Prazo',desc:'Encerramento da propaganda eleitoral (48h antes)',dot:'dr',tag:'tpz'},
+    {data:'04/10/2026',tipo:'Votação',desc:'1° Turno — Eleições Gerais 2026',dot:'dg',tag:'tvt'},
+    {data:'11/10/2026',tipo:'Prazo',desc:'Registro dos resultados do 1° Turno',dot:'db',tag:'trg'},
+    {data:'25/10/2026',tipo:'Votação',desc:'2° Turno — Eleições Gerais 2026',dot:'dg',tag:'tvt'},
+    {data:'10/11/2026',tipo:'Registro',desc:'Diplomação dos eleitos no 1° Turno',dot:'db',tag:'trg'},
+    {data:'01/01/2027',tipo:'Registro',desc:'Posse dos governadores e senadores eleitos',dot:'db',tag:'trg'},
+  ];
+  return `${bc({label:'Início',page:'home'},{label:'Calendário 2026'})}
+    ${heroStrip('Prazos oficiais TSE','Calendário Eleitoral 2026','Todos os eventos, prazos e datas oficiais das eleições gerais',hstat('149','Dias para o 1° turno',true)+hdiv()+hstat('4 out','Data da eleição'))}
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center">
+      ${['Todos','Votação','Prazos','Registro','Propaganda'].map((t,i)=>`<button class="chip ${i===0?'active':''}" onclick="setChip(this)">${t}</button>`).join('')}
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="btn">📆 Google Calendar</button>
+        <button class="btn btn-primary">📥 Exportar iCal</button>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:9px">
+        ${evs.map(e=>`
+        <div class="ev-item">
+          <div class="ev-dot ${e.dot}"></div>
+          <div class="ev-body"><div class="ev-txt" style="font-size:13px">${e.desc}</div><div class="ev-date">${e.data}</div></div>
+          <span class="ev-tag ${e.tag}">${e.tipo}</span>
+          <button class="ico-btn" title="Adicionar ao calendário">📆</button>
+        </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ── PAGE: API ─────────────────────────────────────────────────────────────────
+function pageAPI(){
+  const eps=[
+    {m:'GET',p:'/api/elections?year=&uf=&cargo=',d:'Lista eleições com filtros'},
+    {m:'GET',p:'/api/elections/{id}',d:'Detalhe de uma eleição'},
+    {m:'GET',p:'/api/polls?uf=&cargo=&institute=&from=&to=',d:'Lista pesquisas registradas'},
+    {m:'GET',p:'/api/polls/{id}',d:'Detalhe completo de uma pesquisa'},
+    {m:'POST',p:'/api/alerts',d:'Criar assinatura de alerta por UF'},
+    {m:'GET',p:'/api/calendar?uf=&from=&to=',d:'Eventos do calendário eleitoral'},
+    {m:'GET',p:'/api/news?tags=&uf=',d:'Feed de notícias categorizado'},
+  ];
+  return `${bc({label:'Início',page:'home'},{label:'API / Dados abertos'})}
+    ${heroStrip('Acesso programático','API pública VotaData','REST/JSON · OpenAPI 3.0 · Gratuita para uso não-comercial')}
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🔌</div>Endpoints disponíveis</div><button class="btn">📄 OpenAPI spec</button></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            ${eps.map(e=>`
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:11px 14px;background:var(--surf);border:1px solid var(--border);border-radius:9px">
+              <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;flex-shrink:0;font-family:var(--fm);background:${e.m==='GET'?'var(--gl)':'var(--bl)'};color:${e.m==='GET'?'var(--gd)':'var(--b)'}">${e.m}</span>
+              <div><div style="font-size:12.5px;font-weight:600;font-family:var(--fm);color:var(--ink)">${e.p}</div>
+                <div style="font-size:11px;color:var(--mu2);margin-top:2px">${e.d}</div></div>
+            </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cib">🔑</div>Chave de API</div>
+          <p style="font-size:12.5px;color:var(--mu);margin-bottom:12px">Uso público: sem chave. Para uso intensivo, gere uma chave gratuita.</p>
+          <input type="email" placeholder="seu@email.com" style="width:100%;margin-bottom:8px">
+          <button class="btn btn-primary" style="width:100%">Gerar chave gratuita</button>
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📦</div>Downloads em massa</div>
+          ${[{l:'Histórico completo 2014–2024',s:'12 MB'},{l:'Pesquisas 2026 (atualização diária)',s:'3,4 MB'},{l:'Candidatos registrados 2026',s:'8,1 MB'}].map(x=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--surf);border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
+            <span style="font-size:12.5px;color:var(--ink3)">${x.l} <span style="color:var(--mu2)">(${x.s})</span></span>
+            <button class="btn" style="font-size:11px">CSV ⬇</button>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: SOBRE ───────────────────────────────────────────────────────────────
+function pageSobre(){
+  return `${bc({label:'Início',page:'home'},{label:'Sobre'})}
+    ${heroStrip('Missão & metodologia','Sobre o VotaData 2026','Transparência, fontes oficiais e metodologia aberta')}
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🎯</div>Missão</div></div>
+          <p style="font-size:13.5px;color:var(--ink3);line-height:1.75;margin-bottom:12px">O VotaData centraliza dados eleitorais oficiais, pesquisas registradas no TSE e informações sobre as Eleições 2026, disponibilizando-os de forma acessível para jornalistas, pesquisadores, equipes de campanha, eleitores e órgãos públicos.</p>
+          <p style="font-size:13.5px;color:var(--ink3);line-height:1.75">Todos os dados provêm de fontes oficiais — TSE, TREs e institutos registrados — e são apresentados com links de origem e metodologia detalhada, garantindo rastreabilidade e transparência.</p>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">📚</div>Fontes de dados</div></div>
+          ${[{n:'Tribunal Superior Eleitoral (TSE)',u:'tse.jus.br',d:'Resultados oficiais, registro de candidatos e pesquisas'},
+             {n:'Tribunais Regionais Eleitorais (TREs)',u:'tre-*.jus.br',d:'Dados estaduais detalhados e atas de apuração'},
+             {n:'Institutos de pesquisa registrados',u:'',d:'Datafolha, Quaest, AtlasIntel, Ipec, Paraná Pesquisas e outros'},
+          ].map(f=>`
+          <div style="padding:11px 0;border-bottom:1px solid var(--border)">
+            <div style="font-size:13.5px;font-weight:600;color:var(--ink)">${f.n}</div>
+            ${f.u?`<div style="font-size:11px;color:var(--g);margin-top:2px;font-family:var(--fm)">${f.u}</div>`:''}
+            <div style="font-size:12px;color:var(--mu2);margin-top:3px">${f.d}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">⚖️</div>Conformidade legal</div>
+          ${['LGPD — Lei Geral de Proteção de Dados (13.709/2018)','Resolução TSE nº 23.610/2019 — Pesquisas eleitorais','Código Eleitoral Brasileiro — Lei 9.504/1997','Política de dados abertos do governo federal'].map(l=>`
+          <div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink3)">
+            <span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>${l}
+          </div>`).join('')}
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">✉️</div>Contato</div>
+          <div style="font-size:13px;color:var(--mu2);line-height:2">
+            <div>📧 contato@votadata.com.br</div>
+            <div>🐦 @votadata2026</div>
+            <div>📡 API: api.votadata.com.br</div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:12px;width:100%">Enviar mensagem</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE: DOWNLOAD ─────────────────────────────────────────────────────────────
+function pageDownload(){
+  return `${bc({label:'Início',page:'home'},{label:'Download do projeto'})}
+    <div class="dl-panel" style="margin-bottom:20px">
+      <div style="position:relative;z-index:1">
+        <div style="font-size:10.5px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:20px;height:1.5px;background:var(--g2)"></span>Projeto completo</div>
+        <div class="dl-ttl">VotaData 2026 — Portal Eleitoral</div>
+        <div class="dl-sub">HTML single-file · CSS inline · JavaScript vanilla · sem dependências externas</div>
+        <div class="dl-files">
+          <div class="dl-file" onclick="downloadHTML()">
+            <div class="dl-icon">🌐</div>
+            <div><div class="dl-fname">votadata2026.html</div><div class="dl-fsize">Portal completo · ~80 KB</div></div>
+          </div>
+          <div class="dl-file">
+            <div class="dl-icon">📋</div>
+            <div><div class="dl-fname">schema_banco.sql</div><div class="dl-fsize">Schema PostgreSQL · 12 KB</div></div>
+          </div>
+          <div class="dl-file">
+            <div class="dl-icon">📄</div>
+            <div><div class="dl-fname">openapi.yaml</div><div class="dl-fsize">Especificação API REST · 8 KB</div></div>
+          </div>
+          <div class="dl-file">
+            <div class="dl-icon">📦</div>
+            <div><div class="dl-fname">dados_amostra.json</div><div class="dl-fsize">Dataset de exemplo · 45 KB</div></div>
+          </div>
+          <div class="dl-file">
+            <div class="dl-icon">📝</div>
+            <div><div class="dl-fname">README.md</div><div class="dl-fsize">Documentação técnica · 6 KB</div></div>
+          </div>
+          <div class="dl-file">
+            <div class="dl-icon">🗺</div>
+            <div><div class="dl-fname">roadmap.pdf</div><div class="dl-fsize">Plano de execução MVP · 4 KB</div></div>
+          </div>
+        </div>
+        <div class="dl-actions">
+          <button class="btn btn-primary" style="font-size:14px;padding:10px 24px" onclick="downloadHTML()">⬇ Baixar portal HTML</button>
+          <button class="btn" style="background:rgba(255,255,255,.1);color:white;border-color:rgba(255,255,255,.2);font-size:14px;padding:10px 24px">📦 Baixar pacote completo (.zip)</button>
+          <button class="btn" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.15)" onclick="window.open('https://github.com','_blank')">🔗 GitHub</button>
+        </div>
+      </div>
+    </div>
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🛠</div>Stack tecnológica do protótipo</div></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
+            ${[
+              {icon:'🌐',name:'HTML5 + CSS3',desc:'Single-file, sem build'},
+              {icon:'⚡',name:'JavaScript ES6+',desc:'Vanilla, sem frameworks'},
+              {icon:'🔤',name:'Playfair Display',desc:'Tipografia editorial'},
+              {icon:'📐',name:'CSS Grid & Flexbox',desc:'Layout responsivo'},
+              {icon:'🎨',name:'CSS Custom Properties',desc:'Design system tokens'},
+              {icon:'📊',name:'Canvas API',desc:'Gráficos de tendência'},
+            ].map(s=>`
+            <div style="background:var(--surf);border:1px solid var(--border);border-radius:9px;padding:12px 14px">
+              <div style="font-size:20px;margin-bottom:6px">${s.icon}</div>
+              <div style="font-size:13px;font-weight:600;color:var(--ink)">${s.name}</div>
+              <div style="font-size:11px;color:var(--mu2);margin-top:2px">${s.desc}</div>
+            </div>`).join('')}
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🏗</div>Stack recomendada para produção</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            ${[
+              {camada:'Frontend',tech:'Next.js + TypeScript + Tailwind CSS',icon:'⚛️'},
+              {camada:'Mapas',tech:'Mapbox GL JS ou Leaflet.js',icon:'🗺'},
+              {camada:'Backend',tech:'FastAPI (Python) ou NestJS (Node)',icon:'🚀'},
+              {camada:'Banco de dados',tech:'PostgreSQL + Elasticsearch',icon:'🗄'},
+              {camada:'Notificações',tech:'Firebase + SendGrid + Twilio',icon:'📣'},
+              {camada:'Hospedagem',tech:'AWS / GCP — Docker + Kubernetes',icon:'☁️'},
+            ].map(r=>`
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surf);border:1px solid var(--border);border-radius:9px">
+              <span style="font-size:18px;flex-shrink:0">${r.icon}</span>
+              <div><div style="font-size:11px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em">${r.camada}</div>
+                <div style="font-size:13px;font-weight:500;color:var(--ink)">${r.tech}</div></div>
+            </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cia">📋</div>Roadmap MVP</div>
+          ${[
+            {sem:'0–2',fase:'Planejamento',desc:'Wireframes, fontes, requisitos'},
+            {sem:'3–6',fase:'Backend base',desc:'Modelos de dados, ingestão TSE'},
+            {sem:'7–10',fase:'Frontend dashboard',desc:'Mapa, pesquisas, filtros'},
+            {sem:'11–14',fase:'Alertas & Notícias',desc:'Push, email, CMS'},
+            {sem:'15–18',fase:'Calendário & Deploy',desc:'Testes, docs API, lançamento'},
+          ].map((r,i)=>`
+          <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:${i===0?'var(--g)':'var(--surf2)'};border:2px solid ${i===0?'var(--g)':'var(--border2)'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:${i===0?'white':'var(--mu2)'};flex-shrink:0">${i+1}</div>
+            <div><div style="font-size:12px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.05em">Sem. ${r.sem}</div>
+              <div style="font-size:13px;font-weight:600;color:var(--ink)">${r.fase}</div>
+              <div style="font-size:12px;color:var(--mu2)">${r.desc}</div></div>
+          </div>`).join('')}
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">📊</div>Métricas de sucesso</div>
+          ${[{m:'Latência de publicação',v:'< 5 min'},{m:'Taxa de assinaturas/UF',v:'Meta: 500+'},{m:'Precisão de fontes oficiais',v:'> 98%'},{m:'Uptime da plataforma',v:'> 99,5%'}].map(x=>`
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border)">
+            <span style="font-size:12.5px;color:var(--ink3)">${x.m}</span>
+            <span style="font-size:13px;font-weight:700;color:var(--g);font-family:var(--fm)">${x.v}</span>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── PAGE MAP ──────────────────────────────────────────────────────────────────
+const PAGES={home:pageHome,eleicoes:pageEleicoes,pesquisas:pagePesquisas,uf:pageUF,alertas:pageAlertas,noticias:pageNoticias,calendario:pageCalendario,api:pageAPI,sobre:pageSobre,download:pageDownload};
+
+// ── EVENTS ───────────────────────────────────────────────────────────────────
+function setChip(el){
+  const parent=el.closest('.chip-row,.filter-chips');
+  if(parent) parent.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+function switchTab(el,showId){
+  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['t-hist','t-trend'].forEach(id=>{
+    const e=document.getElementById(id);
+    if(e) e.style.display=id===showId?'':'none';
   });
-});
+  if(showId==='t-trend') drawTrend();
+}
+function drawTrend(){
+  const canvas=document.getElementById('trendCanvas');
+  if(!canvas||!currentUF) return;
+  const d=UF_DATA[currentUF];
+  if(!d) return;
+  const ctx=canvas.getContext('2d');
+  const W=canvas.parentElement.offsetWidth, H=190;
+  canvas.width=W; canvas.height=H;
+  const pts=[...d.history].reverse();
+  const pcts=pts.map(p=>p.pct);
+  const minV=Math.min(...pcts)-8, maxV=100;
+  const pad={l:44,r:20,t:24,b:32};
+  const toX=i=>pad.l+i*(W-pad.l-pad.r)/(pts.length-1||1);
+  const toY=v=>pad.t+(maxV-v)/(maxV-minV)*(H-pad.t-pad.b);
+  ctx.clearRect(0,0,W,H);
+  [40,50,60,70,80].forEach(v=>{
+    ctx.strokeStyle='#dde3ec';ctx.lineWidth=1;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();ctx.moveTo(pad.l,toY(v));ctx.lineTo(W-pad.r,toY(v));ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle='#8896aa';ctx.font='10px Inter,sans-serif';ctx.textAlign='right';
+    ctx.fillText(v+'%',pad.l-8,toY(v)+4);
+  });
+  const grad=ctx.createLinearGradient(0,pad.t,0,H-pad.b);
+  grad.addColorStop(0,'rgba(11,138,92,.15)');grad.addColorStop(1,'rgba(11,138,92,0)');
+  ctx.fillStyle=grad;
+  ctx.beginPath();ctx.moveTo(toX(0),toY(pts[0].pct));
+  pts.forEach((p,i)=>ctx.lineTo(toX(i),toY(p.pct)));
+  ctx.lineTo(toX(pts.length-1),H-pad.b);ctx.lineTo(toX(0),H-pad.b);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='#0b8a5c';ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.setLineDash([]);
+  ctx.beginPath();
+  pts.forEach((p,i)=>i===0?ctx.moveTo(toX(i),toY(p.pct)):ctx.lineTo(toX(i),toY(p.pct)));
+  ctx.stroke();
+  pts.forEach((p,i)=>{
+    ctx.fillStyle='#0b8a5c';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='white';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),2.5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#0a0f1e';ctx.font='bold 10.5px Inter,sans-serif';ctx.textAlign='center';
+    ctx.fillText(p.ano,toX(i),H-pad.b+18);
+    ctx.fillStyle='#054d35';ctx.font='bold 10px Inter,sans-serif';
+    ctx.fillText(p.pct+'%',toX(i),toY(p.pct)-10);
+  });
+}
+
+function downloadHTML(){
+  const src=document.documentElement.outerHTML;
+  const blob=new Blob([src],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='votadata2026.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function bindAll(){
+  // Animate bar fills
+  setTimeout(()=>{
+    document.querySelectorAll('.bc-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target});
+    document.querySelectorAll('.bc-fill').forEach(el=>{if(el.style.width==='0%'&&!el.dataset.target) el.style.width='0%'});
+  },80);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+navigate('home');
 </script>
 </body>
 </html>
