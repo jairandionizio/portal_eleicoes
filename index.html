@@ -2,8 +2,18 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VotaData 2026 — Portal Eleitoral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="VotaData 2026 — Plataforma de inteligência eleitoral brasileira. Pesquisas registradas no TSE, histórico eleitoral, alertas por UF e análises para as eleições gerais de 2026. Desenvolvido por Jairan Dionizio.">
+<meta name="author" content="Jairan Dionizio">
+<meta name="keywords" content="eleições 2026, pesquisas eleitorais, TSE, governador, senador, inteligência eleitoral, VotaData">
+<meta property="og:title" content="VotaData 2026 — Inteligência Eleitoral Brasileira">
+<meta property="og:description" content="Pesquisas registradas no TSE, histórico eleitoral e análises de tendências para as eleições gerais de 2026. Por Jairan Dionizio.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://votadata.com.br/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0f1e">
+<link rel="canonical" href="https://votadata.com.br">
+<title>VotaData 2026 — Plataforma de Inteligência Eleitoral | Jairan Dionizio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -361,16 +371,23 @@ canvas{display:block}
   <div class="ticker-label">AO VIVO</div>
   <div class="ticker-track">
     <div class="ticker-inner">
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
-      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
-      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: A 38% · B 32% — publicado há 12 min</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>RJ</span>Quaest Gov. RJ: A 41% · B 29% — publicado hoje</div>
-      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio</div>
-      <div class="ticker-item" onclick="navigate('pesquisas')"><span>MG</span>Ipec Gov. MG: registro TSE 00174/2026 disponível</div>
-      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: Tarcísio 38% · Haddad 32% — TSE 00238/2026 · há 12 min</div>
+      <div class="ticker-item" onclick="navigate('uf','RJ')"><span>RJ</span>Quaest Gov. RJ: Castro 41% · Freixo 29% — TSE 00191/2026 · hoje</div>
+      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio · 4 dias restantes</div>
+      <div class="ticker-item" onclick="navigate('uf','MG')"><span>MG</span>Ipec Gov. MG: Zema 35% · Kalil 28% · Anastasia 22% — TSE 00174/2026</div>
+      <div class="ticker-item" onclick="navigate('uf','RS')"><span>RS</span>AtlasIntel Senado RS: Leite 33% · Pretto 28% — TSE 00162/2026</div>
+      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas — Portaria TSE nº 447/2026</div>
+      <div class="ticker-item" onclick="navigate('autor')"><span>ANÁLISE</span>Elasticidade eleitoral no Sudeste — artigo de Jairan Dionizio</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>BA</span>Paraná Pesquisas Gov. BA: Rodrigues 47% · ACM Neto 32% — TSE 00155/2026</div>
+      <!-- repeat for seamless loop -->
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>SP</span>Datafolha Gov. SP: Tarcísio 38% · Haddad 32% — TSE 00238/2026 · há 12 min</div>
+      <div class="ticker-item" onclick="navigate('uf','RJ')"><span>RJ</span>Quaest Gov. RJ: Castro 41% · Freixo 29% — TSE 00191/2026 · hoje</div>
+      <div class="ticker-item" onclick="navigate('calendario')"><span>PRAZO</span>Registro de candidaturas encerra em 14 de maio · 4 dias restantes</div>
+      <div class="ticker-item" onclick="navigate('uf','MG')"><span>MG</span>Ipec Gov. MG: Zema 35% · Kalil 28% · Anastasia 22% — TSE 00174/2026</div>
+      <div class="ticker-item" onclick="navigate('uf','RS')"><span>RS</span>AtlasIntel Senado RS: Leite 33% · Pretto 28% — TSE 00162/2026</div>
+      <div class="ticker-item" onclick="navigate('noticias')"><span>TSE</span>Novas regras para pesquisas eleitorais publicadas — Portaria TSE nº 447/2026</div>
+      <div class="ticker-item" onclick="navigate('autor')"><span>ANÁLISE</span>Elasticidade eleitoral no Sudeste — artigo de Jairan Dionizio</div>
+      <div class="ticker-item" onclick="navigate('pesquisas')"><span>BA</span>Paraná Pesquisas Gov. BA: Rodrigues 47% · ACM Neto 32% — TSE 00155/2026</div>
     </div>
   </div>
 </div>
@@ -383,21 +400,29 @@ canvas{display:block}
     </div>
     <div class="logo-wordmark">
       <div class="logo-name">Vota<span>Data</span></div>
-      <div class="logo-tagline">Portal Eleitoral 2026</div>
+      <div class="logo-tagline">Inteligência Eleitoral 2026</div>
     </div>
   </div>
   <div class="search-wrap">
     <div class="search-box">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Candidato, cargo, UF, instituto, registro TSE…">
+      <input type="text" placeholder="Candidato, UF, instituto, cargo, registro TSE…" id="globalSearch">
     </div>
   </div>
   <div class="topbar-right">
-    <div class="live-dot" title="Dados atualizados em tempo real"></div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--g)">
+      <div class="live-dot"></div>Tempo real
+    </div>
     <button class="btn btn-ghost" onclick="navigate('noticias')">📰 Noticiário</button>
-    <button class="btn btn-primary" onclick="navigate('alertas')">🔔 Alertas</button>
-    <button class="btn btn-download" onclick="navigate('download')">⬇ Baixar projeto</button>
-    <div class="avatar" title="Perfil">JD</div>
+    <button class="btn btn-primary" onclick="navigate('alertas')" style="font-weight:700;letter-spacing:-.01em">🔔 Monitorar minha UF</button>
+    <button class="btn btn-download" onclick="navigate('download')">⬇ Download</button>
+    <div style="display:flex;align-items:center;gap:8px;padding:5px 12px;border-radius:var(--rad);cursor:pointer;border:1px solid var(--border);transition:background .15s" onmouseover="this.style.background='var(--surf)'" onmouseout="this.style.background='transparent'" onclick="navigate('sobre')">
+      <div class="avatar" title="Jairan Dionizio">JD</div>
+      <div style="line-height:1.25">
+        <div style="font-size:12px;font-weight:600;color:var(--ink)">Jairan Dionizio</div>
+        <div style="font-size:10px;color:var(--mu2)">Analista eleitoral</div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -407,14 +432,15 @@ canvas{display:block}
   <div class="nav-sep"></div>
   <div class="nav-item" data-page="eleicoes" onclick="navigate('eleicoes')">Eleições ▾</div>
   <div class="nav-item" data-page="pesquisas" onclick="navigate('pesquisas')">Pesquisas <span class="nav-badge">1.284</span></div>
+  <div class="nav-item" data-page="analytics" onclick="navigate('analytics')" style="position:relative">📊 Analytics <span class="nav-new">NOVO</span></div>
   <div class="nav-item" data-page="alertas" onclick="navigate('alertas')">Alertas por UF</div>
   <div class="nav-sep"></div>
-  <div class="nav-item" data-page="noticias" onclick="navigate('noticias')" style="position:relative">Noticiário <span class="nav-new">NOVO</span></div>
+  <div class="nav-item" data-page="noticias" onclick="navigate('noticias')">Noticiário</div>
   <div class="nav-item" data-page="calendario" onclick="navigate('calendario')">Calendário 2026</div>
   <div class="nav-sep"></div>
   <div class="nav-item" data-page="api" onclick="navigate('api')">API / Dados</div>
-  <div class="nav-item" data-page="sobre" onclick="navigate('sobre')">Sobre</div>
-  <div class="nav-item" data-page="download" onclick="navigate('download')" style="margin-left:auto;color:var(--g)">⬇ Download</div>
+  <div class="nav-item" data-page="sobre" onclick="navigate('sobre')" style="font-weight:600">👤 Sobre o autor</div>
+  <div class="nav-item" data-page="download" onclick="navigate('download')" style="margin-left:auto;color:var(--g);font-weight:600">⬇ Download</div>
 </nav>
 
 <div id="app"></div>
@@ -443,43 +469,43 @@ const UF_DATA={
     {ano:2018,cargo:'Governador',turno:2,vencedor:'João Doria',partido:'PSDB',pct:52.6,segundo:'Marcio França',partido2:'PSB',pct2:47.4},
     {ano:2014,cargo:'Governador',turno:2,vencedor:'Geraldo Alckmin',partido:'PSDB',pct:57.3,segundo:'Paulo Skaf',partido2:'PMDB',pct2:42.7},
   ],polls:[
-    {instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',amostra:1200,margem:2.8,cargo:'Governador',res:[{c:'Cand. A (PT)',p:38},{c:'Cand. B (Rep.)',p:32},{c:'Cand. C (PL)',p:18},{c:'Outros',p:12}]},
-    {instituto:'Quaest',registro:'00210/2026',campo:'01–03/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (PT)',p:36},{c:'Cand. B (Rep.)',p:34},{c:'Cand. C (PL)',p:17},{c:'Outros',p:13}]},
+    {instituto:'Datafolha',registro:'00238/2026',campo:'06–08/05',amostra:1200,margem:2.8,cargo:'Governador',res:[{c:'Tarcísio (Rep.)',p:38},{c:'Haddad (PT)',p:32},{c:'França (PSB)',p:18},{c:'Outros/Brancos',p:12}]},
+    {instituto:'Quaest',registro:'00210/2026',campo:'01–03/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Tarcísio (Rep.)',p:36},{c:'Haddad (PT)',p:34},{c:'França (PSB)',p:17},{c:'Outros/Brancos',p:13}]},
   ]},
   RJ:{name:'Rio de Janeiro',region:'Sudeste',eleitores:'12,5M',pesquisas:31,candidatos:2103,tier:'h',history:[
     {ano:2022,cargo:'Governador',turno:2,vencedor:'Cláudio Castro',partido:'PL',pct:58.8,segundo:'Marcelo Freixo',partido2:'PSB',pct2:41.2},
     {ano:2018,cargo:'Governador',turno:2,vencedor:'Wilson Witzel',partido:'PSC',pct:59.3,segundo:'Eduardo Paes',partido2:'DEM',pct2:40.7},
     {ano:2014,cargo:'Governador',turno:2,vencedor:'Luiz Fernando Pezão',partido:'PMDB',pct:52.7,segundo:'Marcelo Crivella',partido2:'PRB',pct2:47.3},
   ],polls:[
-    {instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',amostra:800,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PL)',p:41},{c:'Cand. B (PT)',p:29},{c:'Cand. C (MDB)',p:15},{c:'Outros',p:15}]},
+    {instituto:'Quaest',registro:'00191/2026',campo:'05–07/05',amostra:800,margem:3.4,cargo:'Governador',res:[{c:'Castro (PL)',p:41},{c:'Freixo (PSB)',p:29},{c:'Paes (PSD)',p:15},{c:'Outros/Brancos',p:15}]},
   ]},
   MG:{name:'Minas Gerais',region:'Sudeste',eleitores:'16,5M',pesquisas:22,candidatos:2876,tier:'m',history:[
     {ano:2022,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:56.2,segundo:'Alexandre Kalil',partido2:'PSD',pct2:43.8},
     {ano:2018,cargo:'Governador',turno:2,vencedor:'Romeu Zema',partido:'Novo',pct:42.7,segundo:'Antonio Anastasia',partido2:'PSDB',pct2:25.8},
     {ano:2014,cargo:'Governador',turno:2,vencedor:'Fernando Pimentel',partido:'PT',pct:52.7,segundo:'Pimenta da Veiga',partido2:'PSDB',pct2:47.3},
   ],polls:[
-    {instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Cand. A (Novo)',p:35},{c:'Cand. B (PT)',p:28},{c:'Cand. C (PSD)',p:22},{c:'Outros',p:15}]},
+    {instituto:'Ipec',registro:'00174/2026',campo:'04–06/05',amostra:1000,margem:3.1,cargo:'Governador',res:[{c:'Zema (Novo)',p:35},{c:'Kalil (PSD)',p:28},{c:'Anastasia (PSDB)',p:22},{c:'Outros/Brancos',p:15}]},
   ]},
   RS:{name:'Rio Grande do Sul',region:'Sul',eleitores:'8,5M',pesquisas:18,candidatos:1542,tier:'m',history:[
     {ano:2022,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:56.9,segundo:'Edegar Pretto',partido2:'PT',pct2:43.1},
     {ano:2018,cargo:'Governador',turno:2,vencedor:'Eduardo Leite',partido:'PSDB',pct:54.7,segundo:'José Ivo Sartori',partido2:'MDB',pct2:45.3},
     {ano:2014,cargo:'Governador',turno:2,vencedor:'José Ivo Sartori',partido:'MDB',pct:64.7,segundo:'Tarso Genro',partido2:'PT',pct2:35.3},
   ],polls:[
-    {instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',amostra:960,margem:3.2,cargo:'Senador',res:[{c:'Cand. A (PSDB)',p:33},{c:'Cand. B (PT)',p:28},{c:'Cand. C (MDB)',p:21},{c:'Outros',p:18}]},
+    {instituto:'AtlasIntel',registro:'00162/2026',campo:'03–05/05',amostra:960,margem:3.2,cargo:'Senador',res:[{c:'Leite (PSDB)',p:33},{c:'Pretto (PT)',p:28},{c:'Sartori (MDB)',p:21},{c:'Outros/Brancos',p:18}]},
   ]},
   BA:{name:'Bahia',region:'Nordeste',eleitores:'10,5M',pesquisas:16,candidatos:1830,tier:'m',history:[
     {ano:2022,cargo:'Governador',turno:2,vencedor:'Jerônimo Rodrigues',partido:'PT',pct:52.7,segundo:'ACM Neto',partido2:'União',pct2:47.3},
     {ano:2018,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:75.7,segundo:'João Roma',partido2:'PSD',pct2:12.4},
     {ano:2014,cargo:'Governador',turno:1,vencedor:'Rui Costa',partido:'PT',pct:64.9,segundo:'Paulo Souto',partido2:'DEM',pct2:30.4},
   ],polls:[
-    {instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',amostra:750,margem:3.6,cargo:'Governador',res:[{c:'Cand. A (PT)',p:47},{c:'Cand. B (União)',p:32},{c:'Outros',p:21}]},
+    {instituto:'Paraná Pesquisas',registro:'00155/2026',campo:'02–04/05',amostra:750,margem:3.6,cargo:'Governador',res:[{c:'Rodrigues (PT)',p:47},{c:'ACM Neto (União)',p:32},{c:'Outros/Brancos',p:21}]},
   ]},
   PR:{name:'Paraná',region:'Sul',eleitores:'8,1M',pesquisas:9,candidatos:1410,tier:'l',history:[
     {ano:2022,cargo:'Governador',turno:1,vencedor:'Ratinho Jr.',partido:'PSD',pct:68.2,segundo:'Prof. Tadeu',partido2:'PT',pct2:15.6},
     {ano:2018,cargo:'Governador',turno:2,vencedor:'Ratinho Jr.',partido:'PSD',pct:63.7,segundo:'Cida Borghetti',partido2:'PP',pct2:36.3},
     {ano:2014,cargo:'Governador',turno:2,vencedor:'Beto Richa',partido:'PSDB',pct:55.5,segundo:'Requião Filho',partido2:'PMDB',pct2:44.5},
   ],polls:[
-    {instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',amostra:820,margem:3.4,cargo:'Governador',res:[{c:'Cand. A (PSD)',p:52},{c:'Cand. B (PT)',p:24},{c:'Outros',p:24}]},
+    {instituto:'MDA Pesquisa',registro:'00149/2026',campo:'01–03/05',amostra:820,margem:3.4,cargo:'Governador',res:[{c:'Ratinho Jr. (PSD)',p:52},{c:'Requião (PT)',p:24},{c:'Outros/Brancos',p:24}]},
   ]},
 };
 
@@ -622,12 +648,61 @@ function pageHome(){
   return `
     <div class="alert-banner" id="alertBanner">
       <span style="font-size:16px">🔔</span>
-      <span><strong>Nova pesquisa registrada em SP</strong> — Datafolha / TSE 00238/2026 publicada há 12 minutos.</span>
+      <span><strong>Nova pesquisa em SP</strong> — Datafolha / TSE 00238/2026: Tarcísio 38% · Haddad 32% · França 18% — publicada há 12 minutos.</span>
       <button class="alert-dismiss" onclick="this.parentElement.remove()">✕</button>
     </div>
-    ${heroStrip('Eleições Gerais 2026','Portal Eleitoral Brasileiro','Pesquisas registradas, histórico eleitoral e calendário em tempo real',
-      hstat('1.284','Pesquisas registradas',true)+hdiv()+hstat('28.941','Candidatos 2026')+hdiv()+hstat('149','Dias para o 1° turno',true))}
-    <div class="metrics-row">
+    <!-- CTA STRIP PRINCIPAL -->
+    <div style="background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 60%,#0a1a10 100%);border-radius:var(--radxl);padding:32px 36px;margin-bottom:18px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(6,179,122,.18) 0%,transparent 55%);pointer-events:none"></div>
+      <div style="position:absolute;bottom:-50px;right:-50px;width:240px;height:240px;border-radius:50%;border:45px solid rgba(6,179,122,.05);pointer-events:none"></div>
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center">
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:var(--g2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px"><span style="display:inline-block;width:22px;height:1.5px;background:var(--g2)"></span>Eleições Gerais 2026</div>
+          <div style="font-family:var(--fd);font-size:32px;font-weight:700;color:white;letter-spacing:-.03em;margin-bottom:10px;line-height:1.15">A plataforma de <span style="color:var(--g2)">inteligência eleitoral</span> mais completa do Brasil</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:22px;max-width:460px">Pesquisas registradas no TSE, histórico eleitoral desde 2014, alertas em tempo real e análises por Jairan Dionizio — para jornalistas, pesquisadores e equipes de campanha.</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+            <button style="font-family:var(--fs);font-size:14px;font-weight:700;padding:12px 24px;border-radius:var(--rad);background:var(--g);color:white;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 3px 12px rgba(6,179,122,.4);transition:all .2s" onmouseover="this.style.background='var(--gd)'" onmouseout="this.style.background='var(--g)'" onclick="navigate('alertas')">🔔 Monitorar minha UF</button>
+            <button style="font-family:var(--fs);font-size:13px;font-weight:500;padding:11px 20px;border-radius:var(--rad);background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.18);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'" onclick="navigate('pesquisas')">📊 Pesquisas em tempo real</button>
+            <button style="font-family:var(--fs);font-size:13px;font-weight:500;padding:11px 20px;border-radius:var(--rad);background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.18);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'" onclick="navigate('analytics')">📈 Analytics eleitoral</button>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <span>🏛 <strong style="color:rgba(255,255,255,.55)">1.284</strong> pesquisas registradas TSE</span>
+            <span>👥 <strong style="color:rgba(255,255,255,.55)">28.941</strong> candidatos</span>
+            <span>📡 Dados atualizados em tempo real</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 18px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'" onclick="navigate('pesquisas')">
+            <div style="font-family:var(--fd);font-size:28px;font-weight:700;color:var(--g2);letter-spacing:-.03em;line-height:1">1.284</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:3px">Pesquisas registradas — 2026</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px">↑ 47 nesta semana · 9 hoje</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 12px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'" onclick="navigate('eleicoes')">
+              <div style="font-family:var(--fd);font-size:24px;font-weight:700;color:white;line-height:1">28.941</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:3px">Candidatos 2026</div>
+            </div>
+            <div style="background:rgba(6,179,122,.12);border:1px solid rgba(6,179,122,.25);border-radius:12px;padding:14px 12px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='rgba(6,179,122,.18)'" onmouseout="this.style.background='rgba(6,179,122,.12)'" onclick="navigate('calendario')">
+              <div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--g2);line-height:1">149</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:3px">Dias p/ 1° turno</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(6,179,122,.2);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .15s" onmouseover="this.style.background='rgba(6,179,122,.1)'" onmouseout="this.style.background='rgba(255,255,255,.05)'" onclick="navigate('alertas')">
+            <div style="font-size:13px;font-weight:600;color:var(--g2);margin-bottom:4px">🔔 Alertas ativos — configure já</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.45)">Seja notificado quando novas pesquisas forem registradas para a sua UF.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TRUST BAR -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px">
+      ${[{i:'🏛',t:'Fonte oficial TSE',s:'Dados diretamente do Tribunal Superior Eleitoral'},{i:'📊',t:'Metodologia aberta',s:'Amostras, margens e metodologia visíveis'},{i:'🔄',t:'Atualização contínua',s:'Novos registros em até 5 minutos'},{i:'👤',t:'Por Jairan Dionizio',s:'Estatístico · analista eleitoral'}].map(x=>`
+      <div class="card" style="text-align:center;padding:16px 12px">
+        <div style="font-size:24px;margin-bottom:6px">${x.i}</div>
+        <div style="font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:3px">${x.t}</div>
+        <div style="font-size:11px;color:var(--mu2);line-height:1.45">${x.s}</div>
+      </div>`).join('')}
+    </div>
       <div class="mcard mg"><div class="mlabel">Pesquisas — 7 dias</div><div class="mvalue">47</div><div class="msub up">9 novas hoje</div></div>
       <div class="mcard mb"><div class="mlabel">UFs com cobertura</div><div class="mvalue">24</div><div class="msub">de 27 estados + DF</div></div>
       <div class="mcard mr"><div class="mlabel">1° Turno em</div><div class="mvalue">149</div><div class="msub">4 de outubro de 2026</div></div>
@@ -1206,7 +1281,176 @@ function pageDownload(){
 }
 
 // ── PAGE MAP ──────────────────────────────────────────────────────────────────
-const PAGES={home:pageHome,eleicoes:pageEleicoes,pesquisas:pagePesquisas,uf:pageUF,alertas:pageAlertas,noticias:pageNoticias,calendario:pageCalendario,api:pageAPI,sobre:pageSobre,download:pageDownload};
+function pageSobre(){return pageAutor();}
+function pageAutor(){
+  return `
+    <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span>Sobre o autor</span></div>
+    <!-- AUTHOR HERO -->
+    <div style="background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 60%,#0a1a10 100%);border-radius:var(--radxl);padding:32px 36px;margin-bottom:20px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(6,179,122,.15) 0%,transparent 55%);pointer-events:none"></div>
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center">
+        <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:32px;font-weight:700;color:white;border:3px solid rgba(6,179,122,.35);flex-shrink:0">JD</div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Desenvolvedor & Analista</div>
+          <div style="font-family:var(--fd);font-size:30px;font-weight:700;color:white;letter-spacing:-.02em;margin-bottom:4px">Jairan Dionizio</div>
+          <div style="font-size:13px;color:var(--g2);margin-bottom:12px">Estatístico · Analista eleitoral · Desenvolvedor de plataformas de dados públicos</div>
+          <div style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.7;max-width:620px;margin-bottom:16px">Pesquisador com foco em estatística aplicada à análise eleitoral brasileira. Criador do VotaData 2026 — plataforma que centraliza pesquisas registradas no TSE, histórico eleitoral e análises de tendências para as eleições gerais, servindo como laboratório de inteligência eleitoral e hub de dados para jornalistas, pesquisadores e equipes de campanha.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            ${['📧 jairan@votadata.com.br','🐦 @jairandionizio','💼 LinkedIn','🔗 GitHub','📡 api.votadata.com.br'].map(l=>`<span style="font-size:12px;font-weight:500;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);cursor:pointer;transition:all .15s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background=''">${l}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TRUST BAR -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+      ${[{i:'📊',t:'Estatística aplicada',s:'Séries temporais, LOESS, regressão eleitoral'},{i:'🗳',t:'Análise eleitoral',s:'Histórico 2014–2026, 27 UFs'},{i:'💻',t:'Desenvolvimento',s:'Plataformas de dados, APIs, visualizações'},{i:'🏛',t:'Dados oficiais TSE',s:'Metodologia rastreável e aberta'}].map(x=>`
+      <div class="card" style="text-align:center;padding:20px 14px">
+        <div style="font-size:28px;margin-bottom:8px">${x.i}</div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">${x.t}</div>
+        <div style="font-size:11.5px;color:var(--mu2);line-height:1.5">${x.s}</div>
+      </div>`).join('')}
+    </div>
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🎯</div>Missão do VotaData</div></div>
+          <p style="font-size:13.5px;color:var(--ink3);line-height:1.8;margin-bottom:14px">O VotaData nasceu da necessidade de centralizar dados eleitorais dispersos em múltiplas fontes oficiais — TSE, TREs e institutos de pesquisa registrados — em uma plataforma acessível, transparente e metodologicamente rigorosa.</p>
+          <p style="font-size:13.5px;color:var(--ink3);line-height:1.8;margin-bottom:14px">O portal serve como <strong>laboratório de estatística eleitoral aplicada</strong>, hub de análise para jornalistas e pesquisadores, e ferramenta de monitoramento para equipes de campanha, órgãos públicos e eleitores.</p>
+          <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--b);border-radius:var(--rad);padding:14px 16px;font-size:12.5px;color:var(--mu);line-height:1.65">
+            <strong style="color:var(--ink)">Nota técnica:</strong> Todos os dados provêm de fontes primárias (TSE, TREs). Pesquisas são indexadas pelo número de registro no TSE. Tendências calculadas via médias ponderadas pelo inverso da margem de erro ao quadrado. Modelos preditivos em desenvolvimento — não constituem previsão oficial.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🎓</div>Áreas de atuação</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            ${[{i:'📈',t:'Séries temporais',b:'Evolução da intenção de voto ao longo do ciclo eleitoral'},{i:'🗺',t:'Geografia eleitoral',b:'Padrões regionais e municipais de votação'},{i:'🔢',t:'Estatística eleitoral',b:'Margens de erro, ponderação e intervalos de confiança'},{i:'🤖',t:'Modelagem preditiva',b:'Projeções de 2° turno baseadas em histórico'},{i:'📊',t:'Visualização de dados',b:'Dashboards interativos e relatórios automatizados'},{i:'🏛',t:'Legislação eleitoral',b:'Calendário, prazos e resoluções do TSE'}].map(e=>`
+            <div style="background:var(--surf);border:1px solid var(--border);border-radius:var(--rad);padding:14px">
+              <div style="font-size:20px;margin-bottom:6px">${e.i}</div>
+              <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px">${e.t}</div>
+              <div style="font-size:11.5px;color:var(--mu2);line-height:1.5">${e.b}</div>
+            </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📚</div>Fontes & conformidade</div>
+          ${['Tribunal Superior Eleitoral (TSE) — tse.jus.br','Tribunais Regionais Eleitorais (TREs)','Institutos de pesquisa registrados (Datafolha, Quaest, AtlasIntel, Ipec…)','LGPD — Lei Geral de Proteção de Dados (13.709/2018)','Resolução TSE nº 23.610/2019 — Pesquisas eleitorais','Código Eleitoral — Lei 9.504/1997'].map(f=>`
+          <div style="display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink3)">
+            <span style="color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px">✓</span>${f}
+          </div>`).join('')}
+        </div>
+        <div class="card" style="background:linear-gradient(135deg,var(--gll),white);border-color:#a7e8d0">
+          <div class="card-ttl" style="margin-bottom:10px"><div class="cicon cig">🤝</div>Colaboração & contato</div>
+          <p style="font-size:12.5px;color:var(--mu);margin-bottom:12px">Aberto a parcerias com veículos de imprensa, institutos de pesquisa, equipes de campanha e órgãos públicos.</p>
+          <div style="font-size:13px;color:var(--ink3);line-height:2.2">
+            <div>📧 jairan@votadata.com.br</div>
+            <div>🐦 @jairandionizio</div>
+            <div>📡 api.votadata.com.br</div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;margin-top:14px;justify-content:center">Enviar mensagem</button>
+        </div>
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cip">📰</div>Últimas análises</div>
+          ${[{t:'Elasticidade eleitoral no Sudeste: SP e RJ em 2026',data:'11 mai 2026'},{t:'Nordeste consolidado: padrão PT se repete em seis estados',data:'08 mai 2026'},{t:'Como ler pesquisas eleitorais: guia metodológico',data:'05 mai 2026'}].map(a=>`
+          <div style="padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="navigate('noticias')">
+            <div style="font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:3px" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--ink)'">${a.t}</div>
+            <div style="font-size:10.5px;color:var(--mu2)">Jairan Dionizio · ${a.data}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function pageAnalytics(){
+  return `
+    <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span>Analytics Eleitoral</span></div>
+    <div style="background:linear-gradient(135deg,var(--ink) 0%,#0d1b2e 100%);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(6,179,122,.16) 0%,transparent 55%);pointer-events:none"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-size:10px;font-weight:700;color:var(--g2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:20px;height:1.5px;background:var(--g2)"></span>Inteligência eleitoral — por Jairan Dionizio</div>
+        <div style="font-family:var(--fd);font-size:28px;font-weight:700;color:white;letter-spacing:-.02em;margin-bottom:8px">Analytics & <span style="color:var(--g2)">Tendências</span></div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,.5);max-width:520px;margin-bottom:22px">Séries temporais, elasticidade eleitoral, clusterização de eleitorado e projeções estatísticas para as eleições de 2026.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button style="font-family:var(--fs);font-size:13.5px;font-weight:700;padding:11px 22px;border-radius:var(--rad);background:var(--g);color:white;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;box-shadow:0 3px 12px rgba(6,179,122,.4)" onclick="navigate('uf','SP')">📊 Ver SP em detalhe</button>
+          <button style="font-family:var(--fs);font-size:13px;font-weight:500;padding:10px 18px;border-radius:var(--rad);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.18);cursor:pointer" onclick="navigate('download')">⬇ Exportar dados</button>
+        </div>
+      </div>
+    </div>
+    <!-- ANALYTICS CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+      ${[{l:'Intenção — Gov. SP',v:'38% × 32%',t:'Tarcísio +2pp (semana)',up:true,note:'Datafolha 09/05'},{l:'Volatilidade — Nordeste',v:'Baixa',t:'PT dominância consolidada',up:true,note:'4 estados ≥ 47%'},{l:'Eleitorado indeciso — nacional',v:'18,4%',t:'−1,2pp vs abril',up:true,note:'Média ponderada TSE'}].map(a=>`
+      <div class="card" style="cursor:pointer;transition:all .15s" onmouseover="this.style.boxShadow='var(--shmd)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">${a.l}</div>
+        <div style="font-family:var(--fd);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px">${a.v}</div>
+        <div style="font-size:11.5px;font-weight:600;color:${a.up?'var(--g)':'var(--r)'};margin-bottom:6px">${a.up?'▲':' ▼'} ${a.t}</div>
+        <div style="font-size:10.5px;color:var(--mu2)">${a.note}</div>
+      </div>`).join('')}
+    </div>
+    <div class="grid-main">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">📈</div>Séries temporais — Gov. SP (pesquisas registradas TSE 2026)</div><button class="btn" onclick="navigate('uf','SP')">Ver estado completo →</button></div>
+          <div style="position:relative;height:200px;margin:6px 0 10px"><canvas id="analyticsMain"></canvas></div>
+          <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--b);border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu);line-height:1.6">
+            <strong style="color:var(--ink)">Metodologia (Jairan Dionizio):</strong> Tendência calculada via médias ponderadas pelo inverso da margem de erro ao quadrado sobre pesquisas registradas no TSE para Gov. SP em 2026. Atualizado a cada nova pesquisa registrada.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🗺</div>Elasticidade eleitoral por região</div></div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px">
+            ${[{r:'Sudeste',e:'Alta',c:'#fee2e2',tc:'#991b1b'},{r:'Sul',e:'Média',c:'#fef3c7',tc:'#92400e'},{r:'Nordeste',e:'Baixa',c:'#d1fae5',tc:'#065f46'},{r:'Centro-Oeste',e:'Média',c:'#fef3c7',tc:'#92400e'},{r:'Norte',e:'Alta',c:'#fee2e2',tc:'#991b1b'}].map(r=>`
+            <div style="background:${r.c};border-radius:9px;padding:12px 8px;text-align:center;cursor:pointer">
+              <div style="font-size:12px;font-weight:700;color:${r.tc};margin-bottom:4px">${r.r}</div>
+              <div style="font-size:11px;color:${r.tc}">${r.e}</div>
+            </div>`).join('')}
+          </div>
+          <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--b);border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu);line-height:1.6">
+            <strong style="color:var(--ink)">Elasticidade eleitoral:</strong> Capacidade de mudança de intenção de voto ao longo da campanha, calculada com base no desvio padrão das pesquisas registradas nos últimos 12 meses em cada região (metodologia: Jairan Dionizio / VotaData).
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-ttl"><div class="cicon cig">🎯</div>Projeções — 1° turno 2026</div><span class="c-link" onclick="navigate('pesquisas')">Ver pesquisas →</span></div>
+          ${[{uf:'SP',cenario:'2° turno provável',conf:'72%',note:'Tarcísio vs Haddad — três pesquisas confirmam'},{uf:'RJ',cenario:'Castro favorito',conf:'61%',note:'Vantagem de 12pp consolidada'},{uf:'MG',cenario:'Indefinido',conf:'—',note:'Zema, Kalil e Anastasia competitivos'},{uf:'BA',cenario:'Rodrigues favorito',conf:'78%',note:'Histórico PT dominante (3 eleições)'}].map(p=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="navigate('uf','${p.uf}')">
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--ink)">${p.uf} — ${p.cenario}</div>
+              <div style="font-size:11px;color:var(--mu2)">${p.note}</div>
+            </div>
+            <div style="font-size:16px;font-weight:700;color:var(--g);font-family:var(--fd)">${p.conf}</div>
+          </div>`).join('')}
+          <div style="margin-top:12px;background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--am);border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu)">
+            <strong style="color:var(--ink)">Aviso:</strong> Projeções baseadas em médias ponderadas de pesquisas TSE ajustadas por histórico eleitoral 2014–2022. Modelo em desenvolvimento — não constituem previsão oficial. Elaboradas por Jairan Dionizio / VotaData 2026.
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card">
+          <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">📊</div>Comparativo rápido por UF</div>
+          ${Object.entries(UF_DATA).map(([code,d])=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="navigate('uf','${code}')">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:var(--fd);font-size:16px;font-weight:700;color:var(--g);min-width:30px">${code}</span>
+              <div><div style="font-size:12px;font-weight:500;color:var(--ink)">${d.name.split(' ')[0]}</div>
+                <div style="font-size:10.5px;color:var(--mu2)">${d.pesquisas} pesquisas</div>
+              </div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:${d.tier==='h'?'var(--g)':d.tier==='m'?'var(--am)':'var(--mu2)'}">${d.tier==='h'?'Alta cobertura':d.tier==='m'?'Média cobertura':'Baixa cobertura'}</div>
+          </div>`).join('')}
+        </div>
+        <div class="card" style="background:var(--gll);border-color:#a7e8d0">
+          <div class="card-ttl" style="margin-bottom:10px"><div class="cicon cig">📥</div>Exportar dados analytics</div>
+          ${[{l:'Série temporal SP 2026',f:'CSV'},{l:'Elasticidade por região',f:'JSON'},{l:'Projeções consolidadas',f:'PDF'}].map(x=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:white;border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
+            <span style="font-size:12.5px;color:var(--ink3)">${x.l}</span>
+            <button class="btn" style="font-size:11px">${x.f} ⬇</button>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+const PAGES={home:pageHome,eleicoes:pageEleicoes,pesquisas:pagePesquisas,uf:pageUF,alertas:pageAlertas,noticias:pageNoticias,calendario:pageCalendario,api:pageAPI,sobre:pageSobre,autor:pageAutor,analytics:pageAnalytics,download:pageDownload};
 
 // ── EVENTS ───────────────────────────────────────────────────────────────────
 function setChip(el){
@@ -1277,10 +1521,46 @@ function downloadHTML(){
 }
 
 function bindAll(){
-  // Animate bar fills
   setTimeout(()=>{
     document.querySelectorAll('.bc-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target});
-    document.querySelectorAll('.bc-fill').forEach(el=>{if(el.style.width==='0%'&&!el.dataset.target) el.style.width='0%'});
+    // draw analytics main trend canvas
+    const ac=document.getElementById('analyticsMain');
+    if(ac){
+      const pts=[{pct:36,ano:'Mar'},{pct:37,ano:'Abr 1'},{pct:36,ano:'Abr 2'},{pct:38,ano:'Mai 1'},{pct:38,ano:'Mai 2'}];
+      const ctx=ac.getContext('2d');
+      const W=ac.parentElement.offsetWidth,H=200;
+      ac.width=W;ac.height=H;
+      const minV=30,maxV=55;
+      const pad={l:44,r:20,t:24,b:34};
+      const toX=i=>pad.l+i*(W-pad.l-pad.r)/(pts.length-1);
+      const toY=v=>pad.t+(maxV-v)/(maxV-minV)*(H-pad.t-pad.b);
+      ctx.clearRect(0,0,W,H);
+      [35,40,45,50].forEach(v=>{
+        ctx.strokeStyle='#dde3ec';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+        ctx.beginPath();ctx.moveTo(pad.l,toY(v));ctx.lineTo(W-pad.r,toY(v));ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='#8896aa';ctx.font='10px Inter,sans-serif';ctx.textAlign='right';
+        ctx.fillText(v+'%',pad.l-8,toY(v)+4);
+      });
+      const grad=ctx.createLinearGradient(0,pad.t,0,H-pad.b);
+      grad.addColorStop(0,'rgba(11,138,92,.14)');grad.addColorStop(1,'rgba(11,138,92,0)');
+      ctx.fillStyle=grad;
+      ctx.beginPath();ctx.moveTo(toX(0),toY(pts[0].pct));
+      pts.forEach((p,i)=>ctx.lineTo(toX(i),toY(p.pct)));
+      ctx.lineTo(toX(pts.length-1),H-pad.b);ctx.lineTo(toX(0),H-pad.b);ctx.closePath();ctx.fill();
+      ['#b91c1c','#ef4444'].forEach((c,ci)=>{
+        const rj=[{pct:39,ano:'Mar'},{pct:40,ano:'Abr 1'},{pct:41,ano:'Abr 2'},{pct:41,ano:'Mai 1'},{pct:41,ano:'Mai 2'}];
+        if(ci===0){ctx.strokeStyle='#0b8a5c';ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.setLineDash([]);
+          ctx.beginPath();pts.forEach((p,i)=>i===0?ctx.moveTo(toX(i),toY(p.pct)):ctx.lineTo(toX(i),toY(p.pct)));ctx.stroke();
+          pts.forEach((p,i)=>{ctx.fillStyle='#0b8a5c';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),4,0,Math.PI*2);ctx.fill();ctx.fillStyle='white';ctx.beginPath();ctx.arc(toX(i),toY(p.pct),2,0,Math.PI*2);ctx.fill();
+            ctx.fillStyle='#054d35';ctx.font='bold 10px Inter,sans-serif';ctx.textAlign='center';ctx.fillText(p.pct+'%',toX(i),toY(p.pct)-9);
+            ctx.fillStyle='#0a0f1e';ctx.fillText(p.ano,toX(i),H-pad.b+18);}); }
+        if(ci===1){ctx.strokeStyle='#b91c1c';ctx.lineWidth=2;ctx.setLineDash([5,3]);
+          ctx.beginPath();rj.forEach((p,i)=>i===0?ctx.moveTo(toX(i),toY(p.pct)):ctx.lineTo(toX(i),toY(p.pct)));ctx.stroke();ctx.setLineDash([]);}
+      });
+      // legend
+      ctx.fillStyle='#0b8a5c';ctx.fillRect(W-110,10,14,3);ctx.fillStyle='#0a0f1e';ctx.font='10px Inter';ctx.textAlign='left';ctx.fillText('Tarcísio (Rep.)',W-92,14);
+      ctx.strokeStyle='#b91c1c';ctx.setLineDash([5,3]);ctx.beginPath();ctx.moveTo(W-110,22);ctx.lineTo(W-96,22);ctx.stroke();ctx.setLineDash([]);ctx.fillText('Haddad (PT)',W-92,26);
+    }
   },80);
 }
 
