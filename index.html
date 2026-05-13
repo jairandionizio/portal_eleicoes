@@ -1947,25 +1947,208 @@ function pagePremium(){
   </div>`;
 }
 
+// ══════════════════════════════════════════════════════════════════════════════
+// PAINÉIS REGIONAIS — FUNÇÃO GENÉRICA
+// ══════════════════════════════════════════════════════════════════════════════
+function buildRegiao(cfg){
+  const {id,nome,cor,corHex,gradiente,estados,analise} = cfg;
+  const total=estados.length;
+  const iveMedia=Math.round(estados.reduce((a,s)=>a+s.ive,0)/total);
+  const pesPtLider=estados.filter(s=>s.lider.includes('PT')).length;
+  const ptMedia=pesPtLider>0?Math.round(estados.filter(s=>s.lider.includes('PT')).reduce((a,s)=>a+s.pct,0)/pesPtLider):0;
+  const totalPesquisas=estados.reduce((a,s)=>a+s.pesquisas,0);
+  const popTotal=estados.reduce((a,s)=>a+(parseFloat(s.pop)||0),0).toFixed(1)+'M';
+  const destaque3=estados.slice(0,3);
+
+  return `
+  <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span class="bc-link" onclick="navigate('analytics')">Analytics</span><span class="bc-sep">›</span><span>Painel Regional — ${nome}</span></div>
+  <div style="background:${gradiente};border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(255,255,255,.1),transparent 55%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Análise territorial — por Jairan Dionizio</div>
+      <div style="font-family:var(--fd);font-size:28px;font-weight:700;color:white;margin-bottom:8px">Painel Regional: <span style="color:rgba(255,255,255,.75)">${nome}</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.55);max-width:560px;line-height:1.65;margin-bottom:20px">${total} estados · ${popTotal} de eleitores · IVE médio regional: ${iveMedia} · ${totalPesquisas} pesquisas registradas no TSE.</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        ${[{v:total,l:'Estados'},{v:totalPesquisas,l:'Pesquisas TSE'},{v:iveMedia,l:'IVE médio'},{v:popTotal,l:'Eleitores'}].map(s=>`
+        <div style="text-align:center;padding:0 16px;border-right:1px solid rgba(255,255,255,.12)">
+          <div style="font-family:var(--fd);font-size:26px;font-weight:700;color:white">${s.v}</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.45);margin-top:2px">${s.l}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>
+  <!-- CARDS DESTAQUE -->
+  <div style="display:grid;grid-template-columns:repeat(${Math.min(3,destaque3.length)},1fr);gap:14px;margin-bottom:20px">
+    ${destaque3.map(s=>`
+    <div class="card" style="cursor:pointer;border-top:3px solid ${corHex};transition:all .15s" onmouseover="this.style.boxShadow='var(--shmd)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''" onclick="navigate('uf','${s.uf}')">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-family:var(--fd);font-size:24px;font-weight:700;color:${corHex}">${s.uf}</div>
+        <div style="text-align:right">
+          <div style="font-size:10px;color:var(--mu2)">${s.pesquisas} pesquisas · IVE ${s.ive}</div>
+          <div style="font-size:10px;color:var(--mu2)">Pop: ${s.pop}M</div>
+        </div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div style="font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:4px">${s.lider}</div>
+        <div style="height:8px;background:var(--surf2);border-radius:99px;overflow:hidden;margin-bottom:4px">
+          <div style="height:100%;width:${s.pct}%;background:${s.corL||'#dc2626'};border-radius:99px"></div>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:${s.corL||'#dc2626'}">${s.pct}%</div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:9px">
+        <div style="font-size:11.5px;color:var(--mu2);">${s.rival}</div>
+        <div style="height:5px;background:var(--surf2);border-radius:99px;overflow:hidden;margin:4px 0">
+          <div style="height:100%;width:${s.pct2}%;background:${s.corR||'#1a56db'};border-radius:99px"></div>
+        </div>
+        <div style="font-size:12px;font-weight:600;color:${s.corR||'#1a56db'}">${s.pct2}%</div>
+      </div>
+    </div>`).join('')}
+  </div>
+  <!-- TABELA COMPLETA -->
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-hd">
+      <div class="card-ttl"><div class="cicon" style="background:${corHex}22;color:${corHex}">📊</div>Todos os estados — ${nome}</div>
+      <button class="btn">⬇ CSV ${nome}</button>
+    </div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:var(--surf)">
+          ${['Estado','Candidato líder','Intenção','2° colocado','IVE','Pesquisas'].map(h=>`<th style="text-align:${h==='Intenção'||h==='IVE'||h==='Pesquisas'?'center':'left'};padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.06em;border-bottom:1.5px solid var(--border)">${h}</th>`).join('')}
+        </tr></thead>
+        <tbody>
+          ${estados.map(s=>`
+          <tr style="cursor:pointer;transition:background .1s" onmouseover="this.style.background='var(--surf)'" onmouseout="this.style.background=''" onclick="navigate('uf','${s.uf}')">
+            <td style="padding:11px;border-bottom:1px solid var(--border)"><strong style="color:${corHex}">${s.uf}</strong> <span style="font-size:11px;color:var(--mu2)">${s.nome}</span></td>
+            <td style="padding:11px;border-bottom:1px solid var(--border);font-weight:600;color:var(--ink)">${s.lider}</td>
+            <td style="padding:11px;border-bottom:1px solid var(--border);text-align:center">
+              <div style="display:inline-flex;align-items:center;gap:6px">
+                <div style="width:50px;height:6px;background:var(--surf2);border-radius:99px;overflow:hidden"><div style="height:100%;width:${s.pct}%;background:${s.corL||'#dc2626'};border-radius:99px"></div></div>
+                <span style="font-weight:700;color:${s.corL||'#dc2626'}">${s.pct}%</span>
+              </div>
+            </td>
+            <td style="padding:11px;border-bottom:1px solid var(--border);font-size:12px;color:var(--mu2)">${s.rival} · <strong style="color:${s.corR||'#1a56db'}">${s.pct2}%</strong></td>
+            <td style="padding:11px;border-bottom:1px solid var(--border);text-align:center">
+              <span style="font-size:12px;font-weight:700;padding:2px 8px;border-radius:5px;background:${s.ive<30?'#d1fae5':s.ive<42?'#fef3c7':'#fee2e2'};color:${s.ive<30?'#065f46':s.ive<42?'#92400e':'#991b1b'}">${s.ive}</span>
+            </td>
+            <td style="padding:11px;border-bottom:1px solid var(--border);text-align:center;font-weight:600">${s.pesquisas}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid ${corHex};border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu);line-height:1.65;margin-top:14px">
+      <strong style="color:var(--ink)">Análise — Jairan Dionizio / VotaData 2026:</strong> ${analise}
+    </div>
+  </div>
+  <!-- NAVEGAÇÃO ENTRE REGIÕES -->
+  <div class="card">
+    <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cig">🗺</div>Ver outras regiões</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      ${[{p:'nordeste',l:'📍 Nordeste',c:'#7c3aed'},{p:'sudeste',l:'🌆 Sudeste',c:'#dc2626'},{p:'sul',l:'🌿 Sul',c:'#0b8a5c'},{p:'centroeste',l:'🌵 Centro-Oeste',c:'#b45309'},{p:'norte',l:'🌿 Norte',c:'#0369a1'}].filter(r=>r.p!==id).map(r=>`
+      <button class="btn" style="border-color:${r.c};color:${r.c};font-weight:600" onclick="navigate('${r.p}')">${r.l}</button>`).join('')}
+      <button class="btn" onclick="navigate('mapa')" style="margin-left:auto">🗺 Ver mapa nacional →</button>
+    </div>
+  </div>`;
+}
+
+// ── SUDESTE ───────────────────────────────────────────────────────────────────
+function pageSudeste(){
+  return buildRegiao({
+    id:'sudeste', nome:'Sudeste', corHex:'#dc2626', cor:'vermelho',
+    gradiente:'linear-gradient(135deg,#991b1b,#dc2626)',
+    analise:'O Sudeste concentra 42% do eleitorado nacional e apresenta o maior IVE médio do país (62), indicando alta volatilidade. SP é o epicentro da disputa eleitoral de 2026, com empate técnico entre Tarcísio (Rep.) e Haddad (PT) em todas as pesquisas registradas. RJ e ES seguem com candidatos de direita à frente, enquanto MG permanece trifurcado entre Zema (Novo), Kalil (PSD) e Anastasia (PSDB). A região será determinante para o resultado nacional.',
+    estados:[
+      {uf:'SP',nome:'São Paulo',lider:'Tarcísio (Rep.)',pct:38,rival:'Haddad (PT)',pct2:32,ive:72,pesquisas:38,pop:'34.6',corL:'#b45309',corR:'#dc2626'},
+      {uf:'RJ',nome:'Rio de Janeiro',lider:'Castro (PL)',pct:41,rival:'Freixo (PSB)',pct2:29,ive:61,pesquisas:31,pop:'12.5',corL:'#1a56db',corR:'#6d28d9'},
+      {uf:'MG',nome:'Minas Gerais',lider:'Zema (Novo)',pct:35,rival:'Kalil (PSD)',pct2:28,ive:55,pesquisas:22,pop:'16.5',corL:'#6d28d9',corR:'#b45309'},
+      {uf:'ES',nome:'Espírito Santo',lider:'Renato Casagrande (PSB)',pct:48,rival:'Carlos Manato (PL)',pct2:31,ive:38,pesquisas:4,pop:'4.1',corL:'#6d28d9',corR:'#1a56db'},
+    ]
+  });
+}
+
+// ── SUL ───────────────────────────────────────────────────────────────────────
+function pageSul(){
+  return buildRegiao({
+    id:'sul', nome:'Sul', corHex:'#0b8a5c', cor:'verde',
+    gradiente:'linear-gradient(135deg,#054d35,#0b8a5c)',
+    analise:'A região Sul apresenta IVE médio de 41, configurando volatilidade moderada. O PSDB mantém hegemonia no RS com Eduardo Leite à frente, mas enfrenta pressão crescente do PT (Pretto). No PR, Ratinho Jr. (PSD) lidera com ampla vantagem, configurando cenário de 1° turno. Santa Catarina segue com PL à frente, consolidando o Sul como região de centro-direita. O eleitorado sulista tem perfil mais estável que o Sudeste, mas mais volátil que o Nordeste.',
+    estados:[
+      {uf:'RS',nome:'Rio Grande do Sul',lider:'Leite (PSDB)',pct:33,rival:'Pretto (PT)',pct2:28,ive:48,pesquisas:18,pop:'8.5',corL:'#6d28d9',corR:'#dc2626'},
+      {uf:'PR',nome:'Paraná',lider:'Ratinho Jr. (PSD)',pct:52,rival:'Requião (PT)',pct2:24,ive:34,pesquisas:9,pop:'8.1',corL:'#b45309',corR:'#dc2626'},
+      {uf:'SC',nome:'Santa Catarina',lider:'Jorginho Mello (PL)',pct:44,rival:'Décio Lima (PT)',pct2:28,ive:41,pesquisas:8,pop:'7.8',corL:'#1a56db',corR:'#dc2626'},
+    ]
+  });
+}
+
+// ── CENTRO-OESTE ──────────────────────────────────────────────────────────────
+function pageCentroOeste(){
+  return buildRegiao({
+    id:'centroeste', nome:'Centro-Oeste', corHex:'#b45309', cor:'âmbar',
+    gradiente:'linear-gradient(135deg,#78350f,#b45309)',
+    analise:'O Centro-Oeste apresenta IVE médio de 44, com predominância de candidatos do Centro (União Brasil, MDB, PSD). Goiás destaca-se com Caiado (União) em posição de favorito absoluto, com 55% nas pesquisas. No Mato Grosso, o cenário é mais disputado, com três candidatos dentro da margem de erro. O DF, apesar do volume de pesquisas (12), apresenta disputa acirrada entre Ibaneis (MDB) e a oposição. A região tem baixíssima cobertura no MT e MS, o que eleva a incerteza analítica.',
+    estados:[
+      {uf:'GO',nome:'Goiás',lider:'Caiado (União)',pct:55,rival:'Wolmir Amado (PT)',pct2:22,ive:32,pesquisas:6,pop:'7.4',corL:'#b45309',corR:'#dc2626'},
+      {uf:'MT',nome:'Mato Grosso',lider:'Mauro Mendes (União)',pct:46,rival:'Guilherme Maluf (PSD)',pct2:29,ive:48,pesquisas:5,pop:'3.8',corL:'#b45309',corR:'#b45309'},
+      {uf:'MS',nome:'Mato Grosso do Sul',lider:'Eduardo Riedel (PSDB)',pct:43,rival:'Capitão Contar (PL)',pct2:31,ive:51,pesquisas:4,pop:'2.8',corL:'#6d28d9',corR:'#1a56db'},
+      {uf:'DF',nome:'Distrito Federal',lider:'Ibaneis Rocha (MDB)',pct:46,rival:'Leila Barros (PDT)',pct2:34,ive:44,pesquisas:12,pop:'3.1',corL:'#b45309',corR:'#6d28d9'},
+    ]
+  });
+}
+
+// ── NORTE ─────────────────────────────────────────────────────────────────────
+function pageNorte(){
+  return buildRegiao({
+    id:'norte', nome:'Norte', corHex:'#0369a1', cor:'azul',
+    gradiente:'linear-gradient(135deg,#0c4a6e,#0369a1)',
+    analise:'O Norte é a região com menor cobertura de pesquisas eleitorais do país — apenas 26 pesquisas registradas para 7 estados no TSE. Isso eleva significativamente a incerteza analítica e o IVE médio regional (56). O Amazonas lidera em volume de pesquisas (11), com Wilson Lima (União) à frente. O Pará e Tocantins apresentam disputas mais abertas. A baixa cobertura no AC, RR e AP representa uma oportunidade de expansão do VotaData para as eleições de 2026, especialmente via institutos regionais.',
+    estados:[
+      {uf:'AM',nome:'Amazonas',lider:'Wilson Lima (União)',pct:42,rival:'Amazonino Mendes (PSD)',pct2:28,ive:52,pesquisas:11,pop:'4.3',corL:'#b45309',corR:'#b45309'},
+      {uf:'PA',nome:'Pará',lider:'Helder Barbalho (MDB)',pct:48,rival:'Delegado Éder (PL)',pct2:27,ive:44,pesquisas:7,pop:'9.1',corL:'#b45309',corR:'#1a56db'},
+      {uf:'RO',nome:'Rondônia',lider:'Marcos Rocha (União)',pct:44,rival:'Léo Moraes (Pode.)',pct2:29,ive:58,pesquisas:2,pop:'2.0',corL:'#b45309',corR:'#0369a1'},
+      {uf:'TO',nome:'Tocantins',lider:'Wanderlei Barbosa (Rep.)',pct:41,rival:'Valdemar Júnior (PT)',pct2:30,ive:62,pesquisas:2,pop:'1.6',corL:'#b45309',corR:'#dc2626'},
+      {uf:'AC',nome:'Acre',lider:'Gladson Cameli (PP)',pct:46,rival:'Jorge Viana (PT)',pct2:32,ive:55,pesquisas:1,pop:'0.9',corL:'#b45309',corR:'#dc2626'},
+      {uf:'AP',nome:'Amapá',lider:'Clécio Luís (SD)',pct:39,rival:'Dr. Furlan (PL)',pct2:31,ive:68,pesquisas:1,pop:'0.9',corL:'#0369a1',corR:'#1a56db'},
+      {uf:'RR',nome:'Roraima',lider:'Arthur Henrique (MDB)',pct:38,rival:'Ottaci Nascimento (PT)',pct2:27,ive:71,pesquisas:0,pop:'0.7',corL:'#b45309',corR:'#dc2626'},
+    ]
+  });
+}
+
 // ── UPDATE PAGES MAP & NAVBAR ─────────────────────────────────────────────────
-const PAGES_EXT={indices:pageIndices,mapa:pageMapa,nordeste:pageNordeste,premium:pagePremium};
+const PAGES_EXT={
+  indices:pageIndices,
+  mapa:pageMapa,
+  nordeste:pageNordeste,
+  sudeste:pageSudeste,
+  sul:pageSul,
+  centroeste:pageCentroOeste,
+  norte:pageNorte,
+  premium:pagePremium
+};
 Object.assign(PAGES,PAGES_EXT);
 
-// patch navbar to add new pages
+// patch navbar — adicionar regiões e páginas novas
 const _origNav=document.getElementById('mainNav');
 if(_origNav){
-  // inject after analytics nav item
   const analyticsItem=_origNav.querySelector('[data-page="analytics"]');
   if(analyticsItem){
     const frag=document.createDocumentFragment();
-    [{page:'indices',label:'Índices IVE/IEC'},{page:'mapa',label:'🗺 Mapa eleitoral'},{page:'nordeste',label:'📍 Nordeste'},{page:'premium',label:'⭐ Premium'}].forEach(({page,label})=>{
-      const d=document.createElement('div');
-      d.className='nav-item';d.dataset.page=page;
-      d.textContent=label;
-      d.onclick=()=>navigate(page);
-      if(page==='premium') d.style.cssText='color:#b45309;font-weight:700';
-      frag.appendChild(d);
+    const sep1=document.createElement('div');sep1.className='nav-sep';frag.appendChild(sep1);
+    [{page:'indices',label:'Índices IVE'},{page:'mapa',label:'🗺 Mapa'}].forEach(({page,label})=>{
+      const d=document.createElement('div');d.className='nav-item';d.dataset.page=page;
+      d.textContent=label;d.onclick=()=>navigate(page);frag.appendChild(d);
     });
+    const sep2=document.createElement('div');sep2.className='nav-sep';frag.appendChild(sep2);
+    // sub-label regiões
+    const rLabel=document.createElement('div');
+    rLabel.style.cssText='font-size:10px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.08em;padding:0 8px;display:flex;align-items:center;white-space:nowrap';
+    rLabel.textContent='Regiões:';frag.appendChild(rLabel);
+    [{page:'nordeste',label:'NE'},{page:'sudeste',label:'SE'},{page:'sul',label:'Sul'},{page:'centroeste',label:'CO'},{page:'norte',label:'N'}].forEach(({page,label})=>{
+      const d=document.createElement('div');d.className='nav-item';d.dataset.page=page;
+      d.textContent=label;d.onclick=()=>navigate(page);frag.appendChild(d);
+    });
+    const sep3=document.createElement('div');sep3.className='nav-sep';frag.appendChild(sep3);
+    const prem=document.createElement('div');prem.className='nav-item';prem.dataset.page='premium';
+    prem.textContent='⭐ Premium';prem.style.cssText='color:#b45309;font-weight:700';
+    prem.onclick=()=>navigate('premium');frag.appendChild(prem);
     analyticsItem.after(frag);
   }
 }
