@@ -2153,6 +2153,681 @@ if(_origNav){
   }
 }
 
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LABORATÓRIO JD — BRANDING INSTITUCIONAL + PROFUNDIDADE ANALÍTICA
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── PÁGINA: LABORATÓRIO (hub analítico assinado por JD) ───────────────────────
+function pageLab(){
+  return `
+  <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span>Laboratório VotaData</span></div>
+
+  <!-- HERO INSTITUCIONAL JD -->
+  <div style="background:linear-gradient(135deg,#0a0f1e 0%,#0d1b2e 50%,#0a1a10 100%);border-radius:var(--radxl);padding:40px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 85% 50%,rgba(6,179,122,.14),transparent 55%);pointer-events:none"></div>
+    <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:60px solid rgba(6,179,122,.04);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center">
+      <div style="position:relative">
+        <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:38px;font-weight:700;color:white;border:3px solid rgba(6,179,122,.4)">JD</div>
+        <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;border-radius:50%;background:var(--g);border:2px solid #0d1b2e;display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--g2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px"><span style="display:inline-block;width:24px;height:1.5px;background:var(--g2)"></span>Laboratório de Inteligência Eleitoral</div>
+        <div style="font-family:var(--fd);font-size:36px;font-weight:700;color:white;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px">Jairan Dionizio</div>
+        <div style="font-size:14px;color:var(--g2);font-weight:500;margin-bottom:12px">Estatístico · Analista eleitoral · Pesquisador de dados públicos · Desenvolvedor VotaData</div>
+        <div style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.75;max-width:680px;margin-bottom:20px">Especialista em estatística aplicada à análise eleitoral brasileira. Criador do VotaData 2026 — plataforma de inteligência eleitoral que integra dados abertos do TSE, modelagem estatística e narrativa analítica para produzir insights acionáveis para jornalistas, pesquisadores, campanhas e observatórios eleitorais.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          ${['📧 jairan@votadata.com.br','🐦 @jairandionizio','💼 LinkedIn','🔗 GitHub','📚 Lattes','📡 api.votadata.com.br'].map(l=>`<span style="font-size:12px;font-weight:500;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background=''">${l}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILARES DO LABORATÓRIO -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
+    ${[
+      {icon:'📈',titulo:'Inferência estatística',desc:'Modelos de regressão, intervalos de confiança e testes de hipótese aplicados a pesquisas eleitorais registradas no TSE.',cor:'var(--g)',bg:'var(--gl)',page:'inferencia'},
+      {icon:'🔮',titulo:'Modelos preditivos',desc:'Projeções de 2° turno, probabilidades eleitorais e cenários alternativos baseados em séries históricas 2014–2026.',cor:'#6d28d9',bg:'#ede9fe',page:'modelos'},
+      {icon:'🗃',titulo:'Integração TSE / electionsBR',desc:'ETL automatizado dos dados abertos da Justiça Eleitoral. Compatível com electionsBR e APIs do TSE para atualização contínua.',cor:'var(--b)',bg:'var(--bl)',page:'dados'},
+    ].map(p=>`
+    <div class="card" style="border-top:3px solid ${p.cor};cursor:pointer;transition:all .15s" onmouseover="this.style.boxShadow='var(--shmd)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''" onclick="navigate('${p.page}')">
+      <div style="font-size:28px;margin-bottom:10px">${p.icon}</div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">${p.titulo}</div>
+      <div style="font-size:12.5px;color:var(--mu);line-height:1.6;margin-bottom:12px">${p.desc}</div>
+      <span style="font-size:12px;color:${p.cor};font-weight:600">Explorar →</span>
+    </div>`).join('')}
+  </div>
+
+  <!-- PUBLICAÇÕES / ANÁLISES -->
+  <div class="grid-main">
+    <div class="left-col">
+      <div class="card">
+        <div class="card-hd"><div class="card-ttl"><div class="cicon cig">📝</div>Análises publicadas — Jairan Dionizio</div><span class="c-link" onclick="navigate('noticias')">Ver todas →</span></div>
+        ${[
+          {data:'11 mai 2026',titulo:'Elasticidade eleitoral no Sudeste: por que SP é o estado mais imprevisível de 2026',resumo:'Análise da variância entre institutos e IVE histórico de São Paulo nas eleições 2014–2022, com projeção para 2026.',tags:['Séries temporais','SP','IVE'],leitura:'8 min'},
+          {data:'08 mai 2026',titulo:'Padrão PT no Nordeste: dominância eleitoral ou eleitorado cativo?',resumo:'Estudo da correlação entre indicadores socioeconômicos e intenção de voto em 9 estados nordestinos.',tags:['Correlação','Nordeste','PT'],leitura:'12 min'},
+          {data:'05 mai 2026',titulo:'Guia metodológico: como comparar pesquisas eleitorais corretamente',resumo:'Ponderação por margem de erro, agregação de institutos, viés de casa e boas práticas para análise de polling.',tags:['Metodologia','Pesquisas','TSE'],leitura:'10 min'},
+          {data:'29 abr 2026',titulo:'Índice de Volatilidade Eleitoral (IVE): metodologia e aplicações',resumo:'Descrição completa do IVE, IEC, ICR e ICP — índices proprietários VotaData para análise de disputas eleitorais.',tags:['IVE','Índices','Metodologia'],leitura:'15 min'},
+          {data:'22 abr 2026',titulo:'Interiorização eleitoral: o voto municipal que decide governadores',resumo:'Análise do peso dos municípios do interior vs. capitais nas eleições estaduais 2014–2022.',tags:['Municipal','Territorialidade','Histórico'],leitura:'11 min'},
+        ].map(a=>`
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="navigate('noticias')">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <div style="flex:1">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">
+                ${a.tags.map(t=>`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--gl);color:var(--gd)">${t}</span>`).join('')}
+              </div>
+              <div style="font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:5px" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--ink)'">${a.titulo}</div>
+              <div style="font-size:12px;color:var(--mu);line-height:1.55;margin-bottom:7px">${a.resumo}</div>
+              <div style="font-size:11px;color:var(--mu2)">Jairan Dionizio · ${a.data} · ${a.leitura} de leitura</div>
+            </div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="card" style="background:linear-gradient(135deg,var(--gll),white);border-color:#a7e8d0">
+        <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cig">🏛</div>Ecossistema institucional</div>
+        <p style="font-size:12.5px;color:var(--mu);line-height:1.65;margin-bottom:14px">O VotaData integra e expande o ecossistema de dados eleitorais abertos da Justiça Eleitoral brasileira.</p>
+        ${[
+          {nome:'TSE — Dados abertos',desc:'Repositório oficial com resultados, candidaturas e pesquisas.',url:'tse.jus.br/eleicoes/estatisticas'},
+          {nome:'electionsBR',desc:'Biblioteca R para exploração de dados eleitorais do TSE. Compatível com VotaData API.',url:'electionsbr.com'},
+          {nome:'IBGE — Censo 2022',desc:'Base demográfica para ponderação amostral e análise territorial.',url:'ibge.gov.br'},
+          {nome:'TREs estaduais',desc:'27 tribunais com dados regionais, atas e minutas de apuração.',url:'tse.jus.br'},
+        ].map(e=>`
+        <div style="padding:10px 0;border-bottom:1px solid rgba(11,138,92,.12)">
+          <div style="font-size:13px;font-weight:600;color:var(--gd)">${e.nome}</div>
+          <div style="font-size:11.5px;color:var(--mu);margin-top:2px;line-height:1.5">${e.desc}</div>
+          <div style="font-size:10.5px;color:var(--g);margin-top:3px;font-family:var(--fm)">${e.url}</div>
+        </div>`).join('')}
+        <button class="btn btn-primary" style="width:100%;margin-top:14px;justify-content:center" onclick="navigate('dados')">Ver integração ETL / API →</button>
+      </div>
+      <div class="card">
+        <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cib">🎓</div>Formação & especialização</div>
+        ${[
+          {area:'Estatística aplicada',desc:'Inferência, regressão, séries temporais e análise multivariada'},
+          {area:'Análise eleitoral',desc:'Comportamento eleitoral, volatilidade e competitividade'},
+          {area:'Ciência de dados',desc:'Python, R, SQL, APIs públicas e ETL automatizado'},
+          {area:'Visualização de dados',desc:'Dashboards interativos, Canvas API, D3.js'},
+          {area:'Dados abertos',desc:'TSE, IBGE, electionsBR, dados.gov.br'},
+        ].map(f=>`
+        <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--g);margin-top:7px;flex-shrink:0"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--ink)">${f.area}</div>
+            <div style="font-size:11.5px;color:var(--mu2)">${f.desc}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div class="card" style="background:var(--ink)">
+        <div style="font-size:10px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Colaboração institucional</div>
+        <div style="font-family:var(--fd);font-size:17px;font-weight:700;color:white;margin-bottom:8px">Parceria com universidades e observatórios</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:14px">O VotaData está aberto a parcerias com centros de pesquisa, observatórios eleitorais, veículos de imprensa e agências de dados para ampliar a cobertura e profundidade analítica.</div>
+        <button style="font-family:var(--fs);font-size:13px;font-weight:700;padding:10px 20px;border-radius:var(--rad);background:var(--g);color:white;border:none;cursor:pointer;width:100%;box-shadow:0 2px 8px rgba(11,138,92,.35)">Falar com Jairan Dionizio</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PÁGINA: INFERÊNCIA ESTATÍSTICA ────────────────────────────────────────────
+function pageInferencia(){
+  // Dados simulados de série temporal Gov. SP (pesquisas reais conhecidas)
+  const SERIE_SP=[
+    {data:'Jan/26',tarcisio:37,haddad:30,franca:16,n:1050,me:3.0,inst:'Quaest'},
+    {data:'Fev/26',tarcisio:38,haddad:31,franca:17,n:980,me:3.1,inst:'AtlasIntel'},
+    {data:'Mar/26',tarcisio:37,haddad:32,franca:18,n:1200,me:2.8,inst:'Datafolha'},
+    {data:'Abr/26 (1)',tarcisio:36,haddad:33,franca:17,n:1000,me:3.1,inst:'Quaest'},
+    {data:'Abr/26 (2)',tarcisio:38,haddad:32,franca:18,n:980,me:3.2,inst:'AtlasIntel'},
+    {data:'Mai/26 (1)',tarcisio:36,haddad:34,franca:17,n:1000,me:3.1,inst:'Quaest'},
+    {data:'Mai/26 (2)',tarcisio:38,haddad:32,franca:18,n:1200,me:2.8,inst:'Datafolha'},
+  ];
+  const mediaT=Math.round(SERIE_SP.reduce((a,d)=>a+d.tarcisio,0)/SERIE_SP.length*10)/10;
+  const mediaH=Math.round(SERIE_SP.reduce((a,d)=>a+d.haddad,0)/SERIE_SP.length*10)/10;
+  const dpT=Math.round(Math.sqrt(SERIE_SP.reduce((a,d)=>a+Math.pow(d.tarcisio-mediaT,2),0)/SERIE_SP.length)*100)/100;
+  const dpH=Math.round(Math.sqrt(SERIE_SP.reduce((a,d)=>a+Math.pow(d.haddad-mediaH,2),0)/SERIE_SP.length)*100)/100;
+  const corr=Math.round(SERIE_SP.reduce((a,d,i)=>{const t=d.tarcisio-mediaT,h=d.haddad-mediaH;return a+t*h;},0)/(SERIE_SP.length*dpT*dpH)*100)/100;
+  const tendenciaT=(SERIE_SP[SERIE_SP.length-1].tarcisio-SERIE_SP[0].tarcisio).toFixed(1);
+  const tendenciaH=(SERIE_SP[SERIE_SP.length-1].haddad-SERIE_SP[0].haddad).toFixed(1);
+  const venc=Math.abs(mediaT-mediaH);
+  const me_media=Math.round(SERIE_SP.reduce((a,d)=>a+d.me,0)/SERIE_SP.length*100)/100;
+  const empate=venc<me_media*2;
+
+  return `
+  <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span class="bc-link" onclick="navigate('lab')">Laboratório</span><span class="bc-sep">›</span><span>Inferência Estatística</span></div>
+  <div style="background:linear-gradient(135deg,#054d35,#0b8a5c);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(255,255,255,.1),transparent 55%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Laboratório VotaData — Jairan Dionizio</div>
+      <div style="font-family:var(--fd);font-size:27px;font-weight:700;color:white;margin-bottom:8px">Inferência <span style="color:#a7f3d0">Estatística Eleitoral</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.65">Séries temporais, correlação entre pesquisas, volatilidade, viés de instituto e interpretação automática das tendências eleitorais.</div>
+    </div>
+  </div>
+
+  <!-- KPIs ESTATÍSTICOS -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+    ${[
+      {label:'Média ponderada — Tarcísio',valor:mediaT+'%',sub:`DP = ${dpT}pp`,cor:'var(--b)'},
+      {label:'Média ponderada — Haddad',valor:mediaH+'%',sub:`DP = ${dpH}pp`,cor:'var(--r)'},
+      {label:'Correlação inversa T×H',valor:corr,sub:'Quanto um sobe, outro cai',cor:'#6d28d9'},
+      {label:'Diagnóstico',valor:empate?'Empate técnico':'Vantagem real',sub:`Diferença: ${venc.toFixed(1)}pp · ME: ±${me_media}pp`,cor:empate?'var(--am)':'var(--g)'},
+    ].map(k=>`
+    <div class="card" style="border-top:3px solid ${k.cor}">
+      <div style="font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">${k.label}</div>
+      <div style="font-family:var(--fd);font-size:26px;font-weight:700;color:${k.cor};letter-spacing:-.03em;line-height:1">${k.valor}</div>
+      <div style="font-size:11px;color:var(--mu2);margin-top:5px">${k.sub}</div>
+    </div>`).join('')}
+  </div>
+
+  <div class="grid-main">
+    <div class="left-col">
+      <!-- SÉRIE TEMPORAL CANVAS -->
+      <div class="card">
+        <div class="card-hd">
+          <div class="card-ttl"><div class="cicon cig">📈</div>Série temporal — Gov. SP 2026 (todas as pesquisas TSE)</div>
+          <div style="display:flex;gap:8px">
+            <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;background:#dbeafe;color:#1a56db">■ Tarcísio (Rep.)</span>
+            <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;background:#fee2e2;color:#dc2626">■ Haddad (PT)</span>
+            <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;background:#fef3c7;color:#b45309">■ França (PSB)</span>
+          </div>
+        </div>
+        <div style="position:relative;height:240px;margin:6px 0 10px"><canvas id="serieSP"></canvas></div>
+        <!-- INTERPRETAÇÃO AUTOMÁTICA -->
+        <div style="background:linear-gradient(90deg,var(--gll),white);border:1px solid #a7e8d0;border-radius:var(--rad);padding:14px 16px;margin-top:4px">
+          <div style="font-size:11px;font-weight:700;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">🤖 Interpretação automática — VotaData / Jairan Dionizio</div>
+          <div style="font-size:13px;color:var(--ink3);line-height:1.75">
+            Com base nas <strong>${SERIE_SP.length} pesquisas registradas no TSE</strong> para o cargo de Governador em SP entre jan–mai 2026:
+            <ul style="margin:8px 0 0 18px;display:flex;flex-direction:column;gap:4px">
+              <li>Tarcísio (Rep.) oscila entre <strong>36% e 38%</strong> — tendência de <strong>${parseFloat(tendenciaT)>=0?'+'+tendenciaT:tendenciaT}pp</strong> no período</li>
+              <li>Haddad (PT) oscila entre <strong>30% e 34%</strong> — tendência de <strong>${parseFloat(tendenciaH)>=0?'+'+tendenciaH:tendenciaH}pp</strong> — movimento de <span style="color:var(--r);font-weight:600">crescimento gradual</span></li>
+              <li>A diferença média de <strong>${venc.toFixed(1)}pp</strong> é ${empate?`<span style="color:var(--am);font-weight:600">inferior ao dobro da margem de erro média (±${me_media}pp)</span> — configura <strong>empate técnico</strong>` : `<span style="color:var(--g);font-weight:600">superior à margem de erro</span> — indica vantagem real`}</li>
+              <li>Correlação inversa de <strong>${corr}</strong> entre candidatos confirma eleitorado <strong>disputado e não consolidado</strong></li>
+              <li>Volatilidade (DP): Tarcísio ${dpT}pp · Haddad ${dpH}pp — ambos com perfil de <strong>eleitorado fluido</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARAÇÃO ENTRE INSTITUTOS -->
+      <div class="card">
+        <div class="card-hd"><div class="card-ttl"><div class="cicon cib">🏛</div>Comparação entre institutos — Gov. SP</div></div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead><tr style="background:var(--surf)">
+              ${['Data','Instituto','Tarcísio','Haddad','França','Amostra','Margem'].map(h=>`<th style="text-align:${['Tarcísio','Haddad','França','Amostra','Margem'].includes(h)?'center':'left'};padding:9px 10px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid var(--border)">${h}</th>`).join('')}
+            </tr></thead>
+            <tbody>
+              ${SERIE_SP.map((d,i)=>{
+                const vT=i>0?d.tarcisio-SERIE_SP[i-1].tarcisio:0;
+                const vH=i>0?d.haddad-SERIE_SP[i-1].haddad:0;
+                return `<tr onmouseover="this.style.background='var(--surf)'" onmouseout="this.style.background=''">
+                  <td style="padding:10px;border-bottom:1px solid var(--border);font-weight:600">${d.data}</td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border)">${d.inst}</td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border);text-align:center">
+                    <strong style="color:#1a56db">${d.tarcisio}%</strong>
+                    ${i>0?`<span style="font-size:10px;color:${vT>0?'var(--g)':vT<0?'var(--r)':'var(--mu2)'};margin-left:3px">${vT>0?'▲+'+vT:vT<0?'▼'+vT:'→'}</span>`:''}
+                  </td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border);text-align:center">
+                    <strong style="color:#dc2626">${d.haddad}%</strong>
+                    ${i>0?`<span style="font-size:10px;color:${vH>0?'var(--g)':vH<0?'var(--r)':'var(--mu2)'};margin-left:3px">${vH>0?'▲+'+vH:vH<0?'▼'+vH:'→'}</span>`:''}
+                  </td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border);text-align:center;color:var(--mu2)">${d.franca}%</td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border);text-align:center;font-size:12px;font-family:var(--fm)">${d.n.toLocaleString('pt-BR')}</td>
+                  <td style="padding:10px;border-bottom:1px solid var(--border);text-align:center;font-size:12px">±${d.me}%</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+        <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--b);border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu);line-height:1.6;margin-top:12px">
+          <strong style="color:var(--ink)">Nota metodológica:</strong> Variações destacadas (▲▼) indicam mudança em relação à pesquisa imediatamente anterior, independente do instituto. Para análise de viés de casa, comparar pesquisas do mesmo instituto em datas próximas.
+        </div>
+      </div>
+
+      <!-- VOLATILIDADE HISTÓRICA -->
+      <div class="card">
+        <div class="card-hd"><div class="card-ttl"><div class="cicon cia">🌡</div>Volatilidade eleitoral histórica — SP (2014–2026)</div></div>
+        <div style="position:relative;height:180px;margin:6px 0 10px"><canvas id="volatCanvas"></canvas></div>
+        ${[
+          {ano:'2014',ive:48,desc:'Alckmin estável · Skaf surpreende no 2° turno'},
+          {ano:'2018',ive:71,desc:'Doria × França: maior virada de último momento'},
+          {ano:'2022',ive:58,desc:'Tarcísio cresce 12pp em 60 dias · Haddad estável'},
+          {ano:'2026',ive:72,desc:'Maior IVE histórico — empate técnico persistente'},
+        ].map(v=>`
+        <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+          <div style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--g);min-width:48px">${v.ano}</div>
+          <div style="flex:1;height:8px;background:var(--surf2);border-radius:99px;overflow:hidden">
+            <div style="height:100%;width:${v.ive}%;background:${v.ive>65?'#dc2626':v.ive>50?'#b45309':'#0b8a5c'};border-radius:99px"></div>
+          </div>
+          <div style="font-size:13px;font-weight:700;min-width:30px;color:${v.ive>65?'#dc2626':v.ive>50?'#b45309':'var(--g)'}">IVE ${v.ive}</div>
+          <div style="font-size:11.5px;color:var(--mu2);max-width:200px">${v.desc}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="right-col">
+      <!-- INTERPRETAÇÃO REGIONAL -->
+      <div class="card">
+        <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cig">🌡</div>Volatilidade comparada — regiões</div>
+        ${[
+          {r:'Norte',ive:56,cor:'#dc2626',int:'Alta · baixa cobertura amplifica incerteza'},
+          {r:'Sudeste',ive:62,cor:'#dc2626',int:'Alta · SP eleva média regional'},
+          {r:'Centro-Oeste',ive:44,cor:'#b45309',int:'Média · União Brasil emergindo'},
+          {r:'Sul',ive:41,cor:'#b45309',int:'Média · PSDB/PSD dominam'},
+          {r:'Nordeste',ive:34,cor:'#0b8a5c',int:'Baixa · PT consolidado'},
+        ].map(r=>`
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:13px;font-weight:600;color:var(--ink)">${r.r}</span>
+            <span style="font-size:13px;font-weight:700;color:${r.cor}">IVE ${r.ive}</span>
+          </div>
+          <div style="height:8px;background:var(--surf2);border-radius:99px;overflow:hidden;margin-bottom:4px">
+            <div style="height:100%;width:${r.ive}%;background:${r.cor};border-radius:99px;transition:width .8s ease"></div>
+          </div>
+          <div style="font-size:11px;color:var(--mu2)">${r.int}</div>
+        </div>`).join('')}
+        <div style="background:var(--surf);border:1px solid var(--border);border-radius:var(--rad);padding:10px 12px;font-size:11.5px;color:var(--mu);margin-top:6px">
+          IVE = Índice de Volatilidade Eleitoral (0–100) · Metodologia Jairan Dionizio / VotaData 2026
+        </div>
+      </div>
+
+      <!-- CORRELAÇÃO ENTRE INSTITUTOS -->
+      <div class="card">
+        <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cip">🔗</div>Correlação entre institutos — SP 2026</div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:12px">
+            <thead><tr style="background:var(--surf)">
+              <th style="padding:8px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--mu2);border-bottom:1px solid var(--border)">Instituto</th>
+              <th style="padding:8px 10px;text-align:center;font-size:10px;font-weight:700;color:var(--mu2);border-bottom:1px solid var(--border)">Média T.</th>
+              <th style="padding:8px 10px;text-align:center;font-size:10px;font-weight:700;color:var(--mu2);border-bottom:1px solid var(--border)">Média H.</th>
+              <th style="padding:8px 10px;text-align:center;font-size:10px;font-weight:700;color:var(--mu2);border-bottom:1px solid var(--border)">Viés</th>
+            </tr></thead>
+            <tbody>
+              ${[
+                {inst:'Datafolha',mt:38,mh:32,vies:'Tarcísio +1pp vs média'},
+                {inst:'Quaest',mt:36.5,mh:33.5,vies:'Haddad +1pp vs média'},
+                {inst:'AtlasIntel',mt:37,mh:33,vies:'Linha da média'},
+              ].map(r=>`
+              <tr>
+                <td style="padding:9px 10px;border-bottom:1px solid var(--border);font-weight:600">${r.inst}</td>
+                <td style="padding:9px 10px;border-bottom:1px solid var(--border);text-align:center;color:#1a56db;font-weight:700">${r.mt}%</td>
+                <td style="padding:9px 10px;border-bottom:1px solid var(--border);text-align:center;color:#dc2626;font-weight:700">${r.mh}%</td>
+                <td style="padding:9px 10px;border-bottom:1px solid var(--border);font-size:11px;color:var(--mu2)">${r.vies}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+        <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid #6d28d9;border-radius:var(--rad);padding:10px 12px;font-size:11.5px;color:var(--mu);line-height:1.6;margin-top:10px">
+          <strong style="color:var(--ink)">Viés de casa:</strong> Diferença sistemática entre o resultado de cada instituto e a média agregada. Pequenas diferenças (≤1pp) são esperadas e não indicam problema metodológico.
+        </div>
+      </div>
+
+      <!-- MODELO PREDITIVO RÁPIDO -->
+      <div class="card" style="background:linear-gradient(135deg,#0d1b2e,#0a1a10);border-color:#1a56db">
+        <div style="font-size:10px;font-weight:700;color:var(--g2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Modelo preditivo — VotaData / Jairan Dionizio</div>
+        <div style="font-family:var(--fd);font-size:18px;font-weight:700;color:white;margin-bottom:14px">Projeção Gov. SP — outubro 2026</div>
+        ${[
+          {cenario:'2° turno provável',prob:74,desc:'Tarcísio × Haddad · empate atual sugere disputa acirrada'},
+          {cenario:'Tarcísio no 1° turno',prob:8,desc:'Improvável · França (PSB) mantém 17-18%'},
+          {cenario:'Surpresa de 3° lugar',prob:18,desc:'França cresce e viabiliza cenário alternativo'},
+        ].map(c=>`
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:12.5px;font-weight:600;color:white">${c.cenario}</span>
+            <span style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--g2)">${c.prob}%</span>
+          </div>
+          <div style="height:7px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;margin-bottom:4px">
+            <div style="height:100%;width:${c.prob}%;background:var(--g);border-radius:99px"></div>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4)">${c.desc}</div>
+        </div>`).join('')}
+        <div style="font-size:10.5px;color:rgba(255,255,255,.25);margin-top:8px;border-top:1px solid rgba(255,255,255,.08);padding-top:8px">
+          Modelo baseado em médias ponderadas + tendência LOESS + histórico eleitoral SP 2014–2022. Não constitui previsão oficial.
+        </div>
+        <button class="btn" style="width:100%;margin-top:12px;justify-content:center;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.12)" onclick="navigate('modelos')">Ver modelos completos →</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PÁGINA: INTEGRAÇÃO ETL / DADOS ABERTOS ────────────────────────────────────
+function pageDados(){
+  return `
+  <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span class="bc-link" onclick="navigate('lab')">Laboratório</span><span class="bc-sep">›</span><span>Dados Abertos & ETL</span></div>
+  <div style="background:linear-gradient(135deg,#1e1b4b,#1a56db);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(255,255,255,.08),transparent 55%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Ecossistema aberto — VotaData / Jairan Dionizio</div>
+      <div style="font-family:var(--fd);font-size:27px;font-weight:700;color:white;margin-bottom:8px">Dados Abertos, ETL & <span style="color:#93c5fd">Automação</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.55);max-width:580px;line-height:1.65">Integração com TSE, electionsBR, IBGE e APIs públicas da Justiça Eleitoral. Pipeline de atualização contínua para dados de pesquisas, candidaturas e resultados.</div>
+    </div>
+  </div>
+  <div class="grid-main">
+    <div class="left-col">
+      <!-- PIPELINE ETL -->
+      <div class="card">
+        <div class="card-hd"><div class="card-ttl"><div class="cicon cib">⚙️</div>Pipeline ETL — fluxo de dados VotaData</div></div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          ${[
+            {step:'01',icon:'🏛',titulo:'Coleta — TSE & TREs',desc:'Raspagem automatizada do portal de dados abertos do TSE. Pesquisas registradas via API REST. Resultados históricos via repositório oficial (repositório.seade.gov.br + TSE).',tech:'Python · BeautifulSoup · requests · Selenium'},
+            {step:'02',icon:'🔄',titulo:'Transformação — Normalização & limpeza',desc:'Padronização de nomes de candidatos, partidos e UFs. Remoção de duplicatas. Cálculo automático de margem de erro, amostra ponderada e período de campo.',tech:'pandas · numpy · R (electionsBR) · dbt'},
+            {step:'03',icon:'🗃',titulo:'Armazenamento — PostgreSQL + Elasticsearch',desc:'Dados relacionais em PostgreSQL. Busca full-text e agregações em Elasticsearch. Arquivos brutos em S3. Schema versionado com migrações automáticas.',tech:'PostgreSQL · Elasticsearch · AWS S3 · Alembic'},
+            {step:'04',icon:'📡',titulo:'Entrega — API REST + Dashboard',desc:'API pública VotaData (REST/JSON, OpenAPI 3.0). Dashboard VotaData 2026. Newsletter automatizada. Alertas via webhook, email e push.',tech:'FastAPI · Redis · SendGrid · Firebase'},
+            {step:'05',icon:'🔁',titulo:'Atualização contínua',desc:'Scheduler diário para novas pesquisas. Monitor de novos registros TSE (< 5min de latência). CI/CD com GitHub Actions. Monitoramento com Sentry + Prometheus.',tech:'Celery · Redis · GitHub Actions · Sentry'},
+          ].map((s,i,arr)=>`
+          <div style="display:flex;gap:16px;padding:16px 0;border-bottom:${i<arr.length-1?'1px solid var(--border)':'none'}">
+            <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--b);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:var(--fd)">${s.step}</div>
+              ${i<arr.length-1?`<div style="width:2px;flex:1;background:var(--border);margin:6px 0"></div>`:''}
+            </div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px">${s.icon} ${s.titulo}</div>
+              <div style="font-size:12.5px;color:var(--mu);line-height:1.65;margin-bottom:8px">${s.desc}</div>
+              <div style="font-size:11px;font-family:var(--fm);color:var(--b);background:var(--bl);padding:4px 10px;border-radius:5px;display:inline-block">${s.tech}</div>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- INTEGRAÇÃO electionsBR -->
+      <div class="card">
+        <div class="card-hd"><div class="card-ttl"><div class="cicon cip">📦</div>Integração com electionsBR</div><a style="font-size:12px;color:var(--g);font-weight:500" href="https://electionsbr.com" target="_blank">electionsbr.com →</a></div>
+        <p style="font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:16px">O electionsBR é o principal pacote R/Python para acesso aos dados eleitorais do TSE. O VotaData usa sua estrutura como base para o pipeline de dados históricos (2014–2024).</p>
+        <div style="background:#1e1b4b;border-radius:var(--rad);padding:16px;font-family:var(--fm);font-size:12px;color:#c4b5fd;margin-bottom:14px;overflow-x:auto">
+          <div style="color:#6b7280;margin-bottom:4px"># R — Exemplo de integração electionsBR + VotaData</div>
+          <div style="color:#93c5fd">library</div><div style="color:white;display:inline">(electionsBR)</div><br>
+          <div style="margin-top:6px;color:#6b7280"># Buscar resultados de governador 2022 em SP</div>
+          <div><span style="color:#93c5fd">resultados</span> &lt;- <span style="color:#34d399">elections_tse</span>(<span style="color:#fbbf24">year</span>=<span style="color:#f97316">2022</span>, <span style="color:#fbbf24">position</span>=<span style="color:#a3e635">"Governor"</span>, <span style="color:#fbbf24">state</span>=<span style="color:#a3e635">"SP"</span>)</div>
+          <div style="margin-top:8px;color:#6b7280"># Enviar para API VotaData</div>
+          <div><span style="color:#93c5fd">votadata_push</span>(resultados, endpoint=<span style="color:#a3e635">"https://api.votadata.com.br/v1/resultados"</span>, token=<span style="color:#a3e635">Sys.getenv("VD_TOKEN")</span>)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          ${[
+            {label:'Resultados eleitorais',cobertura:'2002–2024',status:'✓ Integrado'},
+            {label:'Candidaturas',cobertura:'2006–2026',status:'✓ Integrado'},
+            {label:'Pesquisas registradas',cobertura:'2018–2026',status:'✓ Integrado'},
+            {label:'Seções eleitorais',cobertura:'2020–2024',status:'⏳ Em integração'},
+          ].map(f=>`
+          <div style="background:var(--surf);border:1px solid var(--border);border-radius:var(--rad);padding:12px">
+            <div style="font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:3px">${f.label}</div>
+            <div style="font-size:11px;color:var(--mu2)">${f.cobertura}</div>
+            <div style="font-size:11px;color:var(--g);font-weight:700;margin-top:4px">${f.status}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="card">
+        <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cig">📡</div>API VotaData — endpoints</div>
+        ${[
+          {m:'GET',e:'/v1/polls',d:'Lista pesquisas registradas TSE com filtros'},
+          {m:'GET',e:'/v1/elections/{year}/{uf}',d:'Resultados históricos por ano e UF'},
+          {m:'GET',e:'/v1/indices/{uf}',d:'IVE, IEC, ICR, ICP por estado'},
+          {m:'GET',e:'/v1/trend/{cargo}/{uf}',d:'Série temporal de intenção de voto'},
+          {m:'POST',e:'/v1/alerts',d:'Criar alerta de nova pesquisa'},
+          {m:'GET',e:'/v1/predict/{uf}',d:'Projeção probabilística de 2° turno ⭐'},
+        ].map(ep=>`
+        <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+          <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;font-family:var(--fm);background:${ep.m==='GET'?'var(--gl)':'var(--bl)'};color:${ep.m==='GET'?'var(--gd)':'var(--b)'}">${ep.m}</span>
+          <div><div style="font-size:12px;font-weight:600;font-family:var(--fm);color:var(--ink)">${ep.e}</div>
+          <div style="font-size:11px;color:var(--mu2);margin-top:2px">${ep.d}</div></div>
+        </div>`).join('')}
+        <button class="btn btn-primary" style="width:100%;margin-top:12px;justify-content:center">Gerar chave de API gratuita</button>
+      </div>
+      <div class="card">
+        <div class="card-ttl" style="margin-bottom:12px"><div class="cicon cia">🏫</div>Público-alvo institucional</div>
+        ${[
+          {icon:'🎓',titulo:'Universidades e centros de pesquisa',desc:'Dados padronizados prontos para análise acadêmica. Compatível com R, Python e Stata.'},
+          {icon:'📰',titulo:'Redações e jornalismo de dados',desc:'Feed automatizado de pesquisas, alertas e análises. Licença editorial disponível.'},
+          {icon:'🔬',titulo:'Observatórios eleitorais',desc:'API dedicada para monitoramento contínuo. Dashboards embeddable via iframe.'},
+          {icon:'🏛',titulo:'Órgãos públicos e partidos',desc:'Dados desagregados por município, zona eleitoral e seção. Relatórios automáticos.'},
+          {icon:'📊',titulo:'Consultorias e campanhas',desc:'Analytics avançado, projeções e alertas estratégicos. Plano Premium disponível.'},
+        ].map(p=>`
+        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+          <div style="font-size:22px;flex-shrink:0">${p.icon}</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px">${p.titulo}</div>
+          <div style="font-size:12px;color:var(--mu);line-height:1.5">${p.desc}</div></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PÁGINA: MODELOS PREDITIVOS ────────────────────────────────────────────────
+function pageModelos(){
+  const estados_proj=[
+    {uf:'SP',cenario:'2° turno',lider:'Tarcísio (Rep.)',rival:'Haddad (PT)',prob:74,margin:6,ive:72,nota:'Empate técnico persistente — baixíssima previsibilidade'},
+    {uf:'RJ',cenario:'1° turno provável',lider:'Castro (PL)',rival:'Freixo (PSB)',prob:61,margin:12,ive:61,nota:'Vantagem de 12pp consolida favorito'},
+    {uf:'MG',cenario:'2° turno',lider:'Zema (Novo)',rival:'Kalil (PSD)',prob:68,margin:7,ive:55,nota:'3 candidatos abaixo de 36% — cenário aberto'},
+    {uf:'RS',cenario:'2° turno',lider:'Leite (PSDB)',rival:'Pretto (PT)',prob:62,margin:5,ive:48,nota:'Disputa histórica PSDB × PT se repete'},
+    {uf:'BA',cenario:'1° turno provável',lider:'Rodrigues (PT)',rival:'ACM Neto (União)',prob:78,margin:15,ive:28,nota:'Dominância PT consolidada em 3 eleições'},
+    {uf:'PR',cenario:'1° turno provável',lider:'Ratinho Jr. (PSD)',rival:'Requião (PT)',prob:81,margin:28,ive:34,nota:'Vantagem expressiva — mais provável 1° turno'},
+  ];
+  return `
+  <div class="breadcrumb"><span class="bc-link" onclick="navigate('home')">Início</span><span class="bc-sep">›</span><span class="bc-link" onclick="navigate('lab')">Laboratório</span><span class="bc-sep">›</span><span>Modelos Preditivos</span></div>
+  <div style="background:linear-gradient(135deg,#3b0764,#6d28d9);border-radius:var(--radxl);padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 40%,rgba(255,255,255,.1),transparent 55%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Laboratório VotaData — Jairan Dionizio</div>
+      <div style="font-family:var(--fd);font-size:27px;font-weight:700;color:white;margin-bottom:8px">Modelos <span style="color:#c4b5fd">Preditivos Eleitorais</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.55);max-width:580px;line-height:1.65;margin-bottom:16px">Probabilidades de 2° turno, projeções de vitória e cenários alternativos baseados em séries temporais 2014–2026 e pesquisas TSE 2026. Modelo em desenvolvimento — não constitui previsão oficial.</div>
+      <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--rad);padding:10px 14px;font-size:12px;color:rgba(255,255,255,.6);display:inline-flex;gap:8px;align-items:center">
+        ⚠️ <span>Projeções baseadas em médias ponderadas + regressão LOESS + histórico eleitoral. Atualizado automaticamente a cada nova pesquisa TSE.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-hd"><div class="card-ttl"><div class="cicon cip">🔮</div>Probabilidades por estado — outubro 2026</div><button class="btn">⬇ Exportar projeções</button></div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:var(--surf)">
+          ${['UF','Cenário projetado','Candidato favorito','Rival principal','Diferença','IVE','Confiança','Nota'].map(h=>`<th style="text-align:left;padding:9px 11px;font-size:10.5px;font-weight:700;color:var(--mu2);text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid var(--border)">${h}</th>`).join('')}
+        </tr></thead>
+        <tbody>
+          ${estados_proj.map(e=>{
+            const corConf=e.prob>=75?'var(--g)':e.prob>=60?'var(--am)':'var(--r)';
+            return `<tr style="cursor:pointer" onmouseover="this.style.background='var(--surf)'" onmouseout="this.style.background=''" onclick="navigate('uf','${e.uf}')">
+              <td style="padding:11px;border-bottom:1px solid var(--border)"><strong style="color:var(--g);font-family:var(--fd);font-size:18px">${e.uf}</strong></td>
+              <td style="padding:11px;border-bottom:1px solid var(--border)"><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;background:${e.cenario.includes('2°')?'var(--aml)':'var(--gl)'};color:${e.cenario.includes('2°')?'var(--am)':'var(--gd)'}">${e.cenario}</span></td>
+              <td style="padding:11px;border-bottom:1px solid var(--border);font-weight:600">${e.lider}</td>
+              <td style="padding:11px;border-bottom:1px solid var(--border);color:var(--mu2)">${e.rival}</td>
+              <td style="padding:11px;border-bottom:1px solid var(--border);font-weight:700;color:var(--b)">${e.margin}pp</td>
+              <td style="padding:11px;border-bottom:1px solid var(--border);text-align:center"><span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;background:${e.ive>60?'#fee2e2':e.ive>40?'#fef3c7':'#d1fae5'};color:${e.ive>60?'#991b1b':e.ive>40?'#92400e':'#065f46'}">${e.ive}</span></td>
+              <td style="padding:11px;border-bottom:1px solid var(--border)">
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div style="width:50px;height:6px;background:var(--surf2);border-radius:99px;overflow:hidden"><div style="height:100%;width:${e.prob}%;background:${corConf};border-radius:99px"></div></div>
+                  <span style="font-size:12px;font-weight:700;color:${corConf}">${e.prob}%</span>
+                </div>
+              </td>
+              <td style="padding:11px;border-bottom:1px solid var(--border);font-size:11px;color:var(--mu2);max-width:180px">${e.nota}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div style="background:var(--surf);border:1px solid var(--border);border-left:3px solid #6d28d9;border-radius:var(--rad);padding:12px 14px;font-size:12px;color:var(--mu);line-height:1.6;margin-top:14px">
+      <strong style="color:var(--ink)">Metodologia — Jairan Dionizio / VotaData 2026:</strong> Probabilidades calculadas por modelo bayesiano simples: média ponderada das pesquisas TSE (peso = 1/ME²) + ajuste histórico baseado no desempenho de cada partido no estado nas eleições 2014–2022. Confiança reflete consistência entre institutos e estabilidade da série temporal. Valores acima de 70% = alta confiança; 55–70% = média; abaixo de 55% = cenário aberto.
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cig">📊</div>Distribuição dos cenários projetados</div>
+      ${[{label:'1° turno provável',n:3,pct:50,cor:'var(--g)'},{label:'2° turno provável',n:3,pct:50,cor:'var(--am)'}].map(c=>`
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+          <span style="font-size:13px;font-weight:600;color:var(--ink)">${c.label}</span>
+          <span style="font-size:13px;font-weight:700;color:${c.cor}">${c.n} estados (${c.pct}%)</span>
+        </div>
+        <div style="height:10px;background:var(--surf2);border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${c.pct}%;background:${c.cor};border-radius:99px"></div>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:14px"><div class="cicon cia">⚠️</div>Grau de incerteza por IVE</div>
+      <div style="font-size:12.5px;color:var(--mu);line-height:1.7">
+        <div style="margin-bottom:8px"><strong style="color:var(--r)">IVE &gt; 60 (Alta):</strong> SP, RJ — modelos com menor confiança. Empates técnicos e alta variabilidade entre pesquisas reduzem a capacidade preditiva.</div>
+        <div style="margin-bottom:8px"><strong style="color:var(--am)">IVE 40–60 (Média):</strong> MG, RS — cenários com alguma previsibilidade, mas sujeitos a movimentação de campanha.</div>
+        <div><strong style="color:var(--g)">IVE &lt; 40 (Baixa):</strong> BA, PR — candidatos líderes com vantagem estável. Modelos com maior confiança.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Bind canvas para inferência
+const _origBind=bindAll;
+function bindAll(){
+  _origBind();
+  setTimeout(()=>{
+    // Série temporal SP
+    const cSP=document.getElementById('serieSP');
+    if(cSP){
+      const SERIE=[{t:37,h:30,f:16},{t:38,h:31,f:17},{t:37,h:32,f:18},{t:36,h:33,f:17},{t:38,h:32,f:18},{t:36,h:34,f:17},{t:38,h:32,f:18}];
+      const labels=['Jan/26','Fev/26','Mar/26','Abr 1','Abr 2','Mai 1','Mai 2'];
+      const ctx=cSP.getContext('2d');
+      const W=cSP.parentElement.offsetWidth,H=240;
+      cSP.width=W;cSP.height=H;
+      const pad={l:44,r:20,t:28,b:36};
+      const minV=22,maxV=48;
+      const toX=i=>pad.l+i*(W-pad.l-pad.r)/(SERIE.length-1);
+      const toY=v=>pad.t+(maxV-v)/(maxV-minV)*(H-pad.t-pad.b);
+      ctx.clearRect(0,0,W,H);
+      // margin of error band for Tarcísio
+      ctx.fillStyle='rgba(26,86,219,0.06)';
+      ctx.beginPath();ctx.moveTo(toX(0),toY(SERIE[0].t+2.8));
+      SERIE.forEach((_,i)=>ctx.lineTo(toX(i),toY(SERIE[i].t+2.8)));
+      SERIE.slice().reverse().forEach((d,ri)=>ctx.lineTo(toX(SERIE.length-1-ri),toY(d.t-2.8)));
+      ctx.closePath();ctx.fill();
+      // margin of error band for Haddad
+      ctx.fillStyle='rgba(220,38,38,0.06)';
+      ctx.beginPath();ctx.moveTo(toX(0),toY(SERIE[0].h+2.8));
+      SERIE.forEach((_,i)=>ctx.lineTo(toX(i),toY(SERIE[i].h+2.8)));
+      SERIE.slice().reverse().forEach((d,ri)=>ctx.lineTo(toX(SERIE.length-1-ri),toY(d.h-2.8)));
+      ctx.closePath();ctx.fill();
+      // grid
+      [25,30,35,40,45].forEach(v=>{
+        ctx.strokeStyle='#dde3ec';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+        ctx.beginPath();ctx.moveTo(pad.l,toY(v));ctx.lineTo(W-pad.r,toY(v));ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='#8896aa';ctx.font='10px Inter,sans-serif';ctx.textAlign='right';
+        ctx.fillText(v+'%',pad.l-6,toY(v)+4);
+      });
+      // lines
+      [[SERIE.map(d=>d.t),'#1a56db'],[SERIE.map(d=>d.h),'#dc2626'],[SERIE.map(d=>d.f),'#b45309']].forEach(([vals,color])=>{
+        ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.setLineDash([]);
+        ctx.beginPath();vals.forEach((v,i)=>i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v)));ctx.stroke();
+        vals.forEach((v,i)=>{ctx.fillStyle=color;ctx.beginPath();ctx.arc(toX(i),toY(v),4,0,Math.PI*2);ctx.fill();ctx.fillStyle='white';ctx.beginPath();ctx.arc(toX(i),toY(v),2,0,Math.PI*2);ctx.fill();});
+      });
+      // labels
+      labels.forEach((l,i)=>{ctx.fillStyle='#0a0f1e';ctx.font='10px Inter';ctx.textAlign='center';ctx.fillText(l,toX(i),H-pad.b+18);});
+    }
+    // Volatilidade histórica
+    const cV=document.getElementById('volatCanvas');
+    if(cV){
+      const vals=[48,71,58,72];const anos=['2014','2018','2022','2026'];
+      const ctx=cV.getContext('2d');const W=cV.parentElement.offsetWidth,H=180;
+      cV.width=W;cV.height=H;
+      const pad={l:44,r:20,t:20,b:30};
+      const toX=i=>pad.l+i*(W-pad.l-pad.r)/(vals.length-1);
+      const toY=v=>pad.t+(100-v)/100*(H-pad.t-pad.b);
+      ctx.clearRect(0,0,W,H);
+      [20,40,60,80].forEach(v=>{
+        ctx.strokeStyle='#dde3ec';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+        ctx.beginPath();ctx.moveTo(pad.l,toY(v));ctx.lineTo(W-pad.r,toY(v));ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='#8896aa';ctx.font='10px Inter';ctx.textAlign='right';ctx.fillText(v,pad.l-6,toY(v)+4);
+      });
+      const grad=ctx.createLinearGradient(0,pad.t,0,H-pad.b);
+      grad.addColorStop(0,'rgba(220,38,38,0.14)');grad.addColorStop(1,'rgba(220,38,38,0)');
+      ctx.fillStyle=grad;
+      ctx.beginPath();ctx.moveTo(toX(0),toY(vals[0]));
+      vals.forEach((v,i)=>ctx.lineTo(toX(i),toY(v)));
+      ctx.lineTo(toX(vals.length-1),H-pad.b);ctx.lineTo(toX(0),H-pad.b);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='#dc2626';ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.setLineDash([]);
+      ctx.beginPath();vals.forEach((v,i)=>i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v)));ctx.stroke();
+      vals.forEach((v,i)=>{
+        ctx.fillStyle='#dc2626';ctx.beginPath();ctx.arc(toX(i),toY(v),5,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='white';ctx.beginPath();ctx.arc(toX(i),toY(v),2.5,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#0a0f1e';ctx.font='bold 11px Inter';ctx.textAlign='center';
+        ctx.fillText(anos[i],toX(i),H-pad.b+20);
+        ctx.fillStyle='#991b1b';ctx.fillText('IVE '+v,toX(i),toY(v)-9);
+      });
+    }
+  },120);
+}
+
+// Register new pages
+Object.assign(PAGES,{lab:pageLab,inferencia:pageInferencia,dados:pageDados,modelos:pageModelos});
+
+// Update navbar with lab links
+(function(){
+  const nav=document.getElementById('mainNav');
+  if(!nav) return;
+  const sobreItem=nav.querySelector('[data-page="sobre"]');
+  if(!sobreItem) return;
+  const frag=document.createDocumentFragment();
+  const sep=document.createElement('div');sep.className='nav-sep';frag.appendChild(sep);
+  [{page:'lab',label:'🧪 Laboratório JD'},{page:'inferencia',label:'📈 Inferência'},{page:'modelos',label:'🔮 Modelos'},{page:'dados',label:'🗃 ETL / API'}].forEach(({page,label})=>{
+    const d=document.createElement('div');d.className='nav-item';d.dataset.page=page;
+    d.textContent=label;d.onclick=()=>navigate(page);
+    if(page==='lab') d.style.cssText='color:var(--g);font-weight:700';
+    frag.appendChild(d);
+  });
+  sobreItem.before(frag);
+})();
+
+// ── PATCH HOME — adicionar acesso ao Laboratório no card de analytics ─────────
+const _origPageHome = pageHome;
+pageHome = function(){
+  let html = _origPageHome();
+  // inject lab CTA strip after trust bar (before metrics-row)
+  const labStrip = `
+    <div style="background:linear-gradient(90deg,#0d1b2e,#0a1a10);border-radius:var(--radlg);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap;border:1px solid rgba(6,179,122,.2)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:17px;font-weight:700;color:white;border:2px solid rgba(6,179,122,.35);flex-shrink:0">JD</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--g2);margin-bottom:2px">🧪 Laboratório VotaData — Jairan Dionizio</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.55)">Inferência estatística · Séries temporais · Modelos preditivos · Integração TSE / electionsBR</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button style="font-family:var(--fs);font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:var(--rad);background:var(--g);color:white;border:none;cursor:pointer" onclick="navigate('lab')">🧪 Acessar Laboratório</button>
+        <button style="font-family:var(--fs);font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:var(--rad);background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);cursor:pointer" onclick="navigate('inferencia')">📈 Inferência</button>
+        <button style="font-family:var(--fs);font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:var(--rad);background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);cursor:pointer" onclick="navigate('modelos')">🔮 Modelos</button>
+      </div>
+    </div>`;
+  // inject before the first .metrics-row div (after trust bar)
+  html = html.replace(
+    '<div class="metrics-row">',
+    labStrip + '<div class="metrics-row">'
+  );
+  return html;
+};
+
+// ── PATCH ANALYTICS — adicionar links para lab pages ──────────────────────────
+const _origPageAnalytics = pageAnalytics;
+pageAnalytics = function(){
+  let html = _origPageAnalytics();
+  const labLinks = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+      ${[
+        {page:'inferencia',icon:'📈',title:'Inferência estatística',desc:'Séries temporais, DP, correlação entre institutos, viés de casa e interpretação automática',cor:'var(--g)'},
+        {page:'modelos',icon:'🔮',title:'Modelos preditivos',desc:'Probabilidade de 2° turno, projeções por estado e cenários alternativos baseados em histórico',cor:'#6d28d9'},
+        {page:'dados',icon:'🗃',title:'ETL & integração TSE',desc:'Pipeline de dados abertos, integração electionsBR, API VotaData e atualização contínua',cor:'var(--b)'},
+      ].map(l=>`
+      <div class="card" style="border-left:3px solid ${l.cor};cursor:pointer;transition:all .15s" onmouseover="this.style.boxShadow='var(--shmd)'" onmouseout="this.style.boxShadow=''" onclick="navigate('${l.page}')">
+        <div style="font-size:24px;margin-bottom:8px">${l.icon}</div>
+        <div style="font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:5px">${l.title}</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:10px">${l.desc}</div>
+        <span style="font-size:12px;color:${l.cor};font-weight:600">Acessar →</span>
+      </div>`).join('')}
+    </div>`;
+  html = labLinks + html;
+  return html;
+};
+
+// Re-register patched functions
+PAGES.home = pageHome;
+PAGES.analytics = pageAnalytics;
+
 // ── INIT ──────────────────────────────────────────────────────────────────────
 navigate('home');
 </script>
